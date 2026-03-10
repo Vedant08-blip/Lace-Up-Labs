@@ -186,9 +186,11 @@ function App() {
         <header className="flex items-center justify-between py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur">
           <div className="flex items-center gap-2">
             <div className="h-9 w-9 rounded-xl bg-accent flex items-center justify-center shadow-glow">
-              <span className="text-xs font-semibold tracking-[0.2em]">
-                KV
-              </span>
+              <img 
+                src="/sneaker-logo.svg" 
+                alt="Lace Up Labs Logo" 
+                className="w-6 h-6 object-contain"
+              />
             </div>
             <div>
               <div className="font-heading text-2xl tracking-[0.2em] uppercase">
