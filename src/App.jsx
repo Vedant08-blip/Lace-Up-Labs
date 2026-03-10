@@ -184,11 +184,11 @@ function App() {
       <div className="max-w-6xl mx-auto px-4 pb-16">
         {/* Top nav */}
         <header className="flex items-center justify-between py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur">
-          <div className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-xl bg-accent flex items-center justify-center shadow-glow">
-              <img 
-                src="/WebLogo.png" 
-                alt="Lace Up Labs Logo" 
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 flex items-center justify-center">
+              <img
+                src="/favicon.svg"
+                alt="Lace Up Labs Skull Logo"
                 className="w-full h-full object-contain"
               />
             </div>
