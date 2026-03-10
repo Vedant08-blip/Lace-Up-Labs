@@ -197,7 +197,7 @@ function App() {
                 Lace Up Labs
               </div>
               <p className="text-xs text-zinc-400">
-                Premium AI-powered sneaker vault
+                Kickstart Your Sneaker Game with AI.
               </p>
             </div>
           </div>
@@ -622,9 +622,43 @@ function App() {
               <button
                 type="button"
                 onClick={handleRecommend}
-                className="w-full rounded-full bg-accent px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.26em] shadow-glow hover:brightness-110 transition-transform hover:-translate-y-0.5"
+                className="w-full rounded-full px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-white transition-all duration-300 relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, #7F00FF, #E100FF)',
+                  boxShadow: '0 4px 15px rgba(127, 0, 255, 0.4)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #9D00FF, #FF00E6)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(127, 0, 255, 0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #7F00FF, #E100FF)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(127, 0, 255, 0.4)';
+                }}
               >
-                Generate AI Recommendation
+                {/* Shimmer overlay */}
+                <span className="absolute inset-0 overflow-hidden rounded-full">
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer" />
+                </span>
+                {/* Sparkles icon */}
+                <span className="inline-flex items-center gap-2 relative z-10">
+                  <svg 
+                    className="w-4 h-4" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2"
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" fill="currentColor" />
+                    <path d="M5 19l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z" fill="currentColor" opacity="0.6" />
+                    <path d="M19 5l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z" fill="currentColor" opacity="0.6" />
+                  </svg>
+                  Generate AI Recommendation
+                </span>
               </button>
 
               {recommended && (
