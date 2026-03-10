@@ -187,9 +187,9 @@ function App() {
           <div className="flex items-center gap-2">
             <div className="h-9 w-9 rounded-xl bg-accent flex items-center justify-center shadow-glow">
               <img 
-                src="/sneaker-logo.svg" 
+                src="/WebLogo.png" 
                 alt="Lace Up Labs Logo" 
-                className="w-6 h-6 object-contain"
+                className="w-full h-full object-contain"
               />
             </div>
             <div>
