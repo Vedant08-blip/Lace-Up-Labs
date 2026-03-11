@@ -15,19 +15,17 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
         repeat: Infinity,
         ease: "easeInOut",
       }}
-      whileHover={{ scale: 1.03 }}
-      className="group relative rounded-2xl bg-black/70 border border-zinc-800 p-4 flex gap-4 items-center backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.6)] transition-all"
+      className="relative rounded-2xl bg-black/70 border border-zinc-800 p-4 flex gap-4 items-center backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
     >
       {/* Glow background */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-400/10 via-purple-500/10 to-pink-500/10 blur-xl opacity-50 group-hover:opacity-80 transition duration-300" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-cyan-500/10 blur-xl opacity-50" />
 
       {/* Sneaker Image */}
       <motion.img
         src={sneaker.image}
         alt={sneaker.name}
-        whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 200 }}
-        className="relative w-20 h-20 object-cover rounded-xl shadow-lg group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+        className="relative w-20 h-20 object-cover rounded-xl shadow-lg"
       />
 
       {/* Sneaker Info */}
@@ -56,17 +54,6 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
             Add
           </button>
         </div>
-      </div>
-
-      {/* AI Indicator (Spark + Pulse) */}
-      <div className="absolute top-2 right-2 flex items-center gap-1 text-emerald-400">
-        {/* Pulse dot */}
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-        </span>
-
-       
       </div>
     </motion.div>
   );
