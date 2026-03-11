@@ -14,15 +14,30 @@ export function Footer() {
           </button>
         </div>
         <div className="flex gap-4">
-          <button className="hover:text-accent transition-colors">
+          <a
+            href="https://www.instagram.com/vedant_trivedi_8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent transition-colors"
+          >
             Instagram
-          </button>
-          <button className="hover:text-accent transition-colors">
+          </a>
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent transition-colors"
+          >
             X
-          </button>
-          <button className="hover:text-accent transition-colors">
-            TikTok
-          </button>
+          </a>
+          <a
+            href="https://github.com/Vedant08-blip/Lace-Up-Labs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent transition-colors"
+          >
+            Github
+          </a>
         </div>
       </div>
       <p className="text-xs text-zinc-600">
@@ -33,3 +48,4 @@ export function Footer() {
 }
 
 export default Footer;
+
