@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
+import { useCart } from "../context/CartContext";
 
 export default function FloatingSneakerCard({ sneaker, onSelect }) {
+  const { addToCart } = useCart();
   if (!sneaker) return null;
+
+  const handleAdd = (e) => {
+    e.stopPropagation();
+    addToCart(sneaker, null, 1);
+  };
 
   return (
     <motion.div
@@ -15,7 +22,8 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
         repeat: Infinity,
         ease: "easeInOut",
       }}
-      className="relative rounded-2xl bg-black/70 border border-zinc-800 p-4 flex gap-4 items-center backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+      className="relative rounded-2xl bg-black/70 border border-zinc-800 p-4 flex gap-4 items-center backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.6)] cursor-pointer"
+      onClick={() => onSelect(sneaker)}
     >
       {/* Glow background */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-cyan-500/10 blur-xl opacity-50" />
@@ -48,8 +56,8 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
           </p>
 
           <button
-            onClick={() => onSelect(sneaker)}
-            className="px-3 py-1 text-xs rounded-md border border-zinc-700 hover:bg-zinc-800 hover:border-accent transition"
+            onClick={handleAdd}
+            className="px-3 py-1 text-xs rounded-md border border-zinc-700 hover:bg-accent hover:text-black hover:border-accent transition"
           >
             Add
           </button>
@@ -58,3 +66,4 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
     </motion.div>
   );
 }
+

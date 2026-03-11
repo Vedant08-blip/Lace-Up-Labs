@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { SIZES } from "../data/sneakers";
+import { useCart } from "../context/CartContext";
 
 export function ProductDetail({ sneaker }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const increaseQty = () => setQuantity((q) => q + 1);
   const decreaseQty = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+
+  const handleAddToCart = () => {
+    addToCart(sneaker, selectedSize, quantity);
+  };
 
   return (
 <section
@@ -75,7 +81,7 @@ export function ProductDetail({ sneaker }) {
       {/* Size Selection */}
       <div className="space-y-1">
         <label className="block text-[0.65rem] uppercase tracking-[0.24em] text-zinc-400">
-          Select Size (US)
+          Select Size (US) {!selectedSize && <span className="text-red-400">*</span>}
         </label>
 
         <div className="grid grid-cols-5 gap-1.5">
@@ -150,7 +156,10 @@ export function ProductDetail({ sneaker }) {
             Wishlist
           </button>
 
-          <button className="btn-primary">
+          <button 
+            onClick={handleAddToCart}
+            className="btn-primary"
+          >
             Add to Cart
           </button>
         </div>
@@ -160,3 +169,4 @@ export function ProductDetail({ sneaker }) {
 }
 
 export default ProductDetail;
+

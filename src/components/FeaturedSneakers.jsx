@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Carousel } from './Carousel';
+import { useCart } from '../context/CartContext';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -15,6 +17,16 @@ const fadeInUp = {
 };
 
 export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
+  const { addToCart } = useCart();
+  const [addedId, setAddedId] = useState(null);
+
+  const handleAddToCart = (e, sneaker) => {
+    e.stopPropagation();
+    addToCart(sneaker, null, 1);
+    setAddedId(sneaker.id);
+    setTimeout(() => setAddedId(null), 1500);
+  };
+
   return (
     <section
       id="featured"
@@ -84,9 +96,16 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
               </div>
               <div className="flex items-center justify-between text-xs text-zinc-400 pt-1">
                 <span>★ {sneaker.rating.toFixed(1)} Rating</span>
-                <span className="btn-secondary-sm group-hover:bg-accent group-hover:text-black group-hover:border-accent">
-                  Add to Cart
-                </span>
+                <button 
+                  onClick={(e) => handleAddToCart(e, sneaker)}
+                  className={`btn-secondary-sm transition-all ${
+                    addedId === sneaker.id 
+                      ? 'bg-green-500 text-white border-green-500' 
+                      : 'group-hover:bg-accent group-hover:text-black group-hover:border-accent'
+                  }`}
+                >
+                  {addedId === sneaker.id ? 'Added!' : 'Add to Cart'}
+                </button>
               </div>
             </div>
           </motion.button>

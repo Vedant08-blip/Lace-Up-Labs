@@ -10,4 +10,7 @@ export { ProductDetail } from './ProductDetail';
 export { Newsletter } from './Newsletter';
 export { Footer } from './Footer';
 export { Carousel } from './Carousel';
+export { SearchBar } from './SearchBar';
+export { CartSidebar } from './CartSidebar';
+export { AuthModal } from './AuthModal';
 

@@ -6,14 +6,21 @@ import {
   Categories, 
   BrandCarousel,
   Reviews, 
+  Trending,
   AIRecommendation, 
   ProductDetail, 
-  Footer 
+  Newsletter,
+  Footer,
+  SearchBar,
+  CartSidebar,
+  AuthModal
 } from './components';
 import { useAIRecommendation } from './hooks/useAIRecommendation';
+import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import { SNEAKERS, CATEGORIES, REVIEWS } from './data/sneakers';
 
-function App() {
+function AppContent() {
   const [selectedSneaker, setSelectedSneaker] = useState(SNEAKERS[0]);
   
   const {
@@ -28,6 +35,7 @@ function App() {
   } = useAIRecommendation();
 
   const featured = useMemo(() => SNEAKERS.slice(0, 6), []);
+  const trending = useMemo(() => SNEAKERS.slice(4, 10), []);
 
   const handleSelectSneaker = (sneaker) => {
     setSelectedSneaker(sneaker);
@@ -44,7 +52,7 @@ function App() {
     <div className="bg-background text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 pb-16">
         {/* Header / Navbar */}
-        <Header />
+        <Header onSelectSneaker={handleSelectSneaker} />
 
         {/* Vertical Section-Based Layout */}
         <main className="flex flex-col gap-8 pt-4">
@@ -76,6 +84,12 @@ function App() {
             onSelectSneaker={handleSelectSneaker} 
           />
 
+          {/* Trending Section */}
+          <Trending 
+            sneakers={trending} 
+            onSelectSneaker={handleSelectSneaker} 
+          />
+
           {/* Categories / Streetwear Section */}
           <Categories categories={CATEGORIES} />
 
@@ -85,14 +99,30 @@ function App() {
           {/* Customer Reviews Section */}
           <Reviews reviews={REVIEWS} />
 
+          {/* Newsletter Section */}
+          <Newsletter />
+
           {/* Footer */}
           <Footer />
         </main>
       </div>
+
+      {/* Global Modals & Sidebars */}
+      <CartSidebar />
+      <AuthModal />
     </div>
   );
 }
 
-export default App;
+function App() {
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <AppContent />
+      </CartProvider>
+    </AuthProvider>
+  );
+}
 
+export default App;
 
