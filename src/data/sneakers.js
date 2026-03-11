@@ -8,7 +8,7 @@ export const SNEAKERS = [
     category: 'Basketball',
     tags: ['high-top', 'retro', 'court'],
     image:
-      'https://images.unsplash.com/photo-1645833889386-2782e290ee3b?w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1643223669135-c3d63d27ede8?w=1200&auto=format&fit=crop',
   },
   {
     id: 'ad-originals',
@@ -144,23 +144,23 @@ export const CATEGORIES = [
 
 export const REVIEWS = [
   {
-    name: 'Jordan K.',
-    role: 'Collector · NYC',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+    name: 'Akshat.',
+    role: 'Collector · India.Indore',
+    avatar: 'https://images.unsplash.com/photo-1728577740843-5f29c7586afe?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'The AI fit check actually got my hoop shoes right on the first try. Cushion and lockdown are crazy.',
     rating: 5,
   },
   {
-    name: 'Aaliyah M.',
-    role: 'Designer · LA',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
+    name: 'Dipanshi.',
+    role: 'Designer · India.Surat',
+    avatar: 'https://plus.unsplash.com/premium_photo-1740011638722-97651193fc67?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'Love how curated everything feels. The dark layout, the heat pairs – it feels like scrolling a private vault.',
     rating: 5,
   },
   {
-    name: 'Tariq H.',
-    role: 'Runner · London',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
+    name: 'Sourabh.',
+    role: 'Runner · India.Bhopal',
+    avatar: 'https://plus.unsplash.com/premium_photo-1738931679826-2c40b22d054d?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'Typed my weekly mileage and budget and got three perfect options. No more scrolling 200 products.',
     rating: 4.8,
   },
