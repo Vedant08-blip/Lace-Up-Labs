@@ -144,8 +144,8 @@ export const CATEGORIES = [
 
 export const REVIEWS = [
   {
-    name: 'Akshat.',
-    role: 'Collector · India.Indore',
+    name: 'Vedant Trivedi.',
+    role: 'SneakerHead · Ahemdabad.India',
     avatar: 'https://images.unsplash.com/photo-1728577740843-5f29c7586afe?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'These go hard with every outfit. 10/10 cop👮.',
     rating: 5,
@@ -165,23 +165,23 @@ export const REVIEWS = [
     rating: 4.8,
   },
   {
-    name: 'Sarah L.',
+    name: 'Anuwrat.',
     role: 'Sneakerhead · Miami',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
+    avatar: 'https://plus.unsplash.com/premium_photo-1739178656495-8109a8bc4f53?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'These look insane with every outfit. Easy cop!❤️‍🔥',
     rating: 5,
   },
   {
-    name: 'Marcus J.',
+    name: 'Akshat.',
     role: 'Hype Collector · Atlanta',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
+    avatar: 'https://plus.unsplash.com/premium_photo-1738590017220-5820f49608cc?q=80&w=2467&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'Comfort and drip both maxed out. Love them.',
     rating: 4.5,
   },
   {
-    name: 'Emily R.',
-    role: 'Fitness Trainer · Denver',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face',
+    name: 'Anushka',
+    role: 'Trainer · Mumbai.India',
+    avatar: 'https://plus.unsplash.com/premium_photo-1739278712940-2b36e2ab87de?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: '“Clean look, crazy comfort, and the drip is real.” 👟🔥',
     rating: 5,
   },

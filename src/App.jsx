@@ -4,6 +4,7 @@ import {
   Hero, 
   FeaturedSneakers, 
   Categories, 
+  BrandCarousel,
   Reviews, 
   AIRecommendation, 
   ProductDetail, 
@@ -77,6 +78,9 @@ function App() {
 
           {/* Categories / Streetwear Section */}
           <Categories categories={CATEGORIES} />
+
+          {/* Brand Carousel Section */}
+          <BrandCarousel />
 
           {/* Customer Reviews Section */}
           <Reviews reviews={REVIEWS} />
