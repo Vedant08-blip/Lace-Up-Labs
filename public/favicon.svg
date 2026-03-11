@@ -2,7 +2,7 @@
   <style>
     .favicon-stroke {
       stroke-width: 18px;
-      stroke: #a855ff;
+      stroke: #FF3B30;
       fill: none;
     }
 
@@ -11,21 +11,7 @@
     }
 
     #eyes-and-nose {
-      fill: #a855ff;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .favicon-stroke {
-        stroke: #343a40;
-      }
-
-      #skull-outline {
-        fill: #adb5bd;
-      }
-
-      #eyes-and-nose {
-        fill: #343a40;
-      }
+      fill: #FF3B30;
     }
   </style>
 
@@ -49,4 +35,3 @@
     />
   </g>
 </svg>
-

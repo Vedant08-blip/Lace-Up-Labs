@@ -1,144 +1,128 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import FloatingSneakerCard from "./FloatingSneakerCard";
 
-export function AIRecommendation({ 
-  budget, 
-  setBudget, 
-  style, 
-  setStyle, 
-  activity, 
-  setActivity, 
-  recommended, 
-  onRecommend, 
-  onSelectSneaker 
+export function AIRecommendation({
+  budget,
+  setBudget,
+  style,
+  setStyle,
+  activity,
+  setActivity,
+  recommended,
+  onRecommend,
+  onSelectSneaker,
 }) {
   return (
     <section
       id="ai"
       className="rounded-3xl bg-gradient-to-b from-card via-card/90 to-black border border-zinc-800/80 p-5 space-y-4"
     >
-      <div className="flex items-center justify-between gap-3">
+      {/* Header */}
+      <div className="flex items-center justify-between">
         <div>
           <p className="text-[0.65rem] uppercase tracking-[0.32em] text-emerald-400">
             AI Sneaker Lab
           </p>
-          <h2 className="font-heading text-2xl tracking-[0.16em] uppercase">
+          <h2 className="font-heading text-xl tracking-[0.16em] uppercase">
             Smart Recommendations
           </h2>
         </div>
-        <span className="rounded-full bg-emerald-500/10 border border-emerald-500/40 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-emerald-300">
-          Live · Beta
+
+        <span className="rounded-full bg-emerald-500/10 border border-emerald-500/40 px-3 py-1 text-[0.6rem] uppercase tracking-[0.24em] text-emerald-300">
+          Beta
         </span>
       </div>
-      <p className="text-xs text-zinc-300">
-        Tell Lace Up Labs AI how you move. We&apos;ll scan the vault and
-        surface pairs tuned to your budget, style and activity.
+
+      {/* Description */}
+      <p className="text-xs text-zinc-400">
+        Tell Lace Up Labs AI how you move. We'll scan the vault and recommend
+        sneakers based on your budget and style.
       </p>
-      <div className="grid gap-3 text-xs">
-        <div className="space-y-1">
-          <label className="block text-[0.65rem] uppercase tracking-[0.24em] text-zinc-400">
-            Budget (USD)
-          </label>
-          <input
-            type="number"
-            value={budget}
-            onChange={(e) => setBudget(e.target.value)}
-            placeholder="e.g. 180"
-            className="w-full rounded-full bg-black/60 border border-zinc-800 px-4 py-2 text-xs outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
-          />
-        </div>
-        <div className="space-y-1">
-          <label className="block text-[0.65rem] uppercase tracking-[0.24em] text-zinc-400">
-            Style keywords
-          </label>
-          <input
-            type="text"
-            value={style}
-            onChange={(e) => setStyle(e.target.value)}
-            placeholder="street, running, high-top..."
-            className="w-full rounded-full bg-black/60 border border-zinc-800 px-4 py-2 text-xs outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
-          />
-        </div>
-        <div className="space-y-1">
-          <label className="block text-[0.65rem] uppercase tracking-[0.24em] text-zinc-400">
-            Activity
-          </label>
-          <select
-            value={activity}
-            onChange={(e) => setActivity(e.target.value)}
-            className="w-full rounded-full bg-black/60 border border-zinc-800 px-4 py-2 text-xs outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
-          >
-            <option value="">Any</option>
-            <option value="Running">Running</option>
-            <option value="Basketball">Basketball</option>
-            <option value="Lifestyle">Lifestyle</option>
-            <option value="Streetwear">Streetwear</option>
-          </select>
-        </div>
+
+      {/* Inputs */}
+      <div className="grid grid-cols-3 gap-3 text-xs">
+        <input
+          type="number"
+          value={budget}
+          onChange={(e) => setBudget(e.target.value)}
+          placeholder="Budget $"
+          className="rounded-full bg-black/60 border border-zinc-800 px-3 py-2 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
+        />
+
+        <input
+          type="text"
+          value={style}
+          onChange={(e) => setStyle(e.target.value)}
+          placeholder="Style"
+          className="rounded-full bg-black/60 border border-zinc-800 px-3 py-2 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
+        />
+
+        <select
+          value={activity}
+          onChange={(e) => setActivity(e.target.value)}
+          className="rounded-full bg-black/60 border border-zinc-800 px-3 py-2 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
+        >
+          <option value="">Activity</option>
+          <option value="Running">Running</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Streetwear">Streetwear</option>
+        </select>
       </div>
+
+      {/* Quick AI Tags */}
+      <div className="flex flex-wrap gap-2 text-[10px]">
+        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+          Streetwear
+        </button>
+        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+          High Tops
+        </button>
+        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+          Limited
+        </button>
+        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+          Sport
+        </button>
+      </div>
+
+      {/* Button - Gradient AI Style with Shimmer */}
       <button
-        type="button"
         onClick={onRecommend}
-        className="relative w-full rounded-full px-4 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-black bg-accent shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
+        className="group relative rounded-full p-[1.5px] bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:scale-105 transition-all duration-300 overflow-hidden"
       >
-        {/* Shimmer overlay */}
-        <span className="absolute inset-0 overflow-hidden rounded-full">
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer" />
-        </span>
-        {/* Sparkles icon */}
-        <span className="inline-flex items-center gap-2 relative z-10">
-          <svg 
-            className="w-4 h-4" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2"
-            strokeLinecap="round" 
-            strokeLinejoin="round"
+        <span className="relative flex items-center gap-2 rounded-full bg-black px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white group-hover:bg-black/90 transition">
+
+          {/* Icon */}
+          <svg
+            className="w-4 h-4 text-purple-400 group-hover:text-cyan-400 transition"
+            viewBox="0 0 24 24"
+            fill="currentColor"
           >
-            <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" fill="currentColor" />
-            <path d="M5 19l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z" fill="currentColor" opacity="0.6" />
-            <path d="M19 5l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z" fill="currentColor" opacity="0.6" />
+            <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/>
           </svg>
+
           Generate AI Recommendation
         </span>
+
+        {/* Shimmer Effect */}
+        <span className="absolute inset-0 rounded-full overflow-hidden">
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></span>
+        </span>
+
+        {/* Glow */}
+        <span className="absolute inset-0 rounded-full blur-md opacity-0 group-hover:opacity-70 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 transition"></span>
       </button>
 
+      {/* Result - FloatingSneakerCard */}
       {recommended && (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-2 rounded-2xl bg-black/70 border border-zinc-800/80 p-3 flex gap-3 items-center"
-        >
-          <img
-            src={recommended.image}
-            alt={recommended.name}
-            className="w-20 h-20 rounded-xl object-cover"
-          />
-          <div className="flex-1">
-            <p className="text-[0.65rem] uppercase tracking-[0.22em] text-zinc-400">
-              Best Match
-            </p>
-            <p className="text-sm font-medium">{recommended.name}</p>
-            <p className="text-xs text-zinc-500">
-              {recommended.brand} · {recommended.category}
-            </p>
-            <div className="flex items-center justify-between pt-1">
-              <p className="text-sm text-accent font-semibold">
-                ${recommended.price}
-              </p>
-              <button 
-                className="btn-secondary-sm"
-                onClick={() => onSelectSneaker(recommended)}
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </motion.div>
+        <FloatingSneakerCard 
+          sneaker={recommended} 
+          onSelect={onSelectSneaker} 
+        />
       )}
     </section>
   );
 }
 
 export default AIRecommendation;
-
