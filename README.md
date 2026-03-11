@@ -2,8 +2,6 @@
 
 A modern e-commerce website for premium sneakers with AI-powered recommendations, built with React, Vite, and Tailwind CSS.
 
-![Lace Up Labs](public/Favicon.svg)
-
 ## Features
 
 - 🛍️ **Curated Sneaker Collection** - Premium sneakers from top brands
