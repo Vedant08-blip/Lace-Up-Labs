@@ -34,9 +34,10 @@ export function AIRecommendation({
       </div>
 
       {/* Description */}
-      <p className="text-xs text-zinc-400">
-        Tell Lace Up Labs AI how you move. We'll scan the vault and recommend
-        sneakers based on your budget and style.
+      <p className="text-xs text-zinc-400" font size="25px">
+        Tell LaceUp Labs how you move.
+        Our AI hunts the sneaker verse for the perfect match,
+        and finds kicks that match your drip and budget.
       </p>
 
       {/* Inputs */}

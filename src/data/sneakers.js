@@ -16,7 +16,7 @@ export const SNEAKERS = [
     brand: 'Nike',
     price: 18260,
     rating: 4.9,
-    category: 'Basketball',
+    category: 'Streetwear',
     tags: ['high-top', 'retro', 'court'],
     image:
       'https://images.unsplash.com/photo-1679284392816-191b1c849f76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -38,7 +38,7 @@ export const SNEAKERS = [
     brand: 'New Balance',
     price: 10790,
     rating: 4.7,
-    category: 'Streetwear',
+    category: 'Lifestyle',
     tags: ['low-top', 'lifestyle', 'street'],
     image:
       'https://images.unsplash.com/photo-1582076197780-20fab84bc271?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -49,7 +49,7 @@ export const SNEAKERS = [
     brand: 'Nike',
     price: 13280,
     rating: 4.8,
-    category: 'Running',
+    category: 'StreetStyle',
     tags: ['running', 'comfort', 'everyday'],
     image:
       'https://images.unsplash.com/photo-1580906628498-07ff53a7ebff?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -60,7 +60,7 @@ export const SNEAKERS = [
     brand: 'Adidas',
     price: 15770,
     rating: 4.9,
-    category: 'Running',
+    category: 'Lifestyle',
     tags: ['running', 'foam', 'road'],
     image:
       'https://images.unsplash.com/photo-1651013691313-81b822df0044?w=1200&auto=format&fit=crop',

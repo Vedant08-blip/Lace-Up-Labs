@@ -57,7 +57,7 @@ export function BrandCarousel() {
           100% { transform: translateX(-33.33%); }
         }
         .animate-scroll {
-          animation: scroll 25s linear infinite;
+          animation: scroll 15s linear infinite;
         }
         .animate-scroll:hover {
           animation-play-state: paused;
