@@ -2,7 +2,7 @@ export function Newsletter() {
   return (
     <section
       id="newsletter"
-      className="rounded-3xl bg-gradient-to-r from-black via-card to-black border border-zinc-800/80 p-5 space-y-3"
+      className="rounded-3xl bg-gradient-to-r from-black via-card to-black border border-zinc-800/80 p-5 space-y-4 min-h-[260px] flex flex-col justify-between"
     >
       <div className="flex items-center justify-between gap-3">
         <div>
@@ -22,10 +22,10 @@ export function Newsletter() {
         <input
           type="email"
           placeholder="Enter your email for early drops"
-          className="flex-1 rounded-full bg-black/70 border border-zinc-800 px-4 py-2 text-xs outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
+          className="input-field flex-1"
         />
-        <button className="rounded-full bg-accent px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-black shadow-glow hover:brightness-110 transition-transform hover:-translate-y-0.5">
-          Join Vault
+        <button className="btn-primary whitespace-nowrap">
+          Join Community
         </button>
       </div>
     </section>

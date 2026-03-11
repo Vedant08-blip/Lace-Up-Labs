@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Carousel } from './Carousel';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -29,14 +30,13 @@ export function Trending({ sneakers, onSelectSneaker }) {
           </h2>
         </div>
       </div>
-      <div className="relative">
-        <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-700/70 scrollbar-track-transparent">
+      <Carousel>
           {sneakers.map((sneaker, index) => (
             <motion.button
               key={sneaker.id}
               type="button"
               onClick={() => onSelectSneaker(sneaker)}
-              className="min-w-[9rem] rounded-2xl bg-card/70 border border-zinc-800/80 p-2 flex-shrink-0 text-left hover:border-accent/80 transition-colors"
+              className="min-w-[12rem] rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex-shrink-0 text-left hover:border-accent/80 transition-all duration-200 cursor-pointer snap-start"
               whileHover={{ y: -3 }}
               variants={fadeInUp}
               initial="hidden"
@@ -46,21 +46,20 @@ export function Trending({ sneakers, onSelectSneaker }) {
               <img
                 src={sneaker.image}
                 alt={sneaker.name}
-                className="w-full h-24 object-cover rounded-xl mb-2"
+                className="w-full h-32 object-cover rounded-xl mb-3"
               />
-              <p className="text-[0.6rem] uppercase tracking-[0.22em] text-zinc-400">
+              <p className="text-[0.65rem] uppercase tracking-[0.22em] text-zinc-400">
                 {sneaker.brand}
               </p>
-              <p className="text-xs font-medium line-clamp-2">
+              <p className="text-sm font-medium line-clamp-2 mt-1">
                 {sneaker.name}
               </p>
-              <p className="text-[0.7rem] text-accent pt-1">
+              <p className="text-sm font-semibold text-accent pt-2">
                 ${sneaker.price}
               </p>
             </motion.button>
           ))}
-        </div>
-      </div>
+      </Carousel>
     </section>
   );
 }

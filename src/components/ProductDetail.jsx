@@ -7,7 +7,7 @@ export function ProductDetail({ sneaker }) {
   return (
     <section
       id="product-detail"
-      className="rounded-3xl bg-card/80 border border-zinc-800/80 p-5 space-y-4"
+      className="rounded-3xl bg-card/80 border border-zinc-800/80 p-5 space-y-4 min-h-[420px] flex flex-col"
     >
       <div className="flex items-center justify-between gap-3">
         <div>
@@ -69,7 +69,7 @@ export function ProductDetail({ sneaker }) {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-3 pt-1">
+      <div className="flex items-center justify-between gap-3 pt-1 mt-auto">
         <div>
           <p className="text-[0.7rem] text-zinc-400 uppercase tracking-[0.22em]">
             Price
@@ -79,10 +79,10 @@ export function ProductDetail({ sneaker }) {
           </p>
         </div>
         <div className="flex gap-2">
-          <button className="rounded-full border border-zinc-700 bg-black/70 px-4 py-2 text-[0.65rem] uppercase tracking-[0.24em] hover:border-accent hover:text-accent transition-colors">
+          <button className="btn-secondary">
             Wishlist
           </button>
-          <button className="rounded-full bg-accent px-4 py-2 text-[0.65rem] uppercase tracking-[0.24em] text-black font-semibold shadow-glow hover:brightness-110 transition-transform hover:-translate-y-0.5">
+          <button className="btn-primary">
             Add to Cart
           </button>
         </div>

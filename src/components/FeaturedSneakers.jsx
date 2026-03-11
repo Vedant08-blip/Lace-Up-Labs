@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Carousel } from './Carousel';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -15,7 +16,10 @@ const fadeInUp = {
 
 export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
   return (
-    <section id="featured" className="space-y-4">
+    <section
+      id="featured"
+      className="rounded-3xl bg-card/80 border border-zinc-800/80 p-5 space-y-4 min-h-[420px] flex flex-col"
+    >
       <div className="flex items-end justify-between gap-4">
         <div>
           <p className="text-[0.65rem] uppercase tracking-[0.32em] text-zinc-500">
@@ -25,17 +29,20 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
             Featured Sneakers
           </h2>
         </div>
-        <button className="hidden sm:inline-flex text-xs uppercase tracking-[0.24em] text-zinc-400 hover:text-accent transition-colors">
+        <button className="hidden sm:inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-zinc-400 hover:text-accent transition-colors group">
           View all drops
+          <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
-      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+      <Carousel className="mt-2 flex-1">
         {sneakers.map((sneaker, index) => (
           <motion.button
             key={sneaker.id}
             type="button"
             onClick={() => onSelectSneaker(sneaker)}
-            className="group relative rounded-2xl bg-card/60 border border-zinc-800/80 overflow-hidden text-left hover:border-accent/80 transition-colors"
+            className="group relative min-w-[20rem] sm:min-w-[24rem] rounded-2xl bg-card/60 border border-zinc-800/80 overflow-hidden text-left hover:border-accent/80 transition-all duration-200 cursor-pointer snap-start flex-shrink-0"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
@@ -77,14 +84,14 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
               </div>
               <div className="flex items-center justify-between text-xs text-zinc-400 pt-1">
                 <span>★ {sneaker.rating.toFixed(1)} Rating</span>
-                <span className="rounded-full bg-zinc-900/80 px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em] group-hover:bg-accent group-hover:text-black transition-colors">
+                <span className="btn-secondary-sm group-hover:bg-accent group-hover:text-black group-hover:border-accent">
                   Add to Cart
                 </span>
               </div>
             </div>
           </motion.button>
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 }

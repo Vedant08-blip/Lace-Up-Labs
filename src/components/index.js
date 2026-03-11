@@ -8,4 +8,5 @@ export { AIRecommendation } from './AIRecommendation';
 export { ProductDetail } from './ProductDetail';
 export { Newsletter } from './Newsletter';
 export { Footer } from './Footer';
+export { Carousel } from './Carousel';
 

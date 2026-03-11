@@ -40,10 +40,10 @@ export function Hero({ selectedSneaker, onSelectSneaker }) {
             grind.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <button className="rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] shadow-glow hover:brightness-110 transition-transform hover:-translate-y-0.5">
+            <button className="btn-primary">
               Shop Now
             </button>
-            <button className="rounded-full border border-zinc-700 bg-card/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] hover:border-accent hover:text-accent transition-colors">
+            <button className="btn-secondary">
               Explore Collection
             </button>
           </div>

@@ -72,3 +72,53 @@ body {
   animation: shimmer 2s infinite;
 }
 
+/* ===========================================
+   UNIFIED BUTTON STYLES
+   =========================================== */
+
+/* Primary Button - Red Accent */
+.btn-primary {
+  @apply rounded-full bg-accent px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.24em] text-black shadow-glow;
+  @apply hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Secondary Button - Border Only */
+.btn-secondary {
+  @apply rounded-full border border-zinc-700 bg-transparent px-5 py-2.5 text-xs font-medium uppercase tracking-[0.24em] text-zinc-300;
+  @apply hover:border-accent hover:text-accent transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Small Secondary Button */
+.btn-secondary-sm {
+  @apply rounded-full border border-zinc-700 bg-transparent px-3 py-1.5 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-zinc-300;
+  @apply hover:border-accent hover:text-accent transition-all duration-200;
+}
+
+/* ===========================================
+   CLICKABLE CARD STYLES
+   =========================================== */
+
+.clickable-card {
+  @apply cursor-pointer transition-all duration-200;
+}
+
+.clickable-card:hover {
+  @apply border-accent/80 -translate-y-1;
+}
+
+.clickable-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* ===========================================
+   INPUT STYLES
+   =========================================== */
+
+.input-field {
+  @apply w-full rounded-full bg-black/60 border border-zinc-800 px-4 py-2.5 text-xs text-white outline-none;
+  @apply placeholder:text-zinc-500;
+  @apply focus:border-accent focus:ring-1 focus:ring-accent/60 transition-all duration-200;
+}
+

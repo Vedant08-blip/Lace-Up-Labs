@@ -78,21 +78,7 @@ export function AIRecommendation({
       <button
         type="button"
         onClick={onRecommend}
-        className="w-full rounded-full px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-white transition-all duration-300 relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #7F00FF, #E100FF)',
-          boxShadow: '0 4px 15px rgba(127, 0, 255, 0.4)'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'linear-gradient(135deg, #9D00FF, #FF00E6)';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-          e.currentTarget.style.boxShadow = '0 8px 20px rgba(127, 0, 255, 0.5)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'linear-gradient(135deg, #7F00FF, #E100FF)';
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 15px rgba(127, 0, 255, 0.4)';
-        }}
+        className="relative w-full rounded-full px-4 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-black bg-accent shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
       >
         {/* Shimmer overlay */}
         <span className="absolute inset-0 overflow-hidden rounded-full">
@@ -141,7 +127,7 @@ export function AIRecommendation({
                 ${recommended.price}
               </p>
               <button 
-                className="rounded-full bg-zinc-900/90 px-3 py-1 text-[0.65rem] uppercase tracking-[0.22em] hover:bg-accent hover:text-black transition-colors"
+                className="btn-secondary-sm"
                 onClick={() => onSelectSneaker(recommended)}
               >
                 Add to Cart

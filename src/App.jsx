@@ -5,10 +5,8 @@ import {
   FeaturedSneakers, 
   Categories, 
   Reviews, 
-  Trending, 
   AIRecommendation, 
   ProductDetail, 
-  Newsletter, 
   Footer 
 } from './components';
 import { useAIRecommendation } from './hooks/useAIRecommendation';
@@ -29,7 +27,6 @@ function App() {
   } = useAIRecommendation();
 
   const featured = useMemo(() => SNEAKERS.slice(0, 6), []);
-  const trending = useMemo(() => SNEAKERS, []);
 
   const handleSelectSneaker = (sneaker) => {
     setSelectedSneaker(sneaker);
@@ -45,62 +42,47 @@ function App() {
   return (
     <div className="bg-background text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 pb-16">
-        {/* Top nav */}
+        {/* Header / Navbar */}
         <Header />
 
-        {/* Layout */}
-        <main className="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-10 lg:gap-14 pt-4">
-          {/* Left column */}
-          <section className="space-y-10">
-            {/* Hero */}
-            <Hero 
-              selectedSneaker={selectedSneaker} 
-              onSelectSneaker={handleSelectSneaker} 
-            />
+        {/* Vertical Section-Based Layout */}
+        <main className="flex flex-col gap-8 pt-4">
+          {/* Hero Section */}
+          <Hero 
+            selectedSneaker={selectedSneaker} 
+            onSelectSneaker={handleSelectSneaker} 
+          />
 
-            {/* Featured sneakers */}
-            <FeaturedSneakers 
-              sneakers={featured} 
-              onSelectSneaker={handleSelectSneaker} 
-            />
+          {/* AI Recommendation Section */}
+          <AIRecommendation 
+            budget={budget}
+            setBudget={setBudget}
+            style={style}
+            setStyle={setStyle}
+            activity={activity}
+            setActivity={setActivity}
+            recommended={recommended}
+            onRecommend={handleAIRecommend}
+            onSelectSneaker={handleSelectSneaker}
+          />
 
-            {/* Categories */}
-            <Categories categories={CATEGORIES} />
+          {/* Product Detail Section */}
+          <ProductDetail sneaker={selectedSneaker} />
 
-            {/* Reviews */}
-            <Reviews reviews={REVIEWS} />
-          </section>
+          {/* Featured Sneakers Section */}
+          <FeaturedSneakers 
+            sneakers={featured} 
+            onSelectSneaker={handleSelectSneaker} 
+          />
 
-          {/* Right column */}
-          <section className="space-y-8">
-            {/* Trending carousel */}
-            <Trending 
-              sneakers={trending} 
-              onSelectSneaker={handleSelectSneaker} 
-            />
+          {/* Categories / Streetwear Section */}
+          <Categories categories={CATEGORIES} />
 
-            {/* AI Recommendation */}
-            <AIRecommendation 
-              budget={budget}
-              setBudget={setBudget}
-              style={style}
-              setStyle={setStyle}
-              activity={activity}
-              setActivity={setActivity}
-              recommended={recommended}
-              onRecommend={handleAIRecommend}
-              onSelectSneaker={handleSelectSneaker}
-            />
+          {/* Customer Reviews Section */}
+          <Reviews reviews={REVIEWS} />
 
-            {/* Product detail preview */}
-            <ProductDetail sneaker={selectedSneaker} />
-
-            {/* Newsletter */}
-            <Newsletter />
-
-            {/* Footer */}
-            <Footer />
-          </section>
+          {/* Footer */}
+          <Footer />
         </main>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Carousel } from './Carousel';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -26,11 +27,11 @@ export function Categories({ categories }) {
           </h2>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-5">
+      <Carousel>
         {categories.map((cat, index) => (
           <motion.div
             key={cat.id}
-            className="group relative overflow-hidden rounded-2xl bg-card/60 border border-zinc-800/80 cursor-pointer"
+            className="group relative overflow-hidden rounded-2xl bg-card/60 border border-zinc-800/80 cursor-pointer hover:border-accent/80 transition-all duration-200 snap-start flex-shrink-0 min-w-[20rem] sm:min-w-[24rem]"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
@@ -65,7 +66,7 @@ export function Categories({ categories }) {
             </div>
           </motion.div>
         ))}
-      </div>
+      </Carousel>
     </section>
   );
 }

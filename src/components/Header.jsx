@@ -34,7 +34,7 @@ export function Header() {
           AI Studio
         </a>
       </nav>
-      <button className="rounded-full border border-zinc-700/80 bg-card/70 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em] hover:border-accent hover:text-accent transition-colors">
+      <button className="btn-secondary">
         Sign In
       </button>
     </header>
