@@ -146,18 +146,21 @@ export const REVIEWS = [
   {
     name: 'Jordan K.',
     role: 'Collector · NYC',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
     text: 'The AI fit check actually got my hoop shoes right on the first try. Cushion and lockdown are crazy.',
     rating: 5,
   },
   {
     name: 'Aaliyah M.',
     role: 'Designer · LA',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
     text: 'Love how curated everything feels. The dark layout, the heat pairs – it feels like scrolling a private vault.',
     rating: 5,
   },
   {
     name: 'Tariq H.',
     role: 'Runner · London',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
     text: 'Typed my weekly mileage and budget and got three perfect options. No more scrolling 200 products.',
     rating: 4.8,
   },
