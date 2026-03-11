@@ -53,7 +53,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
               <img
                 src={sneaker.image}
                 alt={sneaker.name}
-                className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
               <span className="absolute top-3 left-3 rounded-full bg-black/70 px-3 py-1 text-[0.65rem] uppercase tracking-[0.22em] text-zinc-200">

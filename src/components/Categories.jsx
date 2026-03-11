@@ -31,14 +31,14 @@ export function Categories({ categories }) {
         {categories.map((cat, index) => (
           <motion.div
             key={cat.id}
-            className="group relative overflow-hidden rounded-2xl bg-card/60 border border-zinc-800/80 cursor-pointer hover:border-accent/80 transition-all duration-200 snap-start flex-shrink-0 min-w-[20rem] sm:min-w-[24rem]"
+            className="group relative overflow-hidden rounded-2xl bg-card/60 border border-zinc-800/80 cursor-pointer hover:border-accent/80 transition-all duration-200 snap-start flex-shrink-0 min-w-[20rem] sm:min-w-[23rem]"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
             custom={index + 1}
             whileHover={{ y: -3 }}
           >
-            <div className="relative h-40">
+            <div className="relative h-48">
               <img
                 src={cat.image}
                 alt={cat.title}

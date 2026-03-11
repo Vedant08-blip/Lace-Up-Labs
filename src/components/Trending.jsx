@@ -46,7 +46,7 @@ export function Trending({ sneakers, onSelectSneaker }) {
               <img
                 src={sneaker.image}
                 alt={sneaker.name}
-                className="w-full h-32 object-cover rounded-xl mb-3"
+                className="w-full h-40 object-cover rounded-xl mb-3"
               />
               <p className="text-[0.65rem] uppercase tracking-[0.22em] text-zinc-400">
                 {sneaker.brand}

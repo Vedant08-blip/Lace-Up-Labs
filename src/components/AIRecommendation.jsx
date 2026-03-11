@@ -49,13 +49,18 @@ export function AIRecommendation({
           className="rounded-full bg-black/60 border border-zinc-800 px-3 py-2 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
         />
 
-        <input
-          type="text"
+        <select
           value={style}
           onChange={(e) => setStyle(e.target.value)}
-          placeholder="Style"
           className="rounded-full bg-black/60 border border-zinc-800 px-3 py-2 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60"
-        />
+        >
+          <option value="">Style</option>
+          <option value="Streetwear">Streetwear</option>
+          <option value="Streetwear">Gen-Z</option>
+          <option value="Classic">Classic</option>
+          <option value="Minimal">Minimal</option>
+          <option value="Sport">Sport</option>
+        </select>
 
         <select
           value={activity}
