@@ -3,13 +3,11 @@ import {
   Header, 
   Hero, 
   FeaturedSneakers, 
-  Categories, 
   BrandCarousel,
   Reviews, 
   Trending,
   AIRecommendation, 
   ProductDetail, 
-  Newsletter,
   Footer,
   SearchBar,
   CartSidebar,
@@ -18,7 +16,7 @@ import {
 import { useAIRecommendation } from './hooks/useAIRecommendation';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
-import { SNEAKERS, CATEGORIES, REVIEWS } from './data/sneakers';
+import { SNEAKERS, REVIEWS } from './data/sneakers';
 
 function AppContent() {
   const [selectedSneaker, setSelectedSneaker] = useState(SNEAKERS[0]);
@@ -84,23 +82,17 @@ function AppContent() {
             onSelectSneaker={handleSelectSneaker} 
           />
 
+          {/* Brand Carousel Section */}
+          <BrandCarousel />
+
           {/* Trending Section */}
           <Trending 
             sneakers={trending} 
             onSelectSneaker={handleSelectSneaker} 
           />
 
-          {/* Categories / Streetwear Section */}
-          <Categories categories={CATEGORIES} />
-
-          {/* Brand Carousel Section */}
-          <BrandCarousel />
-
           {/* Customer Reviews Section */}
           <Reviews reviews={REVIEWS} />
-
-          {/* Newsletter Section */}
-          <Newsletter />
 
           {/* Footer */}
           <Footer />

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Carousel } from './Carousel';
 import { useCart } from '../context/CartContext';
 
 const fadeInUp = {
@@ -48,7 +47,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
           </svg>
         </button>
       </div>
-      <Carousel className="mt-2 flex-1">
+      <div className="flex gap-4 overflow-x-auto pb-4 pt-2 px-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-zinc-700/70 scrollbar-track-transparent">
         {sneakers.map((sneaker, index) => (
           <motion.button
             key={sneaker.id}
@@ -110,7 +109,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
             </div>
           </motion.button>
         ))}
-      </Carousel>
+      </div>
     </section>
   );
 }

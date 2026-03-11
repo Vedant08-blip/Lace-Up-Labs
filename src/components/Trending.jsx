@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Carousel } from './Carousel';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -30,7 +29,7 @@ export function Trending({ sneakers, onSelectSneaker }) {
           </h2>
         </div>
       </div>
-      <Carousel>
+      <div className="flex gap-4 overflow-x-auto pb-4 pt-2 px-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-zinc-700/70 scrollbar-track-transparent">
           {sneakers.map((sneaker, index) => (
             <motion.button
               key={sneaker.id}
@@ -59,7 +58,7 @@ export function Trending({ sneakers, onSelectSneaker }) {
               </p>
             </motion.button>
           ))}
-      </Carousel>
+      </div>
     </section>
   );
 }
