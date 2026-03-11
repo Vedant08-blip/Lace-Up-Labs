@@ -12,7 +12,7 @@ export function Header({ onSelectSneaker }) {
       <div className="flex items-center gap-3">
         <div className="h-10 w-10 flex items-center justify-center">
           <img
-            src="/favicon.svg"
+            src="/Logo.svg"
             alt="Lace Up Labs Skull Logo"
             className="w-full h-full object-contain"
           />
