@@ -43,6 +43,9 @@ export function Footer() {
       <p className="text-xs text-zinc-600">
         © {new Date().getFullYear()} Lace Up Labs. All rights reserved.
       </p>
+      <p className="text-xs text-red-500 hover:text-zinc-600 transition-colors cursor-pointer">
+        Managed and Developed by Vedant Trivedi
+      </p>
     </footer>
   );
 }

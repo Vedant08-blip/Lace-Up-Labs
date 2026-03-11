@@ -39,45 +39,45 @@ export function Reviews({ reviews }) {
         {reviews.map((review, i) => (
           <motion.article
             key={review.name}
-            className="rounded-2xl bg-card/70 border border-zinc-800/80 p-5 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[20rem] sm:min-w-[24rem]"
+            className="rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[18rem] sm:min-w-[15rem]"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
             custom={i + 1}
           >
             {/* Top Section */}
-            <div className="flex items-center justify-between gap-3 mb-4">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="flex items-center gap-2">
                 <img
                   src={review.avatar}
                   alt={review.name}
-                  className="w-10 h-10 rounded-full object-cover border border-zinc-700"
+                  className="w-8 h-8 rounded-full object-cover border border-zinc-700"
                 />
 
                 <div>
-                  <p className="text-sm font-medium">{review.name}</p>
+                  <p className="text-xs font-medium">{review.name}</p>
 
-                  <p className="text-[0.65rem] text-zinc-500 uppercase tracking-widest">
+                  <p className="text-[0.5rem] text-zinc-500 uppercase tracking-widest">
                     {review.role}
                   </p>
 
-                  <span className="text-[10px] text-emerald-400 uppercase tracking-wider">
+                  <span className="text-[8px] text-emerald-400 uppercase tracking-wider">
                     Verified Buyer
                   </span>
                 </div>
               </div>
 
               {/* Star Rating */}
-              <div className="text-emerald-400 text-xs">
+              <div className="text-emerald-400 text-[9px]">
                 {"★★★★★".slice(0, Math.round(review.rating))}
               </div>
             </div>
 
             {/* Review Text */}
-            <div className="space-y-2">
-              <span className="text-accent text-xl opacity-40">“</span>
+            <div className="space-y-1">
+              <span className="text-accent text-lg opacity-40">"</span>
 
-              <p className="text-sm text-zinc-300 leading-relaxed italic">
+              <p className="text-xs text-zinc-300 leading-relaxed italic line-clamp-2">
                 {review.text}
               </p>
             </div>
@@ -96,3 +96,4 @@ export function Reviews({ reviews }) {
 }
 
 export default Reviews;
+
