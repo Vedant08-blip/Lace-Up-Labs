@@ -1,16 +1,98 @@
-# React + Vite
+# Lace Up Labs - AI-Powered Sneaker Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce website for premium sneakers with AI-powered recommendations, built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+![Lace Up Labs](public/WebLogo.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- 🛍️ **Curated Sneaker Collection** - Premium sneakers from top brands
+- 🤖 **AI Recommendations** - Smart sneaker suggestions based on budget, style, and activity
+- 🎨 **Modern Dark Theme** - Sleek design with dark UI and vibrant accents
+- 📱 **Responsive Design** - Works seamlessly on all devices
+- ✨ **Smooth Animations** - Fluid transitions powered by Framer Motion
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React** - UI framework
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **Google Fonts** - Bebas Neue & Poppins
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── AIRecommendation.jsx  # AI sneaker recommendation section
+│   ├── Categories.jsx        # Sneaker category showcase
+│   ├── FeaturedSneakers.jsx  # Featured products carousel
+│   ├── FloatingSneakerCard.jsx # Animated AI result card
+│   ├── Footer.jsx            # Site footer
+│   ├── Header.jsx            # Navigation header
+│   ├── Hero.jsx              # Hero section with featured sneaker
+│   ├── ProductDetail.jsx     # Product detail view
+│   ├── Reviews.jsx           # Customer reviews carousel
+│   └── Trending.jsx          # Trending products
+├── data/
+│   └── sneakers.js           # Sneaker data & categories
+├── hooks/
+│   └── useAIRecommendation.js # AI recommendation logic
+├── App.jsx                   # Main application component
+├── index.css                 # Global styles
+└── main.jsx                  # Entry point
+```
+
+## Design System
+
+### Colors
+
+- **Background**: `#0F0F0F` (dark black)
+- **Card**: `#1A1A1A` (dark gray)
+- **Accent**: `#FF3B30` (vibrant red)
+
+### Typography
+
+- **Headings**: Bebas Neue (bold, uppercase)
+- **Body**: Poppins (clean, modern)
+
+## Layout
+
+The site uses a clean vertical section-based structure:
+
+1. Header (sticky navigation)
+2. Hero Section (featured sneaker)
+3. AI Recommendation Section
+4. Product Detail Section
+5. Featured Sneakers Section
+6. Categories/Streetwear Section
+7. Customer Reviews Section
+8. Footer
+
+## License
+
+MIT
+
