@@ -52,7 +52,7 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
 
         <div className="flex items-center justify-between mt-2">
           <p className="text-accent font-bold">
-            ${sneaker.price}
+            ₹{sneaker.price.toLocaleString()}
           </p>
 
           <button

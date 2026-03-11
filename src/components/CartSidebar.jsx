@@ -77,7 +77,7 @@ export function CartSidebar() {
                         <p className="text-xs text-zinc-400 mt-1">Size: US {item.size}</p>
                       )}
                       <div className="flex items-center justify-between mt-2">
-                        <p className="text-accent font-semibold">${item.price}</p>
+                        <p className="text-accent font-semibold">₹{item.price.toLocaleString()}</p>
                         <p className="text-xs text-zinc-400">Qty: {item.quantity}</p>
                       </div>
                     </div>
@@ -99,7 +99,7 @@ export function CartSidebar() {
               <div className="p-5 border-t border-zinc-800 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-400">Subtotal</span>
-                  <span className="text-xl font-semibold text-accent">${cartTotal.toFixed(2)}</span>
+                  <span className="text-xl font-semibold text-accent">₹{cartTotal.toLocaleString()}</span>
                 </div>
                 <button className="w-full btn-primary py-3">
                   Checkout

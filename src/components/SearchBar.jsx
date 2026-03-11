@@ -88,7 +88,7 @@ export function SearchBar({ onSelectSneaker }) {
                     {sneaker.brand} · {sneaker.category}
                   </p>
                 </div>
-                <p className="text-accent font-semibold">${sneaker.price}</p>
+                <p className="text-accent font-semibold">₹{sneaker.price.toLocaleString()}</p>
               </button>
             ))}
           </motion.div>

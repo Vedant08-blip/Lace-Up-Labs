@@ -54,7 +54,7 @@ export function Trending({ sneakers, onSelectSneaker }) {
                 {sneaker.name}
               </p>
               <p className="text-sm font-semibold text-accent pt-2">
-                ${sneaker.price}
+                ₹{sneaker.price.toLocaleString()}
               </p>
             </motion.button>
           ))}

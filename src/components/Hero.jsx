@@ -99,7 +99,7 @@ export function Hero({ selectedSneaker, onSelectSneaker }) {
                   From
                 </p>
                 <p className="text-lg font-semibold text-accent">
-                  ${selectedSneaker.price}
+                  ₹{selectedSneaker.price.toLocaleString()}
                 </p>
                 <p className="text-[0.7rem] text-emerald-400">
                   ★ {selectedSneaker.rating.toFixed(1)} Rated

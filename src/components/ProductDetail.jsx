@@ -123,7 +123,7 @@ export function ProductDetail({ sneaker }) {
           </p>
 
           <p className="text-2xl font-semibold text-accent">
-            ${sneaker.price}
+            ₹{sneaker.price.toLocaleString()}
           </p>
 
           <p className="text-[0.65rem] text-zinc-400 uppercase tracking-wider">

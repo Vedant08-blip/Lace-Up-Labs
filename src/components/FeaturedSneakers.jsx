@@ -89,7 +89,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
                     From
                   </p>
                   <p className="text-base font-semibold text-accent">
-                    ${sneaker.price}
+                    ₹{sneaker.price.toLocaleString()}
                   </p>
                 </div>
               </div>
