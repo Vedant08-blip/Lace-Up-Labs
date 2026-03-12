@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { SIZES } from "../data/sneakers";
 import { useCart } from "../context/CartContext";
 
