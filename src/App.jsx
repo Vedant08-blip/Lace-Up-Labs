@@ -36,8 +36,8 @@ function AppContent() {
     handleRecommend,
   } = useAIRecommendation();
 
-  const featured = useMemo(() => SNEAKERS.slice(0, 6), []);
-  const trending = useMemo(() => SNEAKERS.slice(4, 10), []);
+  const featured = useMemo(() => SNEAKERS.slice(0, 10), []);
+  const trending = useMemo(() => SNEAKERS.slice(6, 16), []);
 
   const handleSelectSneaker = (sneaker) => {
     setSelectedSneaker(sneaker);

@@ -120,6 +120,105 @@ export const SNEAKERS = [
     image:
       'https://images.unsplash.com/photo-1584735175315-9d5df23860e6?w=1200&auto=format&fit=crop',
   },
+  {
+    id: 'nk-dunk-low',
+    name: 'Nike Dunk Low Retro',
+    brand: 'Nike',
+    price: 11890,
+    rating: 4.8,
+    category: 'Lifestyle',
+    tags: ['low-top', 'retro', 'street'],
+    image:
+      'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'nk-air-force-1',
+    name: 'Nike Air Force 1',
+    brand: 'Nike',
+    price: 10990,
+    rating: 4.8,
+    category: 'Streetwear',
+    tags: ['classic', 'low-top', 'everyday'],
+    image:
+      'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1964&auto=format&fit=crop',
+  },
+  {
+    id: 'ad-campus-00s',
+    name: 'Adidas Campus 00s',
+    brand: 'Adidas',
+    price: 10550,
+    rating: 4.7,
+    category: 'Streetwear',
+    tags: ['classic', 'skate', 'street'],
+    image:
+      'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'ad-forum-low',
+    name: 'Adidas Forum Low',
+    brand: 'Adidas',
+    price: 12190,
+    rating: 4.6,
+    category: 'Lifestyle',
+    tags: ['retro', 'court', 'low-top'],
+    image:
+      'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'pm-clyde',
+    name: 'Puma Clyde Classic',
+    brand: 'Puma',
+    price: 8690,
+    rating: 4.6,
+    category: 'Streetwear',
+    tags: ['classic', 'low-top', 'casual'],
+    image:
+      'https://images.unsplash.com/photo-1463100099107-aa0980c362e6?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'pm-velocity-nitro',
+    name: 'Puma Velocity Nitro 2',
+    brand: 'Puma',
+    price: 13490,
+    rating: 4.7,
+    category: 'Running',
+    tags: ['running', 'foam', 'road'],
+    image:
+      'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'cv-chuck-70',
+    name: 'Converse Chuck 70',
+    brand: 'Converse',
+    price: 6990,
+    rating: 4.8,
+    category: 'Lifestyle',
+    tags: ['classic', 'canvas', 'high-top'],
+    image:
+      'https://images.unsplash.com/photo-1514989940723-e8e51635b782?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'cv-run-star',
+    name: 'Converse Run Star Hike',
+    brand: 'Converse',
+    price: 12990,
+    rating: 4.6,
+    category: 'Streetwear',
+    tags: ['platform', 'bold', 'street'],
+    image:
+      'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    id: 'nk-pegasus-40',
+    name: 'Nike Pegasus 40',
+    brand: 'Nike',
+    price: 14490,
+    rating: 4.7,
+    category: 'Running',
+    tags: ['running', 'road', 'cushion'],
+    image:
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1974&auto=format&fit=crop',
+  },
 ];
 
 export const CATEGORIES = [
@@ -199,4 +298,3 @@ export const REVIEWS = [
 ];
 
 export const SIZES = ['7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
-
