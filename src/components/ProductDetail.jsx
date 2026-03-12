@@ -5,18 +5,37 @@ import { useCart } from "../context/CartContext";
 export function ProductDetail({ sneaker }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { addToCart } = useCart();
+  const sectionRef = useRef(null);
 
   const increaseQty = () => setQuantity((q) => q + 1);
   const decreaseQty = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
-  const handleAddToCart = () => {
-    addToCart(sneaker, selectedSize, quantity);
+  const handleAddToCart = async () => {
+    if (!selectedSize) {
+      // Better UX: visual feedback or toast, but for now early return
+      return;
+    }
+    setIsLoading(true);
+    setIsSuccess(false);
+    // Simulate async add
+    setTimeout(() => {
+      addToCart(sneaker, selectedSize, quantity);
+      setIsSuccess(true);
+      setIsLoading(false);
+      // Smooth redirect/scroll to this section
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Reset success after 2s
+      setTimeout(() => setIsSuccess(false), 2000);
+    }, 800);
   };
 
   return (
-<section
+    <section
       id="product-detail"
+      ref={sectionRef}
       className="rounded-3xl bg-card/80 border border-zinc-800/80 p-5 space-y-4 min-h-[420px] flex flex-col"
     >
       {/* Header */}
@@ -81,7 +100,7 @@ export function ProductDetail({ sneaker }) {
       {/* Size Selection */}
       <div className="space-y-1">
         <label className="block text-[0.65rem] uppercase tracking-[0.24em] text-zinc-400">
-          Select Size (US) {!selectedSize && <span className="text-red-400">*</span>}
+          Select Size (US) <span className="text-red-400">*</span>
         </label>
 
         <div className="grid grid-cols-5 gap-1.5">
@@ -158,9 +177,21 @@ export function ProductDetail({ sneaker }) {
 
           <button 
             onClick={handleAddToCart}
-            className="btn-primary"
+            disabled={isLoading || !selectedSize}
+            className={`flex-1 btn-primary transition-all ${
+              isSuccess ? 'bg-green-600 border-green-500 text-white hover:bg-green-700' : ''
+            } ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
           >
-            Add to Cart
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                Adding...
+              </span>
+            ) : isSuccess ? (
+              'Added! ✓'
+            ) : (
+              'Add to Cart'
+            )}
           </button>
         </div>
       </div>
