@@ -22,7 +22,7 @@ export function Header({ onSelectSneaker }) {
             Lace Up Labs
           </div>
           <p className="text-xs text-zinc-400">
-            Premium AI-powered sneaker vault
+            Sneaker that fits your soul, not just your feet
           </p>
         </div>
       </div>
@@ -32,7 +32,7 @@ export function Header({ onSelectSneaker }) {
         <SearchBar onSelectSneaker={onSelectSneaker} />
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-15">
         {/* Cart Button */}
         <button
           onClick={() => setIsCartOpen(true)}
