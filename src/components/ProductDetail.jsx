@@ -15,6 +15,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
 
   const handleAddToCart = async () => {
     if (!selectedSize) {
+      onRequireSizeSelectionChange?.(true);
       return;
     }
     setIsLoading(true);
