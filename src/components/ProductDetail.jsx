@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { SIZES } from "../data/sneakers";
 import { useCart } from "../context/CartContext";
 
@@ -9,13 +9,6 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
   const [isSuccess, setIsSuccess] = useState(false);
   const { addToCart } = useCart();
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    setSelectedSize(null);
-    setQuantity(1);
-    setIsLoading(false);
-    setIsSuccess(false);
-  }, [sneaker?.id]);
 
   const increaseQty = () => setQuantity((q) => q + 1);
   const decreaseQty = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
@@ -71,7 +64,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
         <img
           src={sneaker.image}
           alt={sneaker.name}
-          className="w-full h-125 object-cover"
+          className="w-full h-56 sm:h-72 object-cover"
         />
       </div>
 
@@ -110,7 +103,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
           Select Size (US) <span className="text-red-400">*</span>
         </label>
 
-        <div className="grid grid-cols-5 gap-1.5">
+        <div className="grid grid-cols-4 sm:grid-cols-5 gap-1.5">
           {SIZES.map((size) => (
             <button
               key={size}
@@ -150,7 +143,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
       </div>
 
       {/* Price + Actions */}
-      <div className="flex items-center justify-between gap-3 pt-1 mt-auto">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-1 mt-auto">
         <div>
           <p className="text-[0.7rem] text-zinc-400 uppercase tracking-[0.22em]">
             Price
@@ -166,7 +159,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
         </div>
 
         {/* Quantity Selector */}
-        <div className="flex items-center border border-zinc-700 rounded-lg overflow-hidden text-xs">
+        <div className="flex items-center border border-zinc-700 rounded-lg overflow-hidden text-xs w-fit">
           <button
             onClick={decreaseQty}
             className="px-3 py-1 hover:bg-zinc-800"
@@ -185,15 +178,15 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2">
-          <button className="btn-secondary" onClick={() => { alert('Added to wishlist!') }}>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          <button className="btn-secondary w-full sm:w-auto" onClick={() => { alert('Added to wishlist!') }}>
             Wishlist
           </button>
 
           <button 
             onClick={handleAddToCart}
             disabled={isLoading || !selectedSize}
-            className={`flex-1 btn-primary transition-all ${
+            className={`w-full sm:w-auto btn-primary transition-all ${
               isSuccess ? 'bg-green-600 border-green-500 text-white hover:bg-green-700' : ''
             } ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
           >

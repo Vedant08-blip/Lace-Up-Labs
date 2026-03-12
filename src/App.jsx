@@ -117,7 +117,6 @@ function AppContent() {
           <section ref={heroRef}>
             <Hero 
               selectedSneaker={selectedSneaker} 
-              onSelectSneaker={handleSelectSneaker}
               onShopNow={scrollToFeatured}
               onExplore={scrollToTrending}
             />
@@ -142,6 +141,7 @@ function AppContent() {
           {/* Product Detail Section */}
           <div data-gsap="reveal">
             <ProductDetail
+              key={selectedSneaker.id}
               sneaker={selectedSneaker}
               requireSizeSelection={requireSizeSelection}
               onRequireSizeSelectionChange={setRequireSizeSelection}

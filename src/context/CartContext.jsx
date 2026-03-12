@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
@@ -65,4 +66,3 @@ export function useCart() {
   }
   return context;
 }
-

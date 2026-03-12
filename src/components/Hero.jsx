@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export function Hero({ selectedSneaker, onSelectSneaker, onShopNow, onExplore }) {
+export function Hero({ selectedSneaker, onShopNow, onExplore }) {
   const rootRef = useRef(null);
   const eyebrowRef = useRef(null);
   const titleRef = useRef(null);
@@ -62,7 +62,7 @@ export function Hero({ selectedSneaker, onSelectSneaker, onShopNow, onExplore })
           <p ref={eyebrowRef} className="text-xs uppercase tracking-[0.35em] text-zinc-400">
             AI-POWERED DROP VAULT
           </p>
-          <h1 ref={titleRef} className="font-heading text-5xl sm:text-6xl leading-none tracking-[0.18em] uppercase">
+          <h1 ref={titleRef} className="font-heading text-4xl sm:text-6xl leading-none tracking-[0.18em] uppercase">
             Step Into
             <br />
             The Future
@@ -111,7 +111,7 @@ export function Hero({ selectedSneaker, onSelectSneaker, onShopNow, onExplore })
               <img
                 src={selectedSneaker.image}
                 alt={selectedSneaker.name}
-                className="w-full h-64 object-cover object-center"
+                className="w-full h-52 sm:h-64 object-cover object-center"
               />
             </div>
             <div className="relative pt-4 flex items-center justify-between gap-3">

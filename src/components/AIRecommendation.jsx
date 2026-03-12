@@ -49,14 +49,14 @@ export function AIRecommendation({
       </div>
 
       {/* Description */}
-      <p className="text-xs text-zinc-400" style={{ fontSize: '25px' }}>
+      <p className="text-sm sm:text-base text-zinc-400">
         Tell LaceUp Labs how you move.
         Our AI hunts the sneaker verse for the perfect match,
         and finds kicks that match your drip and budget.
       </p>
 
       {/* Inputs */}
-      <div className="grid grid-cols-2 gap-3 text-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <input
           type="number"
           value={budget}
@@ -98,16 +98,44 @@ export function AIRecommendation({
 
       {/* Quick AI Tags */}
       <div className="flex flex-wrap gap-2 text-[10px]">
-        <button onClick={() => setStyle('street')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button
+          onClick={() => setStyle('street')}
+          className={`px-3 py-1 rounded-full border transition ${
+            style === 'street'
+              ? 'bg-accent text-black border-accent'
+              : 'border-zinc-700 hover:bg-zinc-800'
+          }`}
+        >
           Streetwear
         </button>
-        <button onClick={() => setStyle('high')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button
+          onClick={() => setStyle('high')}
+          className={`px-3 py-1 rounded-full border transition ${
+            style === 'high'
+              ? 'bg-accent text-black border-accent'
+              : 'border-zinc-700 hover:bg-zinc-800'
+          }`}
+        >
           High Tops
         </button>
-        <button onClick={() => setStyle('limited')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button
+          onClick={() => setStyle('limited')}
+          className={`px-3 py-1 rounded-full border transition ${
+            style === 'limited'
+              ? 'bg-accent text-black border-accent'
+              : 'border-zinc-700 hover:bg-zinc-800'
+          }`}
+        >
           Limited
         </button>
-        <button onClick={() => setStyle('sport')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button
+          onClick={() => setStyle('sport')}
+          className={`px-3 py-1 rounded-full border transition ${
+            style === 'sport'
+              ? 'bg-accent text-black border-accent'
+              : 'border-zinc-700 hover:bg-zinc-800'
+          }`}
+        >
           Sport
         </button>
       </div>

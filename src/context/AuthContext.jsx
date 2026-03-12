@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -17,7 +18,7 @@ export function AuthProvider({ children }) {
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser));
-      } catch (e) {
+      } catch {
         localStorage.removeItem('laceup_user');
       }
     }
@@ -142,4 +143,3 @@ export function useAuth() {
   }
   return context;
 }
-
