@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { useCart } from "../context/CartContext";
-
-export default function FloatingSneakerCard({ sneaker, onSelect }) {
-  const { addToCart } = useCart();
+export default function FloatingSneakerCard({ sneaker, onSelect, onAddToCart }) {
   if (!sneaker) return null;
 
   const handleAdd = (e) => {
     e.stopPropagation();
+    if (onAddToCart) {
+      onAddToCart(sneaker);
+      return;
+    }
     onSelect(sneaker);
   };
 
@@ -66,4 +67,3 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
     </motion.div>
   );
 }
-

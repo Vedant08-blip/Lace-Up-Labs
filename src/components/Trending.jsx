@@ -13,7 +13,7 @@ const fadeInUp = {
   }),
 };
 
-export function Trending({ sneakers, onSelectSneaker }) {
+export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
   return (
     <section
       id="trending"
@@ -59,7 +59,11 @@ export function Trending({ sneakers, onSelectSneaker }) {
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
-                  onSelectSneaker(sneaker);
+                  if (onAddToCart) {
+                    onAddToCart(sneaker);
+                  } else {
+                    onSelectSneaker(sneaker);
+                  }
                 }}
                 className="w-full mt-2 btn-secondary-sm"
               >
@@ -73,4 +77,3 @@ export function Trending({ sneakers, onSelectSneaker }) {
 }
 
 export default Trending;
-

@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { SIZES } from "../data/sneakers";
 import { useCart } from "../context/CartContext";
 
-export function ProductDetail({ sneaker }) {
+export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSelectionChange }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -10,12 +10,18 @@ export function ProductDetail({ sneaker }) {
   const { addToCart } = useCart();
   const sectionRef = useRef(null);
 
+  useEffect(() => {
+    setSelectedSize(null);
+    setQuantity(1);
+    setIsLoading(false);
+    setIsSuccess(false);
+  }, [sneaker?.id]);
+
   const increaseQty = () => setQuantity((q) => q + 1);
   const decreaseQty = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
   const handleAddToCart = async () => {
     if (!selectedSize) {
-      // Better UX: visual feedback or toast, but for now early return
       return;
     }
     setIsLoading(true);
@@ -25,6 +31,7 @@ export function ProductDetail({ sneaker }) {
       addToCart(sneaker, selectedSize, quantity);
       setIsSuccess(true);
       setIsLoading(false);
+      onRequireSizeSelectionChange?.(false);
       // Smooth redirect/scroll to this section
       sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       // Reset success after 2s
@@ -108,7 +115,10 @@ export function ProductDetail({ sneaker }) {
             <button
               key={size}
               type="button"
-              onClick={() => setSelectedSize(size)}
+              onClick={() => {
+                setSelectedSize(size);
+                onRequireSizeSelectionChange?.(false);
+              }}
               className={`rounded-lg py-2 text-[0.7rem] border transition-all ${
                 selectedSize === size
                   ? "border-accent text-accent bg-accent/10"
@@ -119,6 +129,11 @@ export function ProductDetail({ sneaker }) {
             </button>
           ))}
         </div>
+        {requireSizeSelection && !selectedSize && (
+          <p className="text-[0.7rem] text-red-400">
+            Please select a size to continue.
+          </p>
+        )}
       </div>
 
       {/* Sneaker Features */}
@@ -200,4 +215,3 @@ export function ProductDetail({ sneaker }) {
 }
 
 export default ProductDetail;
-

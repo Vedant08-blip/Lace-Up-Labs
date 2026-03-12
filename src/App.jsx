@@ -20,6 +20,7 @@ import { SNEAKERS, REVIEWS } from './data/sneakers';
 
 function AppContent() {
   const [selectedSneaker, setSelectedSneaker] = useState(SNEAKERS[0]);
+  const [requireSizeSelection, setRequireSizeSelection] = useState(false);
   
   const {
     budget,
@@ -37,6 +38,7 @@ function AppContent() {
 
   const handleSelectSneaker = (sneaker) => {
     setSelectedSneaker(sneaker);
+    setRequireSizeSelection(false);
   };
 
   const handleAIRecommend = () => {
@@ -57,6 +59,23 @@ function AppContent() {
   const scrollToTrending = useCallback(() => {
     trendingRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
+
+  const scrollToProductDetail = useCallback(() => {
+    setTimeout(() => {
+      document
+        .getElementById('product-detail')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
+  }, []);
+
+  const handleAddToCartFlow = useCallback(
+    (sneaker) => {
+      setSelectedSneaker(sneaker);
+      setRequireSizeSelection(true);
+      scrollToProductDetail();
+    },
+    [scrollToProductDetail]
+  );
 
   return (
     <div className="bg-background text-white min-h-screen">
@@ -87,10 +106,15 @@ function AppContent() {
             recommended={recommended}
             onRecommend={handleAIRecommend}
             onSelectSneaker={handleSelectSneaker}
+            onAddToCart={handleAddToCartFlow}
           />
 
           {/* Product Detail Section */}
-          <ProductDetail sneaker={selectedSneaker} />
+          <ProductDetail
+            sneaker={selectedSneaker}
+            requireSizeSelection={requireSizeSelection}
+            onRequireSizeSelectionChange={setRequireSizeSelection}
+          />
 
           {/* Featured Sneakers Section */}
           <section ref={featuredRef}>
@@ -98,6 +122,7 @@ function AppContent() {
               sneakers={featured} 
               onSelectSneaker={handleSelectSneaker}
               onViewAll={scrollToTrending}
+              onAddToCart={handleAddToCartFlow}
             />
           </section>
 
@@ -109,6 +134,7 @@ function AppContent() {
             <Trending 
               sneakers={trending} 
               onSelectSneaker={handleSelectSneaker} 
+              onAddToCart={handleAddToCartFlow}
             />
           </section>
 

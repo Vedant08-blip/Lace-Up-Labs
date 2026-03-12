@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useCart } from '../context/CartContext';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -15,13 +14,16 @@ const fadeInUp = {
   }),
 };
 
-export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll }) {
-  const { addToCart } = useCart();
+export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddToCart }) {
   const [addedId, setAddedId] = useState(null);
 
   const handleAddToCart = (e, sneaker) => {
     e.stopPropagation();
-    onSelectSneaker(sneaker);
+    if (onAddToCart) {
+      onAddToCart(sneaker);
+    } else {
+      onSelectSneaker(sneaker);
+    }
     setAddedId(sneaker.id);
     setTimeout(() => setAddedId(null), 1500);
   };
@@ -103,7 +105,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll }) {
                       : 'group-hover:bg-accent group-hover:text-black group-hover:border-accent'
                   }`}
                 >
-                  {addedId === sneaker.id ? 'Added!' : 'Add to Cart'}
+                  {addedId === sneaker.id ? 'Select Size' : 'Add to Cart'}
                 </button>
               </div>
             </div>

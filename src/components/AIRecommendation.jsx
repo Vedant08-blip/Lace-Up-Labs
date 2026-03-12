@@ -11,6 +11,7 @@ export function AIRecommendation({
   recommended,
   onRecommend,
   onSelectSneaker,
+  onAddToCart,
 }) {
   return (
     <section
@@ -34,7 +35,7 @@ export function AIRecommendation({
       </div>
 
       {/* Description */}
-      <p className="text-xs text-zinc-400" font size="25px">
+      <p className="text-xs text-zinc-400" style={{ fontSize: '25px' }}>
         Tell LaceUp Labs how you move.
         Our AI hunts the sneaker verse for the perfect match,
         and finds kicks that match your drip and budget.
@@ -111,7 +112,8 @@ export function AIRecommendation({
       {recommended && (
         <FloatingSneakerCard 
           sneaker={recommended} 
-          onSelect={onSelectSneaker} 
+          onSelect={onSelectSneaker}
+          onAddToCart={onAddToCart}
         />
       )}
     </section>
