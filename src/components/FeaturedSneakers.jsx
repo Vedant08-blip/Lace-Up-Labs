@@ -15,13 +15,13 @@ const fadeInUp = {
   }),
 };
 
-export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
+export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll }) {
   const { addToCart } = useCart();
   const [addedId, setAddedId] = useState(null);
 
   const handleAddToCart = (e, sneaker) => {
     e.stopPropagation();
-    addToCart(sneaker, null, 1);
+    onSelectSneaker(sneaker);
     setAddedId(sneaker.id);
     setTimeout(() => setAddedId(null), 1500);
   };
@@ -40,7 +40,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
             Featured Sneakers
           </h2>
         </div>
-        <button className="hidden sm:inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-zinc-400 hover:text-accent transition-colors group">
+        <button onClick={onViewAll} className="hidden sm:inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-zinc-400 hover:text-accent transition-colors group cursor-pointer">
           View all drops
           <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -115,4 +115,3 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker }) {
 }
 
 export default FeaturedSneakers;
-

@@ -56,6 +56,15 @@ export function Trending({ sneakers, onSelectSneaker }) {
               <p className="text-sm font-semibold text-accent pt-2">
                 ₹{sneaker.price.toLocaleString()}
               </p>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectSneaker(sneaker);
+                }}
+                className="w-full mt-2 btn-secondary-sm"
+              >
+                Add to Cart
+              </button>
             </motion.button>
           ))}
       </div>

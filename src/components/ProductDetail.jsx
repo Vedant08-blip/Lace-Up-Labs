@@ -152,7 +152,7 @@ export function ProductDetail({ sneaker }) {
 
         {/* Action Buttons */}
         <div className="flex gap-2">
-          <button className="btn-secondary">
+          <button className="btn-secondary" onClick={() => { alert('Added to wishlist!') }}>
             Wishlist
           </button>
 

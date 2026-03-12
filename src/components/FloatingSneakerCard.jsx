@@ -7,7 +7,7 @@ export default function FloatingSneakerCard({ sneaker, onSelect }) {
 
   const handleAdd = (e) => {
     e.stopPropagation();
-    addToCart(sneaker, null, 1);
+    onSelect(sneaker);
   };
 
   return (

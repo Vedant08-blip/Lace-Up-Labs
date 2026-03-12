@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef, useCallback } from 'react';
 import { 
   Header, 
   Hero, 
@@ -46,6 +46,18 @@ function AppContent() {
     }
   };
 
+  const heroRef = useRef(null);
+  const featuredRef = useRef(null);
+  const trendingRef = useRef(null);
+
+  const scrollToFeatured = useCallback(() => {
+    featuredRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  const scrollToTrending = useCallback(() => {
+    trendingRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
   return (
     <div className="bg-background text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 pb-16">
@@ -55,10 +67,14 @@ function AppContent() {
         {/* Vertical Section-Based Layout */}
         <main className="flex flex-col gap-8 pt-4">
           {/* Hero Section */}
-          <Hero 
-            selectedSneaker={selectedSneaker} 
-            onSelectSneaker={handleSelectSneaker} 
-          />
+          <section ref={heroRef}>
+            <Hero 
+              selectedSneaker={selectedSneaker} 
+              onSelectSneaker={handleSelectSneaker}
+              onShopNow={scrollToFeatured}
+              onExplore={scrollToTrending}
+            />
+          </section>
 
           {/* AI Recommendation Section */}
           <AIRecommendation 
@@ -77,19 +93,24 @@ function AppContent() {
           <ProductDetail sneaker={selectedSneaker} />
 
           {/* Featured Sneakers Section */}
-          <FeaturedSneakers 
-            sneakers={featured} 
-            onSelectSneaker={handleSelectSneaker} 
-          />
+          <section ref={featuredRef}>
+            <FeaturedSneakers 
+              sneakers={featured} 
+              onSelectSneaker={handleSelectSneaker}
+              onViewAll={scrollToTrending}
+            />
+          </section>
 
           {/* Brand Carousel Section */}
           <BrandCarousel />
 
           {/* Trending Section */}
-          <Trending 
-            sneakers={trending} 
-            onSelectSneaker={handleSelectSneaker} 
-          />
+          <section ref={trendingRef}>
+            <Trending 
+              sneakers={trending} 
+              onSelectSneaker={handleSelectSneaker} 
+            />
+          </section>
 
           {/* Customer Reviews Section */}
           <Reviews reviews={REVIEWS} />
@@ -117,4 +138,3 @@ function App() {
 }
 
 export default App;
-

@@ -13,7 +13,7 @@ const fadeInUp = {
   }),
 };
 
-export function Hero({ selectedSneaker, onSelectSneaker }) {
+export function Hero({ selectedSneaker, onSelectSneaker, onShopNow, onExplore }) {
   return (
     <motion.section
       initial="hidden"
@@ -40,10 +40,10 @@ export function Hero({ selectedSneaker, onSelectSneaker }) {
             grind.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <button className="btn-primary">
+            <button onClick={onShopNow} className="btn-primary">
               Shop Now
             </button>
-            <button className="btn-secondary">
+            <button onClick={onExplore} className="btn-secondary">
               Explore Collection
             </button>
           </div>
@@ -114,4 +114,3 @@ export function Hero({ selectedSneaker, onSelectSneaker }) {
 }
 
 export default Hero;
-

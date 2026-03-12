@@ -65,16 +65,16 @@ export function AIRecommendation({
 
       {/* Quick AI Tags */}
       <div className="flex flex-wrap gap-2 text-[10px]">
-        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button onClick={() => setStyle('street')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
           Streetwear
         </button>
-        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button onClick={() => setStyle('high')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
           High Tops
         </button>
-        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button onClick={() => setStyle('limited')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
           Limited
         </button>
-        <button className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
+        <button onClick={() => setStyle('sport')} className="px-3 py-1 rounded-full border border-zinc-700 hover:bg-zinc-800 transition">
           Sport
         </button>
       </div>
