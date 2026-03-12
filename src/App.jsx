@@ -46,8 +46,8 @@ function AppContent() {
 
   const handleAIRecommend = () => {
     const result = handleRecommend();
-    if (result) {
-      setSelectedSneaker(result);
+    if (result && result.length > 0) {
+      setSelectedSneaker(result[0]);
     }
   };
 

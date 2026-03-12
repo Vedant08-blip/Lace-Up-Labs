@@ -1,14 +1,18 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { SNEAKERS } from '../data/sneakers';
 
 export function useAIRecommendation() {
   const [budget, setBudget] = useState('');
   const [style, setStyle] = useState('');
   const [activity, setActivity] = useState('');
-  const [recommended, setRecommended] = useState(null);
+  const [recommended, setRecommended] = useState([]);
 
   const handleRecommend = () => {
-    const maxBudget = budget ? Number(budget) : Infinity;
+    if (!budget || !activity) {
+      return [];
+    }
+
+    const maxBudget = Number(budget);
     let pool = SNEAKERS.filter((s) => s.price <= maxBudget);
 
     if (activity) {
@@ -23,17 +27,29 @@ export function useAIRecommendation() {
       );
     }
 
-    if (pool.length === 0) pool = SNEAKERS;
-    const pick = pool.sort((a, b) => b.rating - a.rating)[0];
-    setRecommended(pick);
-    return pick;
+    if (pool.length === 0) {
+      pool = SNEAKERS.filter((s) => s.price <= maxBudget);
+    }
+
+    const ordered = [...pool].sort((a, b) => b.rating - a.rating);
+    let picks = ordered.slice(0, 3);
+
+    if (picks.length < 3) {
+      const fallback = [...SNEAKERS]
+        .filter((s) => !picks.some((p) => p.id === s.id))
+        .sort((a, b) => b.rating - a.rating);
+      picks = [...picks, ...fallback.slice(0, 3 - picks.length)];
+    }
+
+    setRecommended(picks);
+    return picks;
   };
 
   const reset = () => {
     setBudget('');
     setStyle('');
     setActivity('');
-    setRecommended(null);
+    setRecommended([]);
   };
 
   return {
@@ -50,4 +66,3 @@ export function useAIRecommendation() {
 }
 
 export default useAIRecommendation;
-
