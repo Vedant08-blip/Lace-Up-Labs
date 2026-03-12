@@ -97,3 +97,8 @@ The site uses a clean vertical section-based structure:
 ## License
 
 MIT
+
+## 👨‍💻 Author
+
+Vedant Trivedi - [GitHub](https://github.com/Vedant08-blip)
+
