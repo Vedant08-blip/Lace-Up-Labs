@@ -12,7 +12,7 @@ export const SNEAKERS = [
   },
   {
     id: 'aj4-retro',
-    name: 'Air Jordan 4 Retro High',
+    name: 'Air Jordan Dunk ',
     brand: 'Nike',
     price: 18260,
     rating: 4.9,
@@ -34,7 +34,7 @@ export const SNEAKERS = [
   },
   {
     id: 'nb-550',
-    name: 'New Balance 550',
+    name: 'New Balance 550 Atom',
     brand: 'New Balance',
     price: 10790,
     rating: 4.7,
@@ -45,7 +45,7 @@ export const SNEAKERS = [
   },
   {
     id: 'nk-air-max',
-    name: 'Nike Air Max 90',
+    name: 'Nike Air Max OFF-White',
     brand: 'Nike',
     price: 13280,
     rating: 4.8,
@@ -56,7 +56,7 @@ export const SNEAKERS = [
   },
   {
     id: 'ad-ultraboost',
-    name: 'Adidas Ultraboost 4.0',
+    name: 'Adidas High Top GTX',
     brand: 'Adidas',
     price: 15770,
     rating: 4.9,
@@ -122,7 +122,7 @@ export const SNEAKERS = [
   },
   {
     id: 'nk-dunk-low',
-    name: 'Nike Dunk Low Retro',
+    name: 'Nike High Top ',
     brand: 'Nike',
     price: 11890,
     rating: 4.8,
@@ -133,7 +133,7 @@ export const SNEAKERS = [
   },
   {
     id: 'nk-air-force',
-    name: 'Nike Air Force ',
+    name: 'Nike Air Miami Edition',
     brand: 'Nike',
     price: 10990,
     rating: 4.8,
@@ -144,7 +144,7 @@ export const SNEAKERS = [
   },
   {
     id: 'ad-campus-00s',
-    name: 'Adidas Campus 00s',
+    name: 'Adidas Yeezy 350 OFF-White',
     brand: 'Adidas',
     price: 10550,
     rating: 4.7,
@@ -155,7 +155,7 @@ export const SNEAKERS = [
   },
   {
     id: 'ad-forum-low',
-    name: 'Adidas Forum Low',
+    name: 'Adidas ultra boost 4.0',
     brand: 'Adidas',
     price: 12190,
     rating: 4.6,
@@ -165,12 +165,12 @@ export const SNEAKERS = [
       'https://images.unsplash.com/photo-1590422570254-62367e28e69d?q=80&w=2098&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    id: 'pm-clyde',
-    name: 'Converse ',
-    brand: 'Puma',
+    id: 'Converse-Chuck-70',
+    name: 'Converse Chuck 70',
+    brand: 'Converse',
     price: 8690,
     rating: 4.6,
-    category: 'Streetwear',
+    category: 'Lifestyle',
     tags: ['classic', 'low-top', 'casual'],
     image:
       'https://images.unsplash.com/photo-1565379793984-e65b51b33b37?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
