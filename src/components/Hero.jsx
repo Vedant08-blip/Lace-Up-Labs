@@ -60,7 +60,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
       <div className="relative grid md:grid-cols-[1.1fr_minmax(0,1fr)] gap-8 p-8 lg:p-10 items-center">
         <div className="space-y-5">
           <p ref={eyebrowRef} className="text-xs uppercase tracking-[0.35em] text-zinc-400">
-            AI-POWERED DROP VAULT
+            Gear Up Your Sneaker Game
           </p>
           <h1 ref={titleRef} className="font-heading text-4xl sm:text-6xl leading-none tracking-[0.18em] uppercase">
             Step Into

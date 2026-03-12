@@ -107,7 +107,7 @@ function AppContent() {
 
   return (
     <div ref={appRef} className="bg-background text-white min-h-screen">
-      <div className="max-w-6xl mx-auto px-4 pb-16">
+        <div className="max-w-6xl mx-auto px-4 pb-24 lg:pb-32">
         {/* Header / Navbar */}
         <Header onSelectSneaker={handleSelectSneaker} />
 

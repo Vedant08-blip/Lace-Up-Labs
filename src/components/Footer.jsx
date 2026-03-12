@@ -1,17 +1,17 @@
 export function Footer() {
   return (
-    <footer className="pt-2 text-[0.7rem] text-zinc-500 space-y-2 border-t border-zinc-900 mt-4">
+    <footer className="py-8 md:py-12 text-sm md:text-base text-zinc-400 space-y-4 border-t border-zinc-800/50 bg-zinc-950/30 mt-8 md:mt-12" role="contentinfo">
       <div className="flex flex-wrap items-center justify-between gap-3 pt-3">
         <div className="flex gap-4">
-          <button className="hover:text-accent transition-colors">
+          <a href="/about" className="hover:text-accent transition-colors">
             About
-          </button>
-          <button className="hover:text-accent transition-colors">
+          </a>
+          <a href="/contact" className="hover:text-accent transition-colors">
             Contact
-          </button>
-          <button className="hover:text-accent transition-colors">
+          </a>
+          <a href="/policies" className="hover:text-accent transition-colors">
             Policies
-          </button>
+          </a>
         </div>
         <div className="flex gap-4">
           <a
@@ -51,4 +51,3 @@ export function Footer() {
 }
 
 export default Footer;
-
