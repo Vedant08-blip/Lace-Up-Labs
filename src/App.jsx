@@ -1,4 +1,6 @@
-import { useMemo, useState, useRef, useCallback } from 'react';
+import { useMemo, useState, useRef, useCallback, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Header, 
   Hero, 
@@ -21,6 +23,7 @@ import { SNEAKERS, REVIEWS } from './data/sneakers';
 function AppContent() {
   const [selectedSneaker, setSelectedSneaker] = useState(SNEAKERS[0]);
   const [requireSizeSelection, setRequireSizeSelection] = useState(false);
+  const appRef = useRef(null);
   
   const {
     budget,
@@ -77,8 +80,33 @@ function AppContent() {
     [scrollToProductDetail]
   );
 
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const sections = gsap.utils.toArray('[data-gsap="reveal"]');
+      sections.forEach((section) => {
+        gsap.fromTo(
+          section,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
+      });
+    }, appRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="bg-background text-white min-h-screen">
+    <div ref={appRef} className="bg-background text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 pb-16">
         {/* Header / Navbar */}
         <Header onSelectSneaker={handleSelectSneaker} />
@@ -96,53 +124,67 @@ function AppContent() {
           </section>
 
           {/* AI Recommendation Section */}
-          <AIRecommendation 
-            budget={budget}
-            setBudget={setBudget}
-            style={style}
-            setStyle={setStyle}
-            activity={activity}
-            setActivity={setActivity}
-            recommended={recommended}
-            onRecommend={handleAIRecommend}
-            onSelectSneaker={handleSelectSneaker}
-            onAddToCart={handleAddToCartFlow}
-          />
+          <div data-gsap="reveal">
+            <AIRecommendation 
+              budget={budget}
+              setBudget={setBudget}
+              style={style}
+              setStyle={setStyle}
+              activity={activity}
+              setActivity={setActivity}
+              recommended={recommended}
+              onRecommend={handleAIRecommend}
+              onSelectSneaker={handleSelectSneaker}
+              onAddToCart={handleAddToCartFlow}
+            />
+          </div>
 
           {/* Product Detail Section */}
-          <ProductDetail
-            sneaker={selectedSneaker}
-            requireSizeSelection={requireSizeSelection}
-            onRequireSizeSelectionChange={setRequireSizeSelection}
-          />
+          <div data-gsap="reveal">
+            <ProductDetail
+              sneaker={selectedSneaker}
+              requireSizeSelection={requireSizeSelection}
+              onRequireSizeSelectionChange={setRequireSizeSelection}
+            />
+          </div>
 
           {/* Featured Sneakers Section */}
           <section ref={featuredRef}>
-            <FeaturedSneakers 
-              sneakers={featured} 
-              onSelectSneaker={handleSelectSneaker}
-              onViewAll={scrollToTrending}
-              onAddToCart={handleAddToCartFlow}
-            />
+            <div data-gsap="reveal">
+              <FeaturedSneakers 
+                sneakers={featured} 
+                onSelectSneaker={handleSelectSneaker}
+                onViewAll={scrollToTrending}
+                onAddToCart={handleAddToCartFlow}
+              />
+            </div>
           </section>
 
           {/* Brand Carousel Section */}
-          <BrandCarousel />
+          <div data-gsap="reveal">
+            <BrandCarousel />
+          </div>
 
           {/* Trending Section */}
           <section ref={trendingRef}>
-            <Trending 
-              sneakers={trending} 
-              onSelectSneaker={handleSelectSneaker} 
-              onAddToCart={handleAddToCartFlow}
-            />
+            <div data-gsap="reveal">
+              <Trending 
+                sneakers={trending} 
+                onSelectSneaker={handleSelectSneaker} 
+                onAddToCart={handleAddToCartFlow}
+              />
+            </div>
           </section>
 
           {/* Customer Reviews Section */}
-          <Reviews reviews={REVIEWS} />
+          <div data-gsap="reveal">
+            <Reviews reviews={REVIEWS} />
+          </div>
 
           {/* Footer */}
-          <Footer />
+          <div data-gsap="reveal">
+            <Footer />
+          </div>
         </main>
       </div>
 
