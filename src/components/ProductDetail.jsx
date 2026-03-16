@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SIZES } from "../data/sneakers";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
@@ -9,16 +9,16 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const finalSneaker = sneaker;
   useEffect(() => {
     if (window.requireSizeSelection && window.selectedSneaker) {
-      props.sneaker = window.selectedSneaker; // Update prop if needed
-      setRequireSizeSelection?.(true);
+      // Dispatch custom event for App to handle
+      window.dispatchEvent(new CustomEvent('wishlistToCart', { detail: window.selectedSneaker }));
       window.requireSizeSelection = false;
       window.selectedSneaker = null;
     }
   }, []);
-  const finalSneaker = window.selectedSneaker || sneaker;
-  const { toggleWishlist, isInWishlist } = useWishlist();
   const sectionRef = useRef(null);
 
   const increaseQty = () => setQuantity((q) => q + 1);
