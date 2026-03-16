@@ -7,8 +7,13 @@ export function WishlistSidebar() {
   const { addToCart } = useCart();
 
   const moveToCart = (sneaker) => {
-    addToCart(sneaker);
-    removeFromWishlist(sneaker.id);
+    // Trigger size selection flow like other components
+    window.selectedSneaker = sneaker; // Temp global for ProductDetail
+    window.requireSizeSelection = true;
+    document.getElementById('product-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.addToast('Select size to add to cart', 'info');
+    setIsWishlistOpen(false);
+    // Note: Actual addToCart called after size select in ProductDetail
   };
 
   return (

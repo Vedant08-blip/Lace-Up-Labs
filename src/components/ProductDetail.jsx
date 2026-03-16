@@ -9,6 +9,15 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { addToCart } = useCart();
+  useEffect(() => {
+    if (window.requireSizeSelection && window.selectedSneaker) {
+      props.sneaker = window.selectedSneaker; // Update prop if needed
+      setRequireSizeSelection?.(true);
+      window.requireSizeSelection = false;
+      window.selectedSneaker = null;
+    }
+  }, []);
+  const finalSneaker = window.selectedSneaker || sneaker;
   const { toggleWishlist, isInWishlist } = useWishlist();
   const sectionRef = useRef(null);
 
