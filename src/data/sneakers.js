@@ -268,8 +268,8 @@ export const REVIEWS = [
     rating: 5,
   },
   {
-    name: 'Sourabh.',
-    role: 'Runner · India.Bhopal',
+    name: 'Critiano Ronaldo.',
+    role: 'Footballer · Portugal',
     avatar: 'https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'Fit is perfect and the vibe is elite☠️.',
     rating: 4.8,
@@ -297,4 +297,4 @@ export const REVIEWS = [
   },
 ];
 
-export const SIZES = ['7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
+export const SIZES = ['7', '8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12'];
