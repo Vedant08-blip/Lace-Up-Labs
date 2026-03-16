@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useWishlist } from "../context/WishlistContext";
 
 export function AIRecommendation({
   budget,
@@ -12,6 +13,7 @@ export function AIRecommendation({
   onSelectSneaker,
   onAddToCart,
 }) {
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const [showValidation, setShowValidation] = useState(false);
 
   const hasBudget = useMemo(() => Number(budget) > 0, [budget]);
@@ -194,22 +196,47 @@ export function AIRecommendation({
                 <p className="text-xs text-zinc-500">
                   ★ {sneaker.rating.toFixed(1)} · Premium
                 </p>
-                <div className="flex items-center justify-between pt-2">
-                  <span className="text-sm font-semibold text-accent">
+                <div className="flex items-center justify-between pt-1">
+                  <span className="flex-1 text-sm font-semibold text-accent">
                     ₹{sneaker.price.toLocaleString()}
                   </span>
                   <button
-                    onClick={() => onAddToCart?.(sneaker)}
-                    className="btn-secondary-sm"
+                    onClick={() => {
+                      toggleWishlist(sneaker);
+                      window.addToast(
+                        isInWishlist(sneaker.id)
+                          ? 'Removed from wishlist!'
+                          : 'Added to wishlist!',
+                        'success'
+                      );
+                    }}
+                    className={`p-1.5 ml-2 rounded-full transition-all hover:scale-110 ${
+                      isInWishlist(sneaker.id)
+                        ? 'text-rose-400 fill-rose-400'
+                        : 'text-zinc-500 hover:text-rose-400'
+                    }`}
+                    title="Toggle Wishlist"
                   >
-                    Add to Cart
+                    <svg
+                      className="w-4 h-4"
+                      fill={isInWishlist(sneaker.id) ? 'currentColor' : 'none'}
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.545l-1.318-1.227a4.5 4.5 0 00-6.364 0z"
+                      />
+                    </svg>
                   </button>
                 </div>
                 <button
-                  onClick={() => onSelectSneaker(sneaker)}
+                  onClick={() => onAddToCart(sneaker)}
                   className="w-full mt-2 btn-primary"
                 >
-                  View Details
+                  Add to Cart
                 </button>
               </div>
             </div>

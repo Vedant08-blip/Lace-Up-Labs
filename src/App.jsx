@@ -13,11 +13,14 @@ import {
   Footer,
   SearchBar,
   CartSidebar,
-  AuthModal
+  AuthModal,
+  WishlistSidebar,
+  ToastContainer
 } from './components';
 import { useAIRecommendation } from './hooks/useAIRecommendation';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
+import { WishlistProvider } from './context/WishlistContext';
 import { SNEAKERS, REVIEWS } from './data/sneakers';
 
 function AppContent() {
@@ -190,18 +193,22 @@ function AppContent() {
 
       {/* Global Modals & Sidebars */}
       <CartSidebar />
+      <WishlistSidebar />
       <AuthModal />
+      <ToastContainer />
     </div>
   );
 }
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <AppContent />
-      </CartProvider>
-    </AuthProvider>
+    <WishlistProvider>
+      <AuthProvider>
+        <CartProvider>
+          <AppContent />
+        </CartProvider>
+      </AuthProvider>
+    </WishlistProvider>
   );
 }
 

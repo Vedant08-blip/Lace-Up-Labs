@@ -11,4 +11,7 @@ export { Carousel } from './Carousel';
 export { SearchBar } from './SearchBar';
 export { CartSidebar } from './CartSidebar';
 export { AuthModal } from './AuthModal';
+export { WishlistSidebar } from './WishlistSidebar';
+export { ToastContainer } from './ToastContainer';
+
 

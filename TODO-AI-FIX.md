@@ -1,0 +1,1 @@
+# Task: Fix AIRecommendation Add to Cart & Add Wishlist&#10;&#10;## Steps:&#10;1. [x] Create TODO-AI-FIX.md (done)&#10;2. [x] Edit AIRecommendation.jsx (imported useWishlist, added wishlist heart btn, removed small ATC, renamed/updated View Details to single Add to Cart with working flow)&#10;3. [x] Update TODO-AI-FIX.md&#10;4. [x] Complete&#10;

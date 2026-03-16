@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useWishlist } from '../context/WishlistContext';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -16,6 +17,7 @@ const fadeInUp = {
 
 export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddToCart }) {
   const [addedId, setAddedId] = useState(null);
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   const handleAddToCart = (e, sneaker) => {
     e.stopPropagation();
@@ -26,6 +28,12 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
     }
     setAddedId(sneaker.id);
     setTimeout(() => setAddedId(null), 1500);
+  };
+
+  const handleWishlistToggle = (e, sneaker) => {
+    e.stopPropagation();
+    toggleWishlist(sneaker);
+    window.addToast(isInWishlist(sneaker.id) ? 'Removed from wishlist!' : 'Added to wishlist!', 'success');
   };
 
   return (
@@ -95,11 +103,22 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
                   </p>
                 </div>
               </div>
-              <div className="flex items-center justify-between text-xs text-zinc-400 pt-1">
+              <div className="flex items-center justify-between text-xs text-zinc-400 pt-1 gap-2">
                 <span>★ {sneaker.rating.toFixed(1)} Rating</span>
                 <button 
+                  onClick={(e) => handleWishlistToggle(e, sneaker)}
+                  className={`p-1 hover:bg-white/10 rounded transition-all ${
+                    isInWishlist(sneaker.id) ? 'text-red-400' : 'text-zinc-400 hover:text-red-400'
+                  }`}
+                  title={isInWishlist(sneaker.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                >
+                  <svg className="w-4 h-4" fill={isInWishlist(sneaker.id) ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </button>
+                <button 
                   onClick={(e) => handleAddToCart(e, sneaker)}
-                  className={`btn-secondary-sm transition-all ${
+                  className={`btn-secondary-sm transition-all flex-1 ${
                     addedId === sneaker.id 
                       ? 'bg-green-500 text-white border-green-500' 
                       : 'group-hover:bg-accent group-hover:text-black group-hover:border-accent'

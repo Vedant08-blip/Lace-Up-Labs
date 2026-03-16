@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useWishlist } from '../context/WishlistContext';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -14,6 +15,14 @@ const fadeInUp = {
 };
 
 export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
+  const { toggleWishlist, isInWishlist } = useWishlist();
+
+  const handleWishlistToggle = (e, sneaker) => {
+    e.stopPropagation();
+    toggleWishlist(sneaker);
+    window.addToast(isInWishlist(sneaker.id) ? 'Removed from wishlist!' : 'Added to wishlist!', 'success');
+  };
+
   return (
     <section
       id="trending"
@@ -35,13 +44,22 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
               key={sneaker.id}
               type="button"
               onClick={() => onSelectSneaker(sneaker)}
-              className="min-w-[12rem] rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex-shrink-0 text-left hover:border-accent/80 transition-all duration-200 cursor-pointer snap-start"
+              className="min-w-[12rem] rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex-shrink-0 text-left hover:border-accent/80 transition-all duration-200 cursor-pointer snap-start relative"
               whileHover={{ y: -3 }}
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
               custom={index + 1}
             >
+              <button
+                onClick={(e) => handleWishlistToggle(e, sneaker)}
+                className="absolute top-2 right-2 p-1 rounded-full bg-black/50 hover:bg-white/20 text-zinc-300 hover:text-red-400 transition-all z-10"
+                title={isInWishlist(sneaker.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+              >
+                <svg className={`w-4 h-4 ${isInWishlist(sneaker.id) ? 'fill-current' : ''}`} viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
               <img
                 src={sneaker.image}
                 alt={sneaker.name}

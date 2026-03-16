@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { SIZES } from "../data/sneakers";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSelectionChange }) {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -8,6 +9,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const sectionRef = useRef(null);
 
   const increaseQty = () => setQuantity((q) => q + 1);
@@ -23,6 +25,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
     // Simulate async add
     setTimeout(() => {
       addToCart(sneaker, selectedSize, quantity);
+      window.addToast('Added to cart!', 'success');
       setIsSuccess(true);
       setIsLoading(false);
       onRequireSizeSelectionChange?.(false);
@@ -61,11 +64,11 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
       </div>
 
       {/* Product Image */}
-      <div className="rounded-2xl overflow-hidden bg-black/70 border border-zinc-800">
+      <div className="rounded-3xl overflow-hidden bg-black/70 border border-zinc-800">
         <img
           src={sneaker.image}
           alt={sneaker.name}
-          className="w-full h-56 sm:h-72 object-cover"
+className="w-full h-64 sm:h-80 object-cover"
         />
       </div>
 
@@ -180,8 +183,14 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-          <button className="btn-secondary w-full sm:w-auto" onClick={() => { alert('Added to wishlist!') }}>
-            Wishlist
+        <button 
+            className="btn-secondary w-full sm:w-auto" 
+            onClick={() => {
+              toggleWishlist(sneaker);
+              window.addToast('Added to wishlist!', 'success');
+            }}
+          >
+            {isInWishlist(sneaker.id) ? 'Remove from Wishlist' : 'Wishlist'}
           </button>
 
           <button 

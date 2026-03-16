@@ -1,0 +1,1 @@
+# Task: Increase Product Image Height in ProductDetail.jsx&#10;&#10;## Steps:&#10;1. [x] Create TODO.md with plan breakdown (done)&#10;2. [x] Edit ProductDetail.jsx image height classes (updated to h-64 sm:h-80)&#10;3. [x] Update TODO.md with completion&#10;4. [x] Test/attempt completion&#10;
