@@ -136,7 +136,6 @@ function AppContent() {
               setActivity={setActivity}
               recommended={recommended}
               onRecommend={handleAIRecommend}
-              onSelectSneaker={handleSelectSneaker}
               onAddToCart={handleAddToCartFlow}
             />
           </div>

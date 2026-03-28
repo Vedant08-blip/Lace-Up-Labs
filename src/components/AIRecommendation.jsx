@@ -159,7 +159,7 @@ function TypewriterText({ text, active }) {
   );
 }
 
-function HologramCard({ sneaker, onAddToCart, onSelect }) {
+function HologramCard({ sneaker, onAddToCart }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const [hovered, setHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -305,29 +305,14 @@ function HologramCard({ sneaker, onAddToCart, onSelect }) {
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-2 pt-1">
+          <div className="pt-1">
             <button
-              onClick={() => onSelect(sneaker)}
-              className="flex-1 py-2 rounded-xl text-[0.65rem] font-semibold uppercase tracking-[0.2em] transition-all duration-200"
-              style={{
-                background: "rgba(34,211,238,0.08)",
-                border: "1px solid rgba(34,211,238,0.25)",
-                color: "#67e8f9",
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onAddToCart?.(sneaker);
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = "rgba(34,211,238,0.16)";
-                e.currentTarget.style.borderColor = "rgba(34,211,238,0.5)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = "rgba(34,211,238,0.08)";
-                e.currentTarget.style.borderColor = "rgba(34,211,238,0.25)";
-              }}
-            >
-              Preview
-            </button>
-            <button
-              onClick={() => onAddToCart(sneaker)}
-              className="flex-1 py-2 rounded-xl text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black transition-all duration-200"
+              className="w-full py-2 rounded-xl text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black transition-all duration-200"
               style={{
                 background: "linear-gradient(135deg, #22d3ee, #06b6d4)",
               }}
@@ -355,7 +340,7 @@ export function AIRecommendation({
   style, setStyle,
   activity, setActivity,
   recommended, onRecommend,
-  onSelectSneaker, onAddToCart,
+  onAddToCart,
 }) {
   const [showValidation, setShowValidation] = useState(false);
   const [thinking, setThinking] = useState(false);
@@ -728,7 +713,6 @@ export function AIRecommendation({
                   key={sneaker.id}
                   sneaker={sneaker}
                   onAddToCart={onAddToCart}
-                  onSelect={onSelectSneaker}
                 />
               ))}
             </div>
