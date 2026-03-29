@@ -27,6 +27,7 @@ function AppContent() {
   const [selectedSneaker, setSelectedSneaker] = useState(SNEAKERS[0]);
   const [requireSizeSelection, setRequireSizeSelection] = useState(false);
   const appRef = useRef(null);
+  const sectionPerfStyle = { contentVisibility: 'auto', containIntrinsicSize: '800px' };
   
   const {
     budget,
@@ -126,7 +127,7 @@ function AppContent() {
           </section>
 
           {/* AI Recommendation Section */}
-          <div data-gsap="reveal">
+          <div data-gsap="reveal" style={sectionPerfStyle}>
             <AIRecommendation 
               budget={budget}
               setBudget={setBudget}
@@ -141,7 +142,7 @@ function AppContent() {
           </div>
 
           {/* Product Detail Section */}
-          <div data-gsap="reveal">
+          <div data-gsap="reveal" style={sectionPerfStyle}>
             <ProductDetail
               key={selectedSneaker.id}
               sneaker={selectedSneaker}
@@ -152,7 +153,7 @@ function AppContent() {
 
           {/* Featured Sneakers Section */}
           <section ref={featuredRef}>
-            <div data-gsap="reveal">
+            <div data-gsap="reveal" style={sectionPerfStyle}>
               <FeaturedSneakers 
                 sneakers={featured} 
                 onSelectSneaker={handleSelectSneaker}
@@ -163,13 +164,13 @@ function AppContent() {
           </section>
 
           {/* Brand Carousel Section */}
-          <div data-gsap="reveal">
+          <div data-gsap="reveal" style={sectionPerfStyle}>
             <BrandCarousel />
           </div>
 
           {/* Trending Section */}
           <section ref={trendingRef}>
-            <div data-gsap="reveal">
+            <div data-gsap="reveal" style={sectionPerfStyle}>
               <Trending 
                 sneakers={trending} 
                 onSelectSneaker={handleSelectSneaker} 
@@ -179,12 +180,12 @@ function AppContent() {
           </section>
 
           {/* Customer Reviews Section */}
-          <div data-gsap="reveal">
+          <div data-gsap="reveal" style={sectionPerfStyle}>
             <Reviews reviews={REVIEWS} />
           </div>
 
           {/* Footer */}
-          <div data-gsap="reveal">
+          <div data-gsap="reveal" style={sectionPerfStyle}>
             <Footer />
           </div>
         </main>

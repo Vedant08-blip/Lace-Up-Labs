@@ -18,6 +18,10 @@
   color-scheme: dark;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -29,6 +33,29 @@ body {
 
 #root {
   min-height: 100vh;
+}
+
+/* Performance-friendly motion defaults */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tone down continuous animations on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .animate-brand-scroll {
+    animation-duration: 40s;
+  }
+  .animate-[marquee_18s_linear_infinite] {
+    animation-duration: 28s;
+  }
 }
 
 /* Custom scrollbar styling */
@@ -121,4 +148,3 @@ body {
   @apply placeholder:text-zinc-500;
   @apply focus:border-accent focus:ring-1 focus:ring-accent/60 transition-all duration-200;
 }
-
