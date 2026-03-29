@@ -11,7 +11,7 @@ export function Header({ onSelectSneaker }) {
 
   return (
     <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4 sm:py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-center md:justify-start gap-3 w-full md:w-auto">
         <div className="h-10 w-10 flex items-center justify-center">
           <img
             src="/Logo.svg"
@@ -19,7 +19,7 @@ export function Header({ onSelectSneaker }) {
             className="w-full h-full object-contain"
           />
         </div>
-        <div>
+        <div className="text-center md:text-left">
           <div className="font-heading text-lg sm:text-2xl tracking-[0.2em] uppercase">
             Lace Up Labs
           </div>
@@ -39,7 +39,7 @@ export function Header({ onSelectSneaker }) {
         <SearchBar onSelectSneaker={onSelectSneaker} />
       </div>
 
-      <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+      <div className="flex items-center justify-center md:justify-end w-full md:w-auto gap-2 sm:gap-3 md:gap-4">
         {/* Wishlist Button */}
         <button
           onClick={() => setIsWishlistOpen(true)}

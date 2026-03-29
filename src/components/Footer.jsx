@@ -374,7 +374,7 @@ export function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-6"
         >
           {/* Nav links */}
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6">
             {navLinks.map(l => (
               <MagLink key={l.label} href={l.href}>{l.label}</MagLink>
             ))}
@@ -449,7 +449,7 @@ export function Footer() {
           />
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 items-center sm:items-start text-center sm:text-left">
               {/* Label */}
               <div className="flex items-center gap-2">
                 <span className="relative flex h-1.5 w-1.5">
@@ -462,7 +462,9 @@ export function Footer() {
               </div>
 
               {/* Name — the main event */}
-              <GlitchName />
+              <div className="w-full flex justify-center sm:justify-start">
+                <GlitchName />
+              </div>
             </div>
 
             {/* Right side badges */}
