@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const brands = [
-  { name: 'Nike', logo: 'https://www.google.com/imgres?q=nike%20logo%20hd%20image&imgurl=https%3A%2F%2Fw0.peakpx.com%2Fwallpaper%2F343%2F718%2FHD-wallpaper-nike-logo-logo-logos.jpg&imgrefurl=https%3A%2F%2Fwww.peakpx.com%2Fen%2Fhd-wallpaper-desktop-abjeg&docid=uq0r2cbhbt04SM&tbnid=f_L_jCqJUBf74M&vet=12ahUKEwjTkciruJiTAxVe8jgGHUsFJQUQnPAOegQIJBAB..i&w=800&h=1422&hcb=2&ved=2ahUKEwjTkciruJiTAxVe8jgGHUsFJQUQnPAOegQIJBAB' },
+  { name: 'Nike', logo: 'https://logo.clearbit.com/nike.com' },
   { name: 'Adidas', logo: 'https://logo.clearbit.com/adidas.com' },
   { name: 'Puma', logo: 'https://logo.clearbit.com/puma.com' },
   { name: 'New Balance', logo: 'https://logo.clearbit.com/newbalance.com' },
@@ -11,55 +11,152 @@ const brands = [
   { name: 'Vans', logo: 'https://logo.clearbit.com/vans.com' },
 ];
 
-export function BrandCarousel() {
+function BrandCard({ brand }) {
   return (
-    <section className="py-6">
-      <div className="text-center mb-6">
-        <p className="text-[0.65rem] uppercase tracking-[0.32em] text-zinc-500">
-          Top Brands
+    <motion.div
+      className="flex-shrink-0 group relative"
+      whileHover={{ scale: 1.06, y: -4 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+    >
+      {/* Glow behind card on hover */}
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl"
+        style={{ background: 'radial-gradient(ellipse, rgba(249,115,22,0.3) 0%, transparent 70%)' }}
+      />
+
+      <div
+        className="relative w-28 h-20 rounded-2xl flex flex-col items-center justify-center px-4 gap-2 overflow-hidden cursor-pointer transition-all duration-300"
+        style={{
+          background: 'linear-gradient(145deg, #1c1c1c 0%, #111111 100%)',
+          border: '1px solid rgba(255,255,255,0.06)',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.border = '1px solid rgba(249,115,22,0.45)';
+          e.currentTarget.style.boxShadow = '0 8px 32px rgba(249,115,22,0.18), 0 2px 8px rgba(0,0,0,0.8)';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.border = '1px solid rgba(255,255,255,0.06)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+        }}
+      >
+        {/* Inner top sheen */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)' }}
+        />
+
+        {/* Orange bottom border on hover */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-3/4 transition-all duration-300 pointer-events-none rounded-full"
+          style={{ background: 'linear-gradient(90deg, transparent, #f97316, transparent)' }}
+        />
+
+        <img
+          src={brand.logo}
+          alt={brand.name}
+          className="w-full h-10 object-contain transition-all duration-300 group-hover:brightness-125"
+          style={{ filter: 'brightness(0.85) grayscale(0.2)' }}
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.nextSibling.style.display = 'flex';
+          }}
+        />
+        <span
+          className="hidden text-[0.6rem] uppercase tracking-[0.28em] font-bold text-zinc-400 group-hover:text-orange-400 transition-colors"
+          style={{ display: 'none' }}
+        >
+          {brand.name}
+        </span>
+
+        <p className="text-[0.52rem] uppercase tracking-[0.3em] text-zinc-700 group-hover:text-orange-500/70 transition-colors duration-300 leading-none">
+          {brand.name}
         </p>
-        <h2 className="font-heading text-2xl tracking-[0.16em] uppercase">
-          Featured Brands
-        </h2>
       </div>
-      
-      {/* Infinite scrolling brand logos */}
+    </motion.div>
+  );
+}
+
+export function BrandCarousel() {
+  const looped = [...brands, ...brands, ...brands];
+
+  return (
+    <section
+      className="relative py-10 overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, transparent 0%, rgba(249,115,22,0.03) 50%, transparent 100%)',
+      }}
+    >
+      {/* Top divider line */}
+      <div className="relative flex items-center gap-4 px-6 sm:px-10 mb-8">
+        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.3))' }} />
+        <div className="flex flex-col items-center gap-1">
+          <p className="text-[0.55rem] uppercase tracking-[0.42em] text-zinc-600">Est. 2024</p>
+          <h2
+            className="text-[1.6rem] font-black uppercase tracking-[0.22em] leading-none"
+            style={{
+              background: 'linear-gradient(135deg, #fff 0%, #f97316 60%, #ea580c 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            Top Brands
+          </h2>
+          {/* Underline accent */}
+          <div className="h-px w-12 rounded-full mt-0.5" style={{ background: 'linear-gradient(90deg, #f97316, #ea580c)' }} />
+        </div>
+        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.3), transparent)' }} />
+      </div>
+
+      {/* Left + Right edge fade masks */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, #0a0a0a, transparent)' }} />
+      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(270deg, #0a0a0a, transparent)' }} />
+
+      {/* Scrolling track */}
       <div className="relative overflow-hidden">
-        <div className="flex animate-scroll gap-12 items-center">
-          {/* Triple the brands for seamless loop */}
-          {[...brands, ...brands, ...brands].map((brand, index) => (
-            <motion.div
-              key={`${brand.name}-${index}`}
-              className="flex-shrink-0 flex flex-col items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="w-24 h-16 rounded-lg bg-white/5 border border-zinc-800 flex items-center justify-center px-4 hover:bg-white/10 transition-colors">
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
-                />
-                <span className="text-zinc-400 text-xs font-medium hidden">{brand.name}</span>
-              </div>
-            </motion.div>
+        <div className="flex gap-5 items-center animate-brand-scroll">
+          {looped.map((brand, i) => (
+            <BrandCard key={`${brand.name}-${i}`} brand={brand} />
           ))}
         </div>
       </div>
-      
+
+      {/* Bottom counter row */}
+      <div className="flex items-center justify-center gap-6 mt-8">
+        {[
+          { value: '8+', label: 'Brands' },
+          { value: '500+', label: 'Styles' },
+          { value: '10K+', label: 'Drops' },
+        ].map((stat) => (
+          <div key={stat.label} className="flex flex-col items-center gap-0.5">
+            <span
+              className="text-xl font-black leading-none"
+              style={{ color: '#f97316' }}
+            >
+              {stat.value}
+            </span>
+            <span className="text-[0.52rem] uppercase tracking-[0.3em] text-zinc-600">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom divider */}
+      <div className="mt-8 mx-6 sm:mx-10 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.2), transparent)' }} />
+
       <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
+        @keyframes brand-scroll {
+          0%   { transform: translateX(0); }
           100% { transform: translateX(-33.33%); }
         }
-        .animate-scroll {
-          animation: scroll 15s linear infinite;
+        .animate-brand-scroll {
+          animation: brand-scroll 22s linear infinite;
+          width: max-content;
         }
-        .animate-scroll:hover {
+        .animate-brand-scroll:hover {
           animation-play-state: paused;
         }
       `}</style>
@@ -68,4 +165,3 @@ export function BrandCarousel() {
 }
 
 export default BrandCarousel;
-
