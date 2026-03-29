@@ -10,7 +10,7 @@ export function Header({ onSelectSneaker }) {
   const { user, openAuthModal, logout } = useAuth();
 
   return (
-    <header className="flex items-center justify-between py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur">
+    <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4 sm:py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur">
       <div className="flex items-center gap-3">
         <div className="h-10 w-10 flex items-center justify-center">
           <img
@@ -20,10 +20,10 @@ export function Header({ onSelectSneaker }) {
           />
         </div>
         <div>
-          <div className="font-heading text-2xl tracking-[0.2em] uppercase">
+          <div className="font-heading text-lg sm:text-2xl tracking-[0.2em] uppercase">
             Lace Up Labs
           </div>
-          <p className="text-xs text-zinc-400">
+          <p className="text-[0.6rem] sm:text-xs text-zinc-400">
             Sneaker that fits your soul, not just your feet
           </p>
         </div>
@@ -34,7 +34,12 @@ export function Header({ onSelectSneaker }) {
         <SearchBar onSelectSneaker={onSelectSneaker} />
       </div>
 
-      <div className="flex items-center gap-15">
+      {/* Search Bar - Mobile */}
+      <div className="block md:hidden w-full">
+        <SearchBar onSelectSneaker={onSelectSneaker} />
+      </div>
+
+      <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
         {/* Wishlist Button */}
         <button
           onClick={() => setIsWishlistOpen(true)}
@@ -108,4 +113,3 @@ export function Header({ onSelectSneaker }) {
 }
 
 export default Header;
-

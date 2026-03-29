@@ -18,13 +18,13 @@ export function Reviews({ reviews }) {
   return (
     <section id="reviews" className="space-y-6">
       {/* Section Header */}
-      <div className="flex items-end justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <p className="text-[0.65rem] uppercase tracking-[0.32em] text-zinc-500">
             Community Talk
           </p>
 
-          <h2 className="font-heading text-3xl tracking-[0.16em] uppercase">
+          <h2 className="font-heading text-2xl sm:text-3xl tracking-[0.16em] uppercase">
             Customer Reviews
           </h2>
 
@@ -39,7 +39,7 @@ export function Reviews({ reviews }) {
         {reviews.map((review, i) => (
           <motion.article
             key={review.name}
-            className="rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[18rem] sm:min-w-[15rem]"
+            className="rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[15rem] sm:min-w-[18rem]"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
@@ -96,4 +96,3 @@ export function Reviews({ reviews }) {
 }
 
 export default Reviews;
-

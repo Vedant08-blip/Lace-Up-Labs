@@ -22,8 +22,8 @@ export function SearchBar({ onSelectSneaker }) {
   };
 
   return (
-    <div className="relative">
-      <div className="flex items-center gap-2 bg-black/60 border border-zinc-800 rounded-full px-4 py-2 focus-within:border-accent focus-within:ring-1 focus-within:ring-accent/60">
+    <div className="relative w-full">
+      <div className="flex items-center gap-2 bg-black/60 border border-zinc-800 rounded-full px-4 py-2 focus-within:border-accent focus-within:ring-1 focus-within:ring-accent/60 w-full">
         <svg
           className="w-4 h-4 text-zinc-400"
           fill="none"
@@ -46,7 +46,7 @@ export function SearchBar({ onSelectSneaker }) {
           }}
           onFocus={() => setIsOpen(true)}
           placeholder="Search sneakers..."
-          className="bg-transparent text-sm text-white placeholder-zinc-500 outline-none w-32 focus:w-48 transition-all"
+          className="bg-transparent text-sm text-white placeholder-zinc-500 outline-none flex-1 min-w-0"
         />
         {query && (
           <button
@@ -112,4 +112,3 @@ export function SearchBar({ onSelectSneaker }) {
 }
 
 export default SearchBar;
-

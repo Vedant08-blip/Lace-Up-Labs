@@ -103,8 +103,8 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
 
   return (
     <motion.div
-      className="relative flex-shrink-0 snap-start"
-      style={{ perspective: 900, width: '12.5rem' }}
+      className="relative flex-shrink-0 snap-start w-[10.5rem] sm:w-[12.5rem]"
+      style={{ perspective: 900 }}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.07, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -165,7 +165,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
         />
 
         {/* ── Image ── */}
-        <div className="relative overflow-hidden h-[175px]">
+        <div className="relative overflow-hidden h-36 sm:h-[175px]">
           <motion.img
             src={sneaker.image}
             alt={sneaker.name}
@@ -313,7 +313,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
   return (
     <section
       id="trending"
-      className="relative rounded-3xl p-6 space-y-6 overflow-hidden"
+      className="relative rounded-3xl p-5 sm:p-6 space-y-6 overflow-hidden"
       style={{
         background: 'linear-gradient(160deg, #111111 0%, #0a0a0a 100%)',
         border: '1px solid rgba(249,115,22,0.1)',
@@ -336,7 +336,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
       />
 
       {/* ── Header ── */}
-      <div className="relative flex items-center justify-between gap-4">
+      <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="relative flex h-2 w-2">
@@ -346,7 +346,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
             <p className="text-[0.55rem] uppercase tracking-[0.38em] text-zinc-600">Live Heat Check</p>
           </div>
           <h2
-            className="text-[2.2rem] font-black uppercase leading-none tracking-tight"
+            className="text-[1.8rem] sm:text-[2.2rem] font-black uppercase leading-none tracking-tight"
             style={{
               background: 'linear-gradient(135deg, #ffffff 0%, #f97316 55%, #ea580c 100%)',
               WebkitBackgroundClip: 'text',
@@ -357,7 +357,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
             Trending
           </h2>
           <h2
-            className="text-[2.2rem] font-black uppercase leading-none tracking-tight"
+            className="text-[1.8rem] sm:text-[2.2rem] font-black uppercase leading-none tracking-tight"
             style={{
               color: 'transparent',
               WebkitTextStroke: '1.5px rgba(249,115,22,0.38)',

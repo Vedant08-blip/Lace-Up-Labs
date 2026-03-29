@@ -169,7 +169,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
       </div>
 
       {/* ── Main content grid ── */}
-      <div className="relative grid md:grid-cols-[1.15fr_minmax(0,1fr)] gap-10 p-8 lg:p-12 items-center">
+      <div className="relative grid grid-cols-1 lg:grid-cols-[1.15fr_minmax(0,1fr)] gap-8 lg:gap-10 p-5 sm:p-8 lg:p-12 items-center">
 
         {/* ── LEFT — Text content ── */}
         <div className="space-y-6">
@@ -186,7 +186,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
           {/* Title — each word animates individually */}
           <h1
             ref={titleRef}
-            className="font-heading text-5xl sm:text-7xl leading-[0.92] tracking-[0.1em] uppercase overflow-hidden"
+            className="font-heading text-3xl sm:text-5xl lg:text-7xl leading-[0.92] tracking-[0.1em] uppercase overflow-hidden"
           >
             <span className="word block">Step</span>
             <span className="word block relative">
@@ -205,7 +205,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
           </h1>
 
           {/* Body */}
-          <p ref={bodyRef} className="text-sm text-zinc-400 max-w-sm leading-relaxed">
+          <p ref={bodyRef} className="text-sm sm:text-base text-zinc-400 max-w-sm leading-relaxed">
             Curated heat from Nike, Adidas, Puma and more.{' '}
             <span className="text-white font-medium">Let our AI stylist</span> lock in
             the perfect pair for your budget, style and grind.
@@ -215,7 +215,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
           <div ref={actionsRef} className="flex flex-wrap gap-3 pt-1">
             <button
               onClick={onShopNow}
-              className="group relative px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] rounded-full overflow-hidden transition-all duration-300"
+              className="group relative px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] rounded-full overflow-hidden transition-all duration-300"
               style={{ background: 'linear-gradient(135deg, #ff3b30, #ff6b35)' }}
             >
               <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
@@ -229,7 +229,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
 
             <button
               onClick={onExplore}
-              className="group px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] rounded-full border border-zinc-700 hover:border-red-500/60 text-zinc-300 hover:text-white transition-all duration-300 relative overflow-hidden"
+              className="group px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] rounded-full border border-zinc-700 hover:border-red-500/60 text-zinc-300 hover:text-white transition-all duration-300 relative overflow-hidden"
             >
               <span className="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/5 transition-all duration-300" />
               <span className="relative">Explore Collection</span>
@@ -237,7 +237,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
           </div>
 
           {/* Stats */}
-          <div ref={statsRef} className="flex gap-8 pt-2">
+          <div ref={statsRef} className="flex flex-wrap gap-6 sm:gap-8 pt-2">
             {[
               { value: '1.2M+', label: 'Pairs Secured' },
               { value: '< 30s', label: 'AI Fit Match' },
@@ -245,7 +245,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
             ].map((stat) => (
               <div key={stat.label} className="relative">
                 <div className="absolute -top-1 -left-2 w-[1px] h-full bg-red-500/30" />
-                <p className="font-bold text-white text-lg leading-none">{stat.value}</p>
+                <p className="font-bold text-white text-base sm:text-lg leading-none">{stat.value}</p>
                 <p className="text-[0.68rem] text-zinc-500 mt-1 uppercase tracking-wider">{stat.label}</p>
               </div>
             ))}
@@ -299,7 +299,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
             </div>
 
             {/* Shoe image */}
-            <div className="relative overflow-hidden bg-gradient-to-b from-zinc-900 to-black" style={{ height: '240px' }}>
+            <div className="relative overflow-hidden bg-gradient-to-b from-zinc-900 to-black h-48 sm:h-56 lg:h-60">
               <div
                 className="absolute inset-0 transition-transform duration-700"
                 style={{ transform: isHoveringCard ? 'scale(1.06)' : 'scale(1)' }}
@@ -343,7 +343,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
                   style={{ background: 'rgba(255,59,48,0.08)', border: '1px solid rgba(255,59,48,0.2)' }}
                 >
                   <p className="text-[0.58rem] text-zinc-400 tracking-[0.2em] uppercase">From</p>
-                  <p className="text-xl font-bold text-red-400 leading-tight">
+                  <p className="text-lg sm:text-xl font-bold text-red-400 leading-tight">
                     ₹{selectedSneaker?.price.toLocaleString()}
                   </p>
                   <p className="text-[0.65rem] text-emerald-400 mt-0.5">
@@ -369,13 +369,6 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
             </div>
           </div>
 
-          {/* Floating size pill */}
-          <div
-            className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[0.6rem] uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap"
-            style={{ background: '#111', border: '1px solid rgba(255,255,255,0.08)' }}
-          >
-            Sizes UK 6 – 13 Available
-          </div>
         </div>
       </div>
 

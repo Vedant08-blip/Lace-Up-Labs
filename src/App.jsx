@@ -110,12 +110,12 @@ function AppContent() {
 
   return (
     <div ref={appRef} className="bg-background text-white min-h-screen">
-        <div className="max-w-6xl mx-auto px-4 pb-24 lg:pb-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 lg:pb-32">
         {/* Header / Navbar */}
         <Header onSelectSneaker={handleSelectSneaker} />
 
         {/* Vertical Section-Based Layout */}
-        <main className="flex flex-col gap-8 pt-4">
+        <main className="flex flex-col gap-6 sm:gap-8 pt-4">
           {/* Hero Section */}
           <section ref={heroRef}>
             <Hero 

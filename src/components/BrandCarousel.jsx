@@ -25,7 +25,7 @@ function BrandCard({ brand }) {
       />
 
       <div
-        className="relative w-28 h-20 rounded-2xl flex flex-col items-center justify-center px-4 gap-2 overflow-hidden cursor-pointer transition-all duration-300"
+        className="relative w-24 h-16 sm:w-28 sm:h-20 rounded-2xl flex flex-col items-center justify-center px-4 gap-2 overflow-hidden cursor-pointer transition-all duration-300"
         style={{
           background: 'linear-gradient(145deg, #1c1c1c 0%, #111111 100%)',
           border: '1px solid rgba(255,255,255,0.06)',
@@ -55,7 +55,7 @@ function BrandCard({ brand }) {
         <img
           src={brand.logo}
           alt={brand.name}
-          className="w-full h-10 object-contain transition-all duration-300 group-hover:brightness-125"
+          className="w-full h-8 sm:h-10 object-contain transition-all duration-300 group-hover:brightness-125"
           style={{ filter: 'brightness(0.85) grayscale(0.2)' }}
           onError={(e) => {
             e.target.style.display = 'none';
@@ -82,18 +82,18 @@ export function BrandCarousel() {
 
   return (
     <section
-      className="relative py-10 overflow-hidden"
+      className="relative py-8 sm:py-10 overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, transparent 0%, rgba(249,115,22,0.03) 50%, transparent 100%)',
       }}
     >
       {/* Top divider line */}
-      <div className="relative flex items-center gap-4 px-6 sm:px-10 mb-8">
+      <div className="relative flex items-center gap-4 px-6 sm:px-10 mb-6 sm:mb-8">
         <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.3))' }} />
         <div className="flex flex-col items-center gap-1">
           <p className="text-[0.55rem] uppercase tracking-[0.42em] text-zinc-600">Est. 2024</p>
           <h2
-            className="text-[1.6rem] font-black uppercase tracking-[0.22em] leading-none"
+            className="text-[1.3rem] sm:text-[1.6rem] font-black uppercase tracking-[0.22em] leading-none"
             style={{
               background: 'linear-gradient(135deg, #fff 0%, #f97316 60%, #ea580c 100%)',
               WebkitBackgroundClip: 'text',
@@ -110,9 +110,9 @@ export function BrandCarousel() {
       </div>
 
       {/* Left + Right edge fade masks */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-10 pointer-events-none"
         style={{ background: 'linear-gradient(90deg, #0a0a0a, transparent)' }} />
-      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-10 pointer-events-none"
         style={{ background: 'linear-gradient(270deg, #0a0a0a, transparent)' }} />
 
       {/* Scrolling track */}
@@ -125,7 +125,7 @@ export function BrandCarousel() {
       </div>
 
       {/* Bottom counter row */}
-      <div className="flex items-center justify-center gap-6 mt-8">
+      <div className="flex flex-wrap items-center justify-center gap-6 mt-6 sm:mt-8">
         {[
           { value: '8+', label: 'Brands' },
           { value: '500+', label: 'Styles' },
@@ -133,7 +133,7 @@ export function BrandCarousel() {
         ].map((stat) => (
           <div key={stat.label} className="flex flex-col items-center gap-0.5">
             <span
-              className="text-xl font-black leading-none"
+              className="text-lg sm:text-xl font-black leading-none"
               style={{ color: '#f97316' }}
             >
               {stat.value}

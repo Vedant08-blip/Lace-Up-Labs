@@ -130,12 +130,50 @@ function GlitchName() {
         .glitch-flash {
           animation: glitch-flash 2s infinite linear;
         }
+        .glitch-text {
+          font-size: clamp(1.4rem, 5.2vw, 2.4rem);
+          letter-spacing: -0.02em;
+        }
+        @media (max-width: 640px) {
+          .glitch-base {
+            animation: glitch-skew 2.2s infinite linear;
+          }
+          .glitch-layer-1,
+          .glitch-layer-2,
+          .glitch-flash {
+            animation-duration: 2.2s;
+          }
+          .glitch-layer-1 {
+            animation-name: glitch-1-smooth;
+          }
+          .glitch-layer-2 {
+            animation-name: glitch-2-smooth;
+          }
+        }
+        @keyframes glitch-1-smooth {
+          0%   { clip-path: inset(0 0 95% 0); transform: translate(-4px, 0); opacity: 0; }
+          4%   { clip-path: inset(10% 0 70% 0); transform: translate(4px, 0); opacity: 0.9; }
+          8%   { clip-path: inset(40% 0 45% 0); transform: translate(-3px, 0); opacity: 0.9; }
+          12%  { clip-path: inset(65% 0 15% 0); transform: translate(3px, 0); opacity: 0.9; }
+          16%  { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 0); opacity: 0.9; }
+          20%  { clip-path: inset(0 0 95% 0); transform: translate(0); opacity: 0; }
+          100% { clip-path: inset(0 0 95% 0); transform: translate(0); opacity: 0; }
+        }
+        @keyframes glitch-2-smooth {
+          0%   { clip-path: inset(90% 0 0% 0); transform: translate(4px, 0); opacity: 0; }
+          4%   { clip-path: inset(58% 0 22% 0); transform: translate(-4px, 0); opacity: 0.9; }
+          8%   { clip-path: inset(28% 0 55% 0); transform: translate(3px, 0); opacity: 0.9; }
+          12%  { clip-path: inset(8% 0 82% 0); transform: translate(-3px, 0); opacity: 0.9; }
+          16%  { clip-path: inset(75% 0 10% 0); transform: translate(2px, 0); opacity: 0.9; }
+          20%  { clip-path: inset(90% 0 0% 0); transform: translate(0); opacity: 0; }
+          100% { clip-path: inset(90% 0 0% 0); transform: translate(0); opacity: 0; }
+        }
       `}</style>
 
       {/* Base name */}
       <div className="glitch-base">
         <h3
-          className="text-[1.9rem] sm:text-[2.4rem] font-black uppercase leading-none tracking-tight"
+          className="glitch-text font-black uppercase leading-none"
           style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #f97316 45%, #ea580c 100%)',
             WebkitBackgroundClip: 'text',
@@ -146,7 +184,7 @@ function GlitchName() {
           Vedant
         </h3>
         <h3
-          className="text-[1.9rem] sm:text-[2.4rem] font-black uppercase leading-none tracking-tight"
+          className="glitch-text font-black uppercase leading-none"
           style={{
             color: 'transparent',
             WebkitTextStroke: '1.5px rgba(249,115,22,0.4)',
@@ -162,13 +200,13 @@ function GlitchName() {
         aria-hidden="true"
       >
         <h3
-          className="text-[1.9rem] sm:text-[2.4rem] font-black uppercase leading-none tracking-tight"
+          className="glitch-text font-black uppercase leading-none"
           style={{ color: '#22d3ee', opacity: 0.75 }}
         >
           Vedant
         </h3>
         <h3
-          className="text-[1.9rem] sm:text-[2.4rem] font-black uppercase leading-none tracking-tight"
+          className="glitch-text font-black uppercase leading-none"
           style={{ color: '#22d3ee', opacity: 0.75 }}
         >
           Trivedi
@@ -181,13 +219,13 @@ function GlitchName() {
         aria-hidden="true"
       >
         <h3
-          className="text-[1.9rem] sm:text-[2.4rem] font-black uppercase leading-none tracking-tight"
+          className="glitch-text font-black uppercase leading-none"
           style={{ color: '#f97316', opacity: 0.75 }}
         >
           Vedant
         </h3>
         <h3
-          className="text-[1.9rem] sm:text-[2.4rem] font-black uppercase leading-none tracking-tight"
+          className="glitch-text font-black uppercase leading-none"
           style={{ color: '#f97316', opacity: 0.75 }}
         >
           Trivedi

@@ -69,7 +69,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
 
   return (
     <motion.div
-      className="relative flex-shrink-0 w-[17rem] sm:w-[19rem] snap-start"
+      className="relative flex-shrink-0 w-[14.5rem] sm:w-[17rem] lg:w-[19rem] snap-start"
       style={{ perspective: 900 }}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
         <CornerBrackets active={hovered} />
 
         {/* ── Image area ── */}
-        <div className="relative overflow-hidden h-52">
+        <div className="relative overflow-hidden h-44 sm:h-52">
           <motion.img
             src={sneaker.image}
             alt={sneaker.name}
@@ -165,7 +165,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
         <div className="p-4 flex flex-col gap-3">
           {/* Index number watermark */}
           <span
-            className="absolute top-[11.5rem] left-4 text-[4rem] font-black leading-none select-none pointer-events-none"
+            className="absolute top-[9.5rem] sm:top-[11.5rem] left-4 text-[4rem] font-black leading-none select-none pointer-events-none"
             style={{
               color: 'transparent',
               WebkitTextStroke: '1px rgba(249,115,22,0.12)',
@@ -248,7 +248,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
   return (
     <section
       id="featured"
-      className="relative rounded-3xl p-6 sm:p-8 space-y-6 overflow-hidden"
+      className="relative rounded-3xl p-5 sm:p-8 space-y-6 overflow-hidden"
       style={{
         background: 'linear-gradient(160deg, #111111 0%, #0a0a0a 100%)',
         border: '1px solid rgba(249,115,22,0.12)',
@@ -271,7 +271,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
       />
 
       {/* ── Header ── */}
-      <div className="relative flex items-end justify-between gap-4">
+      <div className="relative flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
             {/* Live pulse dot */}
@@ -283,7 +283,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
           </div>
 
           <h2
-            className="font-black text-[2.6rem] leading-none tracking-tight uppercase"
+            className="font-black text-[2rem] sm:text-[2.6rem] leading-none tracking-tight uppercase"
             style={{
               background: 'linear-gradient(135deg, #ffffff 0%, #f97316 50%, #ea580c 100%)',
               WebkitBackgroundClip: 'text',
@@ -294,7 +294,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
             Featured
           </h2>
           <h2
-            className="font-black text-[2.6rem] leading-none tracking-tight uppercase"
+            className="font-black text-[2rem] sm:text-[2.6rem] leading-none tracking-tight uppercase"
             style={{
               color: 'transparent',
               WebkitTextStroke: '1.5px rgba(249,115,22,0.45)',

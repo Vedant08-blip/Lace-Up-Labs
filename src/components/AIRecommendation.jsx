@@ -219,7 +219,7 @@ function HologramCard({ sneaker, onAddToCart }) {
         <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-cyan-500/60 z-10 rounded-br" />
 
         {/* Image */}
-        <div className="relative overflow-hidden h-40">
+        <div className="relative overflow-hidden h-36 sm:h-40">
           <img
             src={sneaker.image}
             alt={sneaker.name}
@@ -424,10 +424,10 @@ export function AIRecommendation({
         />
       ))}
 
-      <div className="relative p-6 space-y-6">
+      <div className="relative p-5 sm:p-6 space-y-6">
 
         {/* ── Header ── */}
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2.5 mb-1">
               {/* Pulsing AI indicator */}
@@ -707,7 +707,7 @@ export function AIRecommendation({
             </div>
 
             {/* Cards grid */}
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {recommended.map((sneaker) => (
                 <HologramCard
                   key={sneaker.id}

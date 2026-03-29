@@ -147,7 +147,7 @@ function ImageViewer({ sneaker }) {
       </div>
 
       {/* Image */}
-      <div className="overflow-hidden h-64 sm:h-80">
+      <div className="overflow-hidden h-56 sm:h-80">
         <img
           src={sneaker.image}
           alt={sneaker.name}
@@ -226,12 +226,11 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
     <section
       id="product-detail"
       ref={sectionRef}
-      className="relative rounded-3xl overflow-hidden border flex flex-col"
+      className="relative rounded-3xl overflow-hidden border flex flex-col min-h-[360px] sm:min-h-[420px]"
       style={{
         background: "linear-gradient(160deg, #050505 0%, #0a0a0a 60%, #060606 100%)",
         borderColor: "rgba(63,63,70,0.5)",
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
-        minHeight: "420px",
       }}
     >
       {/* Grid bg */}
@@ -268,11 +267,11 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
         />
       ))}
 
-      <div className="relative p-5 sm:p-6 space-y-5 flex flex-col flex-1">
+      <div className="relative p-4 sm:p-6 space-y-5 flex flex-col flex-1">
 
         {/* ── Header ── */}
         <div className="space-y-2">
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
             <div className="space-y-1.5">
               <p className="text-[0.58rem] uppercase tracking-[0.45em] text-zinc-600 font-medium">
                 Product Detail
@@ -285,7 +284,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
 
             {/* Rating */}
             <div
-              className="shrink-0 flex flex-col items-end gap-1.5 px-3 py-2 rounded-xl"
+              className="shrink-0 flex flex-col items-start sm:items-end gap-1.5 px-3 py-2 rounded-xl"
               style={{
                 background: "rgba(251,191,36,0.05)",
                 border: "1px solid rgba(251,191,36,0.15)",
@@ -637,7 +636,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
           </div>
 
           {/* Trust row */}
-          <div className="flex items-center justify-center gap-4 pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
             {[
               { icon: "🔒", text: "Secure Checkout" },
               { icon: "↩", text: "30-Day Returns" },
