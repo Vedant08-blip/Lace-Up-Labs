@@ -185,7 +185,7 @@ function AppContent() {
           </div>
 
           {/* Footer */}
-          <div data-gsap="reveal" style={sectionPerfStyle}>
+          <div>
             <Footer />
           </div>
         </main>
