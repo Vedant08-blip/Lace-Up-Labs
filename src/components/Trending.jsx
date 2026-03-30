@@ -30,7 +30,7 @@ function RankBadge({ rank }) {
       className="absolute top-2.5 left-2.5 w-7 h-7 rounded-full flex items-center justify-center z-10"
       style={{
         background: isTop
-          ? 'linear-gradient(135deg, #f97316, #ea580c)'
+          ? 'linear-gradient(135deg, #ff3b30, #ff3b30)'
           : 'rgba(0,0,0,0.7)',
         border: isTop ? 'none' : '1px solid rgba(255,255,255,0.1)',
         backdropFilter: 'blur(8px)',
@@ -53,12 +53,12 @@ function TrendBar({ score, index }) {
     <div className="space-y-1">
       <div className="flex items-center justify-between">
         <span className="text-[0.48rem] uppercase tracking-[0.28em] text-zinc-600">Trend Score</span>
-        <span className="text-[0.52rem] font-bold" style={{ color: '#f97316' }}>{score}%</span>
+        <span className="text-[0.52rem] font-bold" style={{ color: '#ff3b30' }}>{score}%</span>
       </div>
       <div className="relative h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)' }}>
         <motion.div
           className="absolute inset-y-0 left-0 rounded-full"
-          style={{ background: 'linear-gradient(90deg, #f97316, #ea580c)' }}
+          style={{ background: 'linear-gradient(90deg, #ff3b30, #ff3b30)' }}
           initial={{ width: 0 }}
           animate={{ width: `${score}%` }}
           transition={{ delay: index * 0.08 + 0.5, duration: 0.9, ease: 'easeOut' }}
@@ -150,7 +150,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
         ].map((cls, i) => (
           <motion.span
             key={i}
-            className={`absolute w-4 h-4 ${cls} border-orange-500 pointer-events-none z-10`}
+            className={`absolute w-4 h-4 ${cls} border-accent pointer-events-none z-10`}
             animate={{ opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.2 }}
           />
@@ -216,7 +216,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
               transition={{ duration: 0.4 }}
             >
               <span className="text-[0.9rem] leading-none">🔥</span>
-              <span className="text-[0.5rem] uppercase tracking-[0.24em] font-bold" style={{ color: '#f97316' }}>
+              <span className="text-[0.5rem] uppercase tracking-[0.24em] font-bold" style={{ color: '#ff3b30' }}>
                 Hot
               </span>
             </motion.div>
@@ -234,7 +234,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           </span>
 
           <div>
-            <p className="text-[0.52rem] uppercase tracking-[0.28em] mb-0.5" style={{ color: '#f97316' }}>
+            <p className="text-[0.52rem] uppercase tracking-[0.28em] mb-0.5" style={{ color: '#ff3b30' }}>
               {sneaker.brand}
             </p>
             <p className="text-[0.72rem] font-semibold text-zinc-100 leading-snug line-clamp-2">
@@ -244,7 +244,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
 
           {/* Price + Rating row */}
           <div className="flex items-center justify-between">
-            <p className="text-sm font-black leading-none" style={{ color: '#f97316' }}>
+            <p className="text-sm font-black leading-none" style={{ color: '#ff3b30' }}>
               ₹{sneaker.price.toLocaleString('en-IN')}
             </p>
             {sneaker.rating && (
@@ -252,10 +252,10 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
                 className="flex items-center gap-1 rounded-lg px-1.5 py-0.5"
                 style={{ background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.2)' }}
               >
-                <svg className="w-2.5 h-2.5" viewBox="0 0 20 20" fill="#f97316">
+                <svg className="w-2.5 h-2.5" viewBox="0 0 20 20" fill="#ff3b30">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                <span className="text-[0.52rem] font-bold" style={{ color: '#f97316' }}>
+                <span className="text-[0.52rem] font-bold" style={{ color: '#ff3b30' }}>
                   {sneaker.rating.toFixed(1)}
                 </span>
               </div>
@@ -280,7 +280,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
               border: '1px solid rgba(34,197,94,0.4)',
               color: '#86efac',
             } : hovered ? {
-              background: 'linear-gradient(135deg, #f97316, #ea580c)',
+              background: 'linear-gradient(135deg, #ff3b30, #ff3b30)',
               border: '1px solid transparent',
               color: '#000',
               boxShadow: '0 0 20px rgba(249,115,22,0.4)',
@@ -340,15 +340,15 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#f97316' }} />
-              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#f97316' }} />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#ff3b30' }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#ff3b30' }} />
             </span>
             <p className="text-[0.55rem] uppercase tracking-[0.38em] text-zinc-600">Live Heat Check</p>
           </div>
           <h2
             className="text-[1.8rem] sm:text-[2.2rem] font-black uppercase leading-none tracking-tight"
             style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #f97316 55%, #ea580c 100%)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #ff3b30 55%, #ff3b30 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -378,11 +378,11 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
         >
           <motion.span
             className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-            style={{ background: '#f97316' }}
+            style={{ background: '#ff3b30' }}
             animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
           />
-          <span className="text-[0.55rem] uppercase tracking-[0.28em] font-bold" style={{ color: '#f97316' }}>
+          <span className="text-[0.55rem] uppercase tracking-[0.28em] font-bold" style={{ color: '#ff3b30' }}>
             Live
           </span>
         </div>

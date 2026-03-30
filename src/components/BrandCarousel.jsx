@@ -49,7 +49,7 @@ function BrandCard({ brand }) {
         {/* Orange bottom border on hover */}
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-3/4 transition-all duration-300 pointer-events-none rounded-full"
-          style={{ background: 'linear-gradient(90deg, transparent, #f97316, transparent)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, #ff3b30, transparent)' }}
         />
 
         <img
@@ -63,13 +63,13 @@ function BrandCard({ brand }) {
           }}
         />
         <span
-          className="hidden text-[0.6rem] uppercase tracking-[0.28em] font-bold text-zinc-400 group-hover:text-orange-400 transition-colors"
+          className="hidden text-[0.6rem] uppercase tracking-[0.28em] font-bold text-zinc-400 group-hover:text-accent transition-colors"
           style={{ display: 'none' }}
         >
           {brand.name}
         </span>
 
-        <p className="text-[0.52rem] uppercase tracking-[0.3em] text-zinc-700 group-hover:text-orange-500/70 transition-colors duration-300 leading-none">
+        <p className="text-[0.52rem] uppercase tracking-[0.3em] text-zinc-700 group-hover:text-accent/70 transition-colors duration-300 leading-none">
           {brand.name}
         </p>
       </div>
@@ -95,7 +95,7 @@ export function BrandCarousel() {
           <h2
             className="text-[1.3rem] sm:text-[1.6rem] font-black uppercase tracking-[0.22em] leading-none"
             style={{
-              background: 'linear-gradient(135deg, #fff 0%, #f97316 60%, #ea580c 100%)',
+              background: 'linear-gradient(135deg, #fff 0%, #ff3b30 60%, #ff3b30 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -104,7 +104,7 @@ export function BrandCarousel() {
             Top Brands
           </h2>
           {/* Underline accent */}
-          <div className="h-px w-12 rounded-full mt-0.5" style={{ background: 'linear-gradient(90deg, #f97316, #ea580c)' }} />
+          <div className="h-px w-12 rounded-full mt-0.5" style={{ background: 'linear-gradient(90deg, #ff3b30, #ff3b30)' }} />
         </div>
         <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.3), transparent)' }} />
       </div>
@@ -134,7 +134,7 @@ export function BrandCarousel() {
           <div key={stat.label} className="flex flex-col items-center gap-0.5">
             <span
               className="text-lg sm:text-xl font-black leading-none"
-              style={{ color: '#f97316' }}
+              style={{ color: '#ff3b30' }}
             >
               {stat.value}
             </span>

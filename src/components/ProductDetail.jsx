@@ -465,7 +465,7 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
               <p
                 className="text-3xl font-bold leading-none"
                 style={{
-                  background: "linear-gradient(135deg, #ff3b30, #ff6b35)",
+                  background: "linear-gradient(135deg, #ff3b30, #ff3b30)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}

@@ -198,7 +198,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
                 ™
               </span>
             </span>
-            <span className="word block bg-gradient-to-r from-red-500 via-orange-400 to-red-600 bg-clip-text text-transparent">
+            <span className="word block bg-gradient-to-r from-accent via-accent to-accent bg-clip-text text-transparent">
               The Future
             </span>
             <span className="word block text-zinc-300">Of Sneakers.</span>
@@ -216,7 +216,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
             <button
               onClick={onShopNow}
               className="group relative px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] rounded-full overflow-hidden transition-all duration-300"
-              style={{ background: 'linear-gradient(135deg, #ff3b30, #ff6b35)' }}
+              style={{ background: 'linear-gradient(135deg, #ff3b30, #ff3b30)' }}
             >
               <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
               <span className="relative flex items-center gap-2">

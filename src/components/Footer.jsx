@@ -39,7 +39,7 @@ function MagLink({ href, children, external }) {
       style={{ x: moveX, y: moveY }}
       onMouseMove={handleMouse}
       onMouseLeave={() => { x.set(0); y.set(0); }}
-      className="relative group text-[0.65rem] uppercase tracking-[0.28em] text-zinc-600 transition-colors duration-200 hover:text-orange-400"
+      className="relative group text-[0.65rem] uppercase tracking-[0.28em] text-zinc-600 transition-colors duration-200 hover:text-accent"
     >
       <span className="relative z-10">{children}</span>
       <motion.span
@@ -69,7 +69,7 @@ function SocialBtn({ href, label, children }) {
         background: hovered ? 'rgba(249,115,22,0.12)' : 'rgba(255,255,255,0.03)',
         border: hovered ? '1px solid rgba(249,115,22,0.4)' : '1px solid rgba(255,255,255,0.07)',
         boxShadow: hovered ? '0 0 18px rgba(249,115,22,0.2)' : 'none',
-        color: hovered ? '#f97316' : '#52525b',
+        color: hovered ? '#ff3b30' : '#52525b',
       }}
     >
       {children}
@@ -175,7 +175,7 @@ function GlitchName() {
         <h3
           className="glitch-text font-black uppercase leading-none"
           style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #f97316 45%, #ea580c 100%)',
+            background: 'linear-gradient(135deg, #ffffff 0%, #ff3b30 45%, #ff3b30 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -220,13 +220,13 @@ function GlitchName() {
       >
         <h3
           className="glitch-text font-black uppercase leading-none"
-          style={{ color: '#f97316', opacity: 0.75 }}
+          style={{ color: '#ff3b30', opacity: 0.75 }}
         >
           Vedant
         </h3>
         <h3
           className="glitch-text font-black uppercase leading-none"
-          style={{ color: '#f97316', opacity: 0.75 }}
+          style={{ color: '#ff3b30', opacity: 0.75 }}
         >
           Trivedi
         </h3>
@@ -306,7 +306,7 @@ export function Footer() {
             <h2
               className="text-[3rem] sm:text-[4rem] font-black uppercase leading-none tracking-tight"
               style={{
-                background: 'linear-gradient(135deg, #ffffff 0%, #f97316 50%, #ea580c 100%)',
+                background: 'linear-gradient(135deg, #ffffff 0%, #ff3b30 50%, #ff3b30 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -326,7 +326,7 @@ export function Footer() {
             {/* Underline accent */}
             <motion.div
               className="mx-auto h-0.5 rounded-full mt-1"
-              style={{ background: 'linear-gradient(90deg, transparent, #f97316, #ea580c, transparent)' }}
+              style={{ background: 'linear-gradient(90deg, transparent, #ff3b30, #ff3b30, transparent)' }}
               initial={{ width: 0 }}
               animate={inView ? { width: '100%' } : {}}
               transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
@@ -350,7 +350,7 @@ export function Footer() {
               <div className="flex flex-col items-center px-8 py-3 gap-0.5">
                 <span
                   className="text-2xl font-black leading-none"
-                  style={{ color: '#f97316' }}
+                  style={{ color: '#ff3b30' }}
                 >
                   <Counter to={s.value} suffix={s.suffix} />
                 </span>
@@ -429,7 +429,7 @@ export function Footer() {
             'bottom-0 left-0 border-b-2 border-l-2 rounded-bl-2xl',
             'bottom-0 right-0 border-b-2 border-r-2 rounded-br-2xl',
           ].map((cls, i) => (
-            <span key={i} className={`absolute w-5 h-5 ${cls} border-orange-500/50 pointer-events-none`} />
+            <span key={i} className={`absolute w-5 h-5 ${cls} border-accent/50 pointer-events-none`} />
           ))}
 
           {/* Scanlines */}
@@ -443,7 +443,7 @@ export function Footer() {
           {/* Animated left bar */}
           <motion.div
             className="absolute left-0 top-4 bottom-4 w-0.5 rounded-full"
-            style={{ background: 'linear-gradient(180deg, transparent, #f97316, transparent)' }}
+            style={{ background: 'linear-gradient(180deg, transparent, #ff3b30, transparent)' }}
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -453,8 +453,8 @@ export function Footer() {
               {/* Label */}
               <div className="flex items-center gap-2">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#f97316' }} />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: '#f97316' }} />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#ff3b30' }} />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: '#ff3b30' }} />
                 </span>
                 <p className="text-[0.5rem] uppercase tracking-[0.42em] text-zinc-600">
                   Crafted &amp; Engineered by
@@ -485,7 +485,7 @@ export function Footer() {
                   }}
                 >
                   <span className="text-sm leading-none">{badge.icon}</span>
-                  <span className="text-[0.55rem] uppercase tracking-[0.24em] font-semibold" style={{ color: '#f97316' }}>
+                  <span className="text-[0.55rem] uppercase tracking-[0.24em] font-semibold" style={{ color: '#ff3b30' }}>
                     {badge.text}
                   </span>
                 </motion.div>

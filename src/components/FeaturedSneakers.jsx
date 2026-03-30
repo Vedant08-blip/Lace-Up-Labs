@@ -33,7 +33,7 @@ function CornerBrackets({ active }) {
       ].map((cls, i) => (
         <motion.span
           key={i}
-          className={`absolute w-4 h-4 ${cls} border-orange-500 transition-opacity duration-300`}
+          className={`absolute w-4 h-4 ${cls} border-accent transition-opacity duration-300`}
           style={{ opacity: active ? 1 : 0 }}
         />
       ))}
@@ -142,7 +142,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           {/* DROP badge */}
           <motion.span
             className="absolute top-3 right-3 rounded-full px-3 py-1 text-[0.58rem] uppercase tracking-[0.2em] font-bold text-black"
-            style={{ background: 'linear-gradient(135deg, #f97316, #ea580c)' }}
+            style={{ background: 'linear-gradient(135deg, #ff3b30, #ff3b30)' }}
             animate={{ scale: hovered ? [1, 1.08, 1] : 1 }}
             transition={{ duration: 0.4 }}
           >
@@ -184,7 +184,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
 
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-[0.58rem] uppercase tracking-[0.3em] mb-0.5" style={{ color: '#f97316' }}>
+              <p className="text-[0.58rem] uppercase tracking-[0.3em] mb-0.5" style={{ color: '#ff3b30' }}>
                 {sneaker.brand}
               </p>
               <p className="font-semibold text-sm text-zinc-100 leading-snug line-clamp-2">
@@ -193,7 +193,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
             </div>
             <div className="text-right flex-shrink-0">
               <p className="text-[0.52rem] text-zinc-600 uppercase tracking-[0.2em] mb-0.5">From</p>
-              <p className="text-base font-bold leading-none" style={{ color: '#f97316' }}>
+              <p className="text-base font-bold leading-none" style={{ color: '#ff3b30' }}>
                 ₹{sneaker.price.toLocaleString('en-IN')}
               </p>
             </div>
@@ -205,7 +205,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           {/* Rating + CTA */}
           <div className="flex items-center gap-2">
             <span className="flex items-center gap-1 text-[0.62rem] text-zinc-500">
-              <svg className="w-3 h-3" viewBox="0 0 20 20" fill="#f97316">
+              <svg className="w-3 h-3" viewBox="0 0 20 20" fill="#ff3b30">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               {sneaker.rating.toFixed(1)}
@@ -221,7 +221,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
                 border: '1px solid rgba(34,197,94,0.4)',
                 color: '#86efac',
               } : hovered ? {
-                background: 'linear-gradient(135deg, #f97316, #ea580c)',
+                background: 'linear-gradient(135deg, #ff3b30, #ff3b30)',
                 border: '1px solid transparent',
                 color: '#000',
                 boxShadow: '0 0 20px rgba(249,115,22,0.4)',
@@ -283,8 +283,8 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
           <div className="flex items-center gap-2 mb-2">
             {/* Live pulse dot */}
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#f97316' }} />
-              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#f97316' }} />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#ff3b30' }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#ff3b30' }} />
             </span>
             <p className="text-[0.58rem] uppercase tracking-[0.36em] text-zinc-600">Curated Heat</p>
           </div>
@@ -292,7 +292,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
           <h2
             className="font-black text-[2rem] sm:text-[2.6rem] leading-none tracking-tight uppercase"
             style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #f97316 50%, #ea580c 100%)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #ff3b30 50%, #ff3b30 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -315,7 +315,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
           onClick={onViewAll}
           whileHover={{ x: 4 }}
           className="hidden sm:inline-flex items-center gap-2 text-[0.58rem] uppercase tracking-[0.28em] transition-colors group"
-          style={{ color: '#f97316' }}
+          style={{ color: '#ff3b30' }}
         >
           View all drops
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
