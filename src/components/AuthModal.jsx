@@ -1,372 +1,545 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 
-// Input icon components
-const UserIcon = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+const SkullIcon = () => (
+  <svg viewBox="0 0 100 100" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+    <style>{`
+      .skull-main { fill: #e8e0d0; }
+      .skull-shadow { fill: #c8bfaf; }
+      .skull-dark { fill: #1a1512; }
+      .skull-eye { fill: #1a1512; }
+      .skull-gleam { fill: #fff; opacity: 0.6; }
+      @keyframes skullPulse {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px #ff3b3b44); }
+        50% { transform: scale(1.04); filter: drop-shadow(0 0 18px #ff3b3b88); }
+      }
+      .skull-group { animation: skullPulse 3s ease-in-out infinite; transform-origin: 50px 50px; }
+      @keyframes eyeGlow {
+        0%, 100% { fill: #1a1512; }
+        50% { fill: #cc1111; filter: drop-shadow(0 0 4px #ff0000); }
+      }
+      .skull-eye { animation: eyeGlow 3s ease-in-out infinite; }
+    `}</style>
+    <g className="skull-group">
+      <ellipse cx="50" cy="44" rx="30" ry="28" className="skull-main" />
+      <ellipse cx="50" cy="44" rx="28" ry="26" className="skull-shadow" opacity="0.2" />
+      <rect x="36" y="64" width="28" height="14" rx="3" className="skull-main" />
+      <rect x="39" y="66" width="7" height="10" rx="1" className="skull-dark" />
+      <rect x="48" y="66" width="4" height="10" rx="1" className="skull-dark" />
+      <rect x="54" y="66" width="7" height="10" rx="1" className="skull-dark" />
+      <ellipse cx="39" cy="50" rx="8" ry="9" className="skull-eye" />
+      <ellipse cx="61" cy="50" rx="8" ry="9" className="skull-eye" />
+      <ellipse cx="36.5" cy="47.5" rx="2.5" ry="3" className="skull-gleam" />
+      <ellipse cx="58.5" cy="47.5" rx="2.5" ry="3" className="skull-gleam" />
+      <ellipse cx="50" cy="62" rx="5" ry="3" className="skull-dark" opacity="0.5" />
+      <path d="M30 42 Q28 36 32 30 Q38 22 50 21 Q62 22 68 30 Q72 36 70 42" fill="none" stroke="#c8bfaf" strokeWidth="1.5" opacity="0.6" />
+    </g>
   </svg>
 );
 
-const EmailIcon = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+const CrackedBackground = () => (
+  <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', opacity: 0.06 }} viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice">
+    <path d="M80 0 L95 80 L60 120 L100 200 L75 280" stroke="#ff4444" strokeWidth="1.5" fill="none" />
+    <path d="M320 0 L305 90 L340 150 L295 240 L330 340" stroke="#ff4444" strokeWidth="1.5" fill="none" />
+    <path d="M0 150 L80 165 L120 145 L200 170 L280 148 L360 165 L400 155" stroke="#ff4444" strokeWidth="1" fill="none" />
+    <path d="M0 400 L100 385 L160 405 L240 388 L320 402 L400 390" stroke="#ff4444" strokeWidth="1" fill="none" />
+    <path d="M150 0 L148 60 L155 120 L145 200" stroke="#cc3333" strokeWidth="0.8" fill="none" />
+    <path d="M250 600 L252 520 L245 440 L255 360" stroke="#cc3333" strokeWidth="0.8" fill="none" />
   </svg>
 );
 
-const LockIcon = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-  </svg>
+const FloatingBones = () => (
+  <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+    {[
+      { x: '8%', y: '12%', r: -25, delay: '0s', size: 22 },
+      { x: '88%', y: '8%', r: 40, delay: '0.8s', size: 18 },
+      { x: '5%', y: '75%', r: 15, delay: '1.5s', size: 20 },
+      { x: '92%', y: '70%', r: -35, delay: '2.2s', size: 16 },
+      { x: '50%', y: '4%', r: 60, delay: '0.4s', size: 14 },
+      { x: '75%', y: '90%', r: -15, delay: '1.2s', size: 19 },
+    ].map((b, i) => (
+      <div
+        key={i}
+        style={{
+          position: 'absolute',
+          left: b.x,
+          top: b.y,
+          transform: `rotate(${b.r}deg)`,
+          opacity: 0.18,
+          animation: `floatBone 6s ease-in-out ${b.delay} infinite alternate`,
+          fontSize: b.size,
+          color: '#e8e0d0',
+        }}
+      >
+        ✝
+      </div>
+    ))}
+  </div>
 );
-
-const EyeIcon = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-  </svg>
-);
-
-const EyeOffIcon = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-  </svg>
-);
-
-const SpinnerIcon = () => (
-  <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-  </svg>
-);
-
-// Password requirements for signup
-const PasswordRequirements = ({ password }) => {
-  const requirements = [
-    { met: password.length >= 8, text: 'At least 8 characters' },
-    { met: /[A-Z]/.test(password), text: 'One uppercase letter' },
-    { met: /[0-9]/.test(password), text: 'One number' },
-    { met: /[^A-Za-z0-9]/.test(password), text: 'One special character' },
-  ];
-
-  return (
-    <div className="mt-2 space-y-1">
-      {requirements.map((req, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          className={`flex items-center gap-2 text-xs ${
-            req.met ? 'text-green-400' : 'text-zinc-500'
-          }`}
-        >
-          <span className={`w-1.5 h-1.5 rounded-full ${req.met ? 'bg-green-400' : 'bg-zinc-600'}`} />
-          {req.text}
-        </motion.div>
-      ))}
-    </div>
-  );
-};
 
 export function AuthModal() {
   const { isAuthModalOpen, closeAuthModal, login, signup, isLoading, error, clearError } = useAuth();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
-  const [validationError, setValidationError] = useState('');
+  const [mode, setMode] = useState('login');
+  const [form, setForm] = useState({ name: '', email: '', password: '', remember: false });
+  const [visible, setVisible] = useState(false);
+  const [pwStrength, setPwStrength] = useState(0);
+  const [successMsg, setSuccessMsg] = useState('');
+  const inputRef = useRef(null);
 
-  // Reset form when switching between login/signup
-  const handleSwitchMode = () => {
-    setIsLogin(!isLogin);
-    setPassword('');
-    setValidationError('');
+  useEffect(() => {
+    if (!isAuthModalOpen) return;
+    const timer = setTimeout(() => setVisible(true), 10);
+    return () => clearTimeout(timer);
+  }, [isAuthModalOpen]);
+
+  useEffect(() => {
     clearError();
+    setSuccessMsg('');
+  }, [mode, clearError]);
+
+  useEffect(() => {
+    if (isAuthModalOpen) inputRef.current?.focus();
+  }, [mode, isAuthModalOpen]);
+
+  const calcStrength = (pw) => {
+    let s = 0;
+    if (pw.length >= 8) s++;
+    if (/[A-Z]/.test(pw)) s++;
+    if (/[0-9]/.test(pw)) s++;
+    if (/[^A-Za-z0-9]/.test(pw)) s++;
+    return s;
   };
 
-  // Email validation
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  // Real-time email validation
-  const [emailError, setEmailError] = useState('');
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    if (value && !validateEmail(value)) {
-      setEmailError('Please enter a valid email address');
-    } else {
-      setEmailError('');
-    }
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm((f) => ({ ...f, [name]: type === 'checkbox' ? checked : value }));
+    if (name === 'password') setPwStrength(calcStrength(value));
+    if (error) clearError();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setValidationError('');
-
-    // Client-side validation before API call
-    if (!email.trim() || !password.trim()) {
-      setValidationError('Please fill in all fields');
-      return;
-    }
-
-    if (!isLogin && !name.trim()) {
-      setValidationError('Please enter your name');
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setValidationError('Please enter a valid email address');
-      return;
-    }
-
-    if (isLogin) {
-      await login(email, password, rememberMe);
-    } else {
-      if (password.length < 8) {
-        setValidationError('Password must be at least 8 characters');
-        return;
-      }
-      await signup(name, email, password, rememberMe);
+    setSuccessMsg('');
+    const result = mode === 'login'
+      ? await login(form.email, form.password, form.remember)
+      : await signup(form.name, form.email, form.password, form.remember);
+    if (result?.success) {
+      setSuccessMsg(mode === 'login' ? 'Welcome back, soul.' : 'Your soul has been registered.');
     }
   };
 
-  // Close modal and reset form
   const handleClose = () => {
-    closeAuthModal();
-    setName('');
-    setEmail('');
-    setPassword('');
-    setValidationError('');
-    setEmailError('');
+    setVisible(false);
+    setSuccessMsg('');
     clearError();
+    closeAuthModal();
   };
+
+  const strengthLabels = ['', 'Weak', 'Fair', 'Strong', 'Unbreakable'];
+  const strengthColors = ['', '#cc2222', '#cc8800', '#558800', '#00aa44'];
+
+  if (!isAuthModalOpen) return null;
 
   return (
-    <AnimatePresence>
-      {isAuthModalOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-          />
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-card border border-zinc-800 rounded-2xl p-6 z-50 shadow-2xl"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="font-heading text-xl tracking-[0.16em] uppercase">
-                {isLogin ? 'Welcome Back' : 'Create Account'}
-              </h2>
-              <button
-                onClick={handleClose}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .auth-backdrop {
+          min-height: 100vh;
+          background: #0d0b09;
+          background-image:
+            radial-gradient(ellipse 80% 60% at 50% -10%, #2a0a0a 0%, transparent 60%),
+            radial-gradient(ellipse 60% 40% at 100% 100%, #1a0505 0%, transparent 50%),
+            radial-gradient(ellipse 50% 30% at 0% 80%, #1a0a00 0%, transparent 50%);
+          display: flex; align-items: center; justify-content: center;
+          font-family: 'Crimson Text', Georgia, serif;
+          padding: 2rem;
+          position: fixed;
+          inset: 0;
+          z-index: 50;
+          overflow: hidden;
+        }
+
+        @keyframes floatBone {
+          from { transform: translateY(0) rotate(var(--r, 0deg)); }
+          to { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+        }
+
+        .auth-card {
+          position: relative;
+          width: 100%;
+          max-width: 420px;
+          background: linear-gradient(160deg, #1c1510 0%, #120d09 50%, #1a1008 100%);
+          border: 1px solid #4a2a1a;
+          border-radius: 4px;
+          padding: 2.5rem 2.5rem 2rem;
+          box-shadow:
+            0 0 0 1px #2a1510,
+            0 0 40px #3a0a0a66,
+            0 0 80px #1a000022,
+            inset 0 1px 0 #5a3020;
+          transition: opacity 0.6s ease, transform 0.6s ease;
+          opacity: var(--visible, 0);
+          transform: translateY(var(--ty, 20px));
+          overflow: hidden;
+        }
+
+        .auth-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: repeating-linear-gradient(
+            0deg, transparent, transparent 2px,
+            rgba(255,60,0,0.015) 2px, rgba(255,60,0,0.015) 4px
+          );
+          pointer-events: none;
+        }
+
+        .auth-card::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 10%; right: 10%; height: 1px;
+          background: linear-gradient(90deg, transparent, #cc4422, #ff6633, #cc4422, transparent);
+          opacity: 0.6;
+        }
+
+        .skull-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 1.2rem;
+          gap: 0.5rem;
+        }
+
+        .auth-title {
+          font-family: 'Cinzel', serif;
+          font-size: 1.6rem;
+          font-weight: 900;
+          color: #e8d5b0;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          text-shadow: 0 0 20px #ff330055, 0 2px 4px #000;
+          text-align: center;
+        }
+
+        .auth-subtitle {
+          font-family: 'Crimson Text', serif;
+          font-style: italic;
+          color: #7a5a3a;
+          font-size: 0.95rem;
+          text-align: center;
+          letter-spacing: 0.03em;
+        }
+
+        .divider {
+          display: flex; align-items: center; gap: 0.75rem;
+          margin: 1.2rem 0 1.4rem;
+        }
+        .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #4a2a1a, transparent); }
+        .divider-skull { color: #5a3020; font-size: 0.7rem; letter-spacing: 0.1em; font-family: 'Cinzel', serif; }
+
+        .field-group { margin-bottom: 1.1rem; }
+
+        .field-label {
+          display: block;
+          font-family: 'Cinzel', serif;
+          font-size: 0.62rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #8a6040;
+          margin-bottom: 0.45rem;
+        }
+
+        .field-input {
+          width: 100%;
+          background: #0d0906;
+          border: 1px solid #3a2010;
+          border-radius: 2px;
+          padding: 0.7rem 0.9rem;
+          font-family: 'Crimson Text', serif;
+          font-size: 1rem;
+          color: #e0c8a0;
+          outline: none;
+          transition: border-color 0.3s, box-shadow 0.3s;
+          letter-spacing: 0.02em;
+        }
+        .field-input::placeholder { color: #4a3020; }
+        .field-input:focus {
+          border-color: #8a3010;
+          box-shadow: 0 0 0 2px #cc220022, inset 0 0 12px #3a100022;
+        }
+
+        .strength-bar {
+          display: flex; gap: 3px; margin-top: 0.4rem;
+        }
+        .strength-seg {
+          height: 3px; flex: 1; border-radius: 2px;
+          background: #2a1508;
+          transition: background 0.4s;
+        }
+
+        .remember-row {
+          display: flex; align-items: center; gap: 0.6rem;
+          margin-bottom: 1.4rem;
+        }
+        .remember-box {
+          width: 14px; height: 14px;
+          accent-color: #cc3311;
+          cursor: pointer;
+        }
+        .remember-label {
+          font-family: 'Cinzel', serif;
+          font-size: 0.6rem;
+          letter-spacing: 0.15em;
+          color: #6a4a2a;
+          text-transform: uppercase;
+        }
+
+        .submit-btn {
+          width: 100%;
+          padding: 0.85rem;
+          background: linear-gradient(135deg, #8a1a08 0%, #5a0f04 50%, #7a1806 100%);
+          border: 1px solid #cc3311;
+          border-radius: 2px;
+          font-family: 'Cinzel', serif;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #f0d8b0;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s;
+          box-shadow: 0 0 20px #cc220033, inset 0 1px 0 #cc5533;
+        }
+        .submit-btn:hover:not(:disabled) {
+          background: linear-gradient(135deg, #aa2a10 0%, #7a1508 50%, #9a2208 100%);
+          box-shadow: 0 0 30px #cc220055, inset 0 1px 0 #dd6644;
+          transform: translateY(-1px);
+        }
+        .submit-btn:active:not(:disabled) { transform: translateY(0); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .submit-btn::before {
+          content: '';
+          position: absolute;
+          top: -50%; left: -60%;
+          width: 40%; height: 200%;
+          background: linear-gradient(90deg, transparent, rgba(255,200,150,0.12), transparent);
+          transform: skewX(-20deg);
+          transition: left 0.6s;
+        }
+        .submit-btn:hover::before { left: 130%; }
+
+        .error-msg {
+          background: #2a0808;
+          border: 1px solid #8a1a0a;
+          border-radius: 2px;
+          padding: 0.6rem 0.9rem;
+          color: #ff6644;
+          font-size: 0.88rem;
+          margin-bottom: 1rem;
+          font-style: italic;
+          letter-spacing: 0.01em;
+        }
+
+        .success-msg {
+          background: #081a0a;
+          border: 1px solid #1a6a2a;
+          border-radius: 2px;
+          padding: 0.6rem 0.9rem;
+          color: #66dd88;
+          font-size: 0.88rem;
+          margin-bottom: 1rem;
+          font-style: italic;
+          text-align: center;
+        }
+
+        .mode-switch {
+          text-align: center;
+          margin-top: 1.5rem;
+        }
+        .mode-switch-text {
+          font-size: 0.85rem;
+          color: #5a3a20;
+          font-style: italic;
+        }
+        .mode-switch-btn {
+          background: none; border: none;
+          font-family: 'Cinzel', serif;
+          font-size: 0.72rem;
+          letter-spacing: 0.12em;
+          color: #cc5522;
+          cursor: pointer;
+          text-transform: uppercase;
+          text-decoration: none;
+          border-bottom: 1px solid #cc552244;
+          padding-bottom: 1px;
+          transition: color 0.2s, border-color 0.2s;
+          margin-left: 0.5rem;
+        }
+        .mode-switch-btn:hover { color: #ff7744; border-color: #ff774488; }
+
+        .spinner {
+          display: inline-block;
+          width: 14px; height: 14px;
+          border: 2px solid #f0d8b044;
+          border-top-color: #f0d8b0;
+          border-radius: 50%;
+          animation: spin 0.7s linear infinite;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .corner-dec {
+          position: absolute;
+          width: 20px; height: 20px;
+          border-color: #4a2a1a;
+          border-style: solid;
+          opacity: 0.6;
+        }
+        .corner-tl { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+        .corner-tr { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
+        .corner-bl { bottom: 8px; left: 8px; border-width: 0 0 1px 1px; }
+        .corner-br { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+      `}</style>
+
+      <div className="auth-backdrop" onClick={handleClose}>
+        <CrackedBackground />
+        <FloatingBones />
+
+        <div
+          className="auth-card"
+          style={{ '--visible': visible ? 1 : 0, '--ty': visible ? '0px' : '20px' }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="corner-dec corner-tl" />
+          <div className="corner-dec corner-tr" />
+          <div className="corner-dec corner-bl" />
+          <div className="corner-dec corner-br" />
+
+          <div className="skull-wrap">
+            <SkullIcon />
+            <h1 className="auth-title">
+              {mode === 'login' ? 'Return from the Dead' : 'Sell Your Soul'}
+            </h1>
+            <p className="auth-subtitle">
+              {mode === 'login' ? 'Enter your cursed credentials' : 'Bind yourself to LaceUp forever'}
+            </p>
+          </div>
+
+          <div className="divider">
+            <div className="divider-line" />
+            <span className="divider-skull">☠ ☠ ☠</span>
+            <div className="divider-line" />
+          </div>
+
+          {error && <div className="error-msg">⚠ {error}</div>}
+          {successMsg && <div className="success-msg">✓ {successMsg}</div>}
+
+          <form onSubmit={handleSubmit} autoComplete="off">
+            {mode === 'signup' && (
+              <div className="field-group">
+                <label className="field-label" htmlFor="name">Your Name</label>
+                <input
+                  ref={inputRef}
+                  className="field-input"
+                  id="name" name="name" type="text"
+                  placeholder="What do they call you..."
+                  value={form.name} onChange={handleChange}
+                  autoComplete="off"
+                />
+              </div>
+            )}
+
+            <div className="field-group">
+              <label className="field-label" htmlFor="email">Blood Oath Email</label>
+              <input
+                ref={mode === 'login' ? inputRef : undefined}
+                className="field-input"
+                id="email" name="email" type="email"
+                placeholder="soul@underworld.com"
+                value={form.email} onChange={handleChange}
+                autoComplete="email"
+              />
             </div>
 
-            {/* Error Message */}
-            <AnimatePresence>
-              {(error || validationError) && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg"
-                >
-                  <p className="text-sm text-red-400">{error || validationError}</p>
-                </motion.div>
+            <div className="field-group">
+              <label className="field-label" htmlFor="password">
+                {mode === 'login' ? 'Secret Incantation' : 'Choose Your Curse'}
+              </label>
+              <input
+                className="field-input"
+                id="password" name="password" type="password"
+                placeholder="Min. 8 dark characters..."
+                value={form.password} onChange={handleChange}
+                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+              />
+              {mode === 'signup' && form.password && (
+                <div className="strength-bar">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className="strength-seg"
+                      style={{
+                        background: i <= pwStrength ? strengthColors[pwStrength] : '#2a1508',
+                      }}
+                    />
+                  ))}
+                </div>
               )}
-            </AnimatePresence>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name Field - Only for Signup */}
-              <AnimatePresence>
-                {!isLogin && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <label className="block text-xs text-zinc-400 mb-2 uppercase tracking-wider">
-                      Name
-                    </label>
-                    <div className="relative">
-                      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
-                        <UserIcon />
-                      </div>
-                      <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Your full name"
-                        className="w-full bg-black/60 border border-zinc-800 rounded-lg pl-12 pr-4 py-3 text-white placeholder-zinc-500 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60 transition-all"
-                        disabled={isLoading}
-                      />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Email Field */}
-              <div>
-                <label className="block text-xs text-zinc-400 mb-2 uppercase tracking-wider">
-                  Email
-                </label>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
-                    <EmailIcon />
-                  </div>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    placeholder="your@email.com"
-                    className={`w-full bg-black/60 border rounded-lg pl-12 pr-4 py-3 text-white placeholder-zinc-500 outline-none transition-all ${
-                      emailError 
-                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500/60' 
-                        : 'border-zinc-800 focus:border-accent focus:ring-accent/60'
-                    }`}
-                    disabled={isLoading}
-                  />
+              {mode === 'signup' && form.password && (
+                <div style={{ fontSize: '0.72rem', color: strengthColors[pwStrength], marginTop: '0.3rem', fontFamily: 'Cinzel, serif', letterSpacing: '0.12em' }}>
+                  {strengthLabels[pwStrength]}
                 </div>
-                <AnimatePresence>
-                  {emailError && (
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="mt-1 text-xs text-red-400"
-                    >
-                      {emailError}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Password Field */}
-              <div>
-                <label className="block text-xs text-zinc-400 mb-2 uppercase tracking-wider">
-                  Password
-                </label>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">
-                    <LockIcon />
-                  </div>
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className="w-full bg-black/60 border border-zinc-800 rounded-lg pl-12 pr-12 py-3 text-white placeholder-zinc-500 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60 transition-all"
-                    disabled={isLoading}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 transition-colors"
-                  >
-                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Password Requirements - Only for Signup */}
-              <AnimatePresence>
-                {!isLogin && password.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <PasswordRequirements password={password} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    className="w-4 h-4 rounded border-zinc-600 bg-black/60 text-accent focus:ring-accent focus:ring-offset-0"
-                    disabled={isLoading}
-                  />
-                  <span className="text-xs text-zinc-400">Remember me</span>
-                </label>
-                {isLogin && (
-                  <button
-                    type="button"
-                    className="text-xs text-accent hover:underline"
-                  >
-                    Forgot password?
-                  </button>
-                )}
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full btn-primary py-3 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading ? (
-                  <>
-                    <SpinnerIcon />
-                    <span>{isLogin ? 'Signing in...' : 'Creating account...'}</span>
-                  </>
-                ) : (
-                  <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
-                )}
-              </button>
-            </form>
-
-            {/* Switch between Login/Signup */}
-            <div className="mt-6 text-center">
-              <p className="text-sm text-zinc-400">
-                {isLogin ? "Don't have an account?" : 'Already have an account?'}
-                <button
-                  onClick={handleSwitchMode}
-                  disabled={isLoading}
-                  className="ml-2 text-accent hover:underline disabled:opacity-50"
-                >
-                  {isLogin ? 'Sign Up' : 'Sign In'}
-                </button>
-              </p>
+              )}
             </div>
 
-            {/* Demo hint */}
-            <div className="mt-4 p-3 bg-zinc-800/50 rounded-lg">
-              <p className="text-xs text-zinc-500 text-center">
-                Demo: Enter any valid email and password (8+ chars for signup)
-              </p>
+            <div className="remember-row">
+              <input
+                className="remember-box"
+                type="checkbox" id="remember" name="remember"
+                checked={form.remember} onChange={handleChange}
+              />
+              <label className="remember-label" htmlFor="remember">
+                Remember my dark pact
+              </label>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+
+            <button className="submit-btn" type="submit" disabled={isLoading}>
+              {isLoading && <span className="spinner" />}
+              {isLoading
+                ? (mode === 'login' ? 'Summoning...' : 'Binding your soul...')
+                : (mode === 'login' ? '⚰ Enter the Crypt' : '🩸 Sign the Contract')
+              }
+            </button>
+          </form>
+
+          <div className="mode-switch">
+            <span className="mode-switch-text">
+              {mode === 'login' ? 'No soul on record?' : 'Already damned?'}
+            </span>
+            <button
+              className="mode-switch-btn"
+              type="button"
+              onClick={() => {
+                setForm({ name: '', email: '', password: '', remember: false });
+                setPwStrength(0);
+                setMode((m) => (m === 'login' ? 'signup' : 'login'));
+              }}
+            >
+              {mode === 'login' ? 'Join the Damned' : 'Return to Hell'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 export default AuthModal;
-
