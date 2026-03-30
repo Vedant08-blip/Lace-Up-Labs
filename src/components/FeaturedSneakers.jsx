@@ -78,9 +78,16 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
       onMouseLeave={() => { setHovered(false); tilt.handleLeave(); }}
       onMouseMove={tilt.handleMouse}
     >
-      <motion.button
-        type="button"
+      <motion.div
+        role="button"
+        tabIndex={0}
         onClick={() => onSelectSneaker(sneaker)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onSelectSneaker(sneaker);
+          }
+        }}
         className="relative w-full rounded-2xl overflow-hidden text-left focus:outline-none cursor-pointer group"
         style={{
           rotateX: tilt.rotateX,
@@ -238,7 +245,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
             </motion.button>
           </div>
         </div>
-      </motion.button>
+      </motion.div>
     </motion.div>
   );
 }
