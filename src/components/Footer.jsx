@@ -44,7 +44,7 @@ function MagLink({ href, children, external }) {
       <span className="relative z-10">{children}</span>
       <motion.span
         className="absolute -inset-x-2 -inset-y-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-        style={{ background: 'rgba(249,115,22,0.08)' }}
+        style={{ background: 'rgba(255,59,48,0.08)' }}
       />
     </motion.a>
   );
@@ -66,9 +66,9 @@ function SocialBtn({ href, label, children }) {
       transition={{ duration: 0.22, ease: 'easeOut' }}
       className="relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
       style={{
-        background: hovered ? 'rgba(249,115,22,0.12)' : 'rgba(255,255,255,0.03)',
-        border: hovered ? '1px solid rgba(249,115,22,0.4)' : '1px solid rgba(255,255,255,0.07)',
-        boxShadow: hovered ? '0 0 18px rgba(249,115,22,0.2)' : 'none',
+        background: hovered ? 'rgba(255,59,48,0.12)' : 'rgba(255,255,255,0.03)',
+        border: hovered ? '1px solid rgba(255,59,48,0.4)' : '1px solid rgba(255,255,255,0.07)',
+        boxShadow: hovered ? '0 0 18px rgba(255,59,48,0.2)' : 'none',
         color: hovered ? '#ff3b30' : '#52525b',
       }}
     >
@@ -187,7 +187,7 @@ function GlitchName() {
           className="glitch-text font-black uppercase leading-none"
           style={{
             color: 'transparent',
-            WebkitTextStroke: '1.5px rgba(249,115,22,0.4)',
+            WebkitTextStroke: '1.5px rgba(255,59,48,0.4)',
           }}
         >
           Trivedi
@@ -268,28 +268,21 @@ export function Footer() {
       className="relative mt-16 overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, transparent 0%, #0a0a0a 18%, #080808 100%)',
-        borderTop: '1px solid rgba(249,115,22,0.12)',
+        borderTop: '1px solid rgba(255,59,48,0.12)',
       }}
     >
-      {/* Top orange glow line */}
+      {/* Top accent glow line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-3/4 pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.55), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,59,48,0.55), transparent)' }}
       />
 
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.022]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(249,115,22,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.7) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {/* Background grid removed to avoid visible lines */}
 
       {/* Ambient glow */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-48 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(249,115,22,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(255,59,48,0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative px-6 sm:px-10 pt-12 pb-8 space-y-10">
@@ -318,7 +311,7 @@ export function Footer() {
               className="text-[3rem] sm:text-[4rem] font-black uppercase leading-none tracking-tight"
               style={{
                 color: 'transparent',
-                WebkitTextStroke: '1.5px rgba(249,115,22,0.35)',
+                WebkitTextStroke: '1.5px rgba(255,59,48,0.35)',
               }}
             >
               Labs
@@ -357,14 +350,14 @@ export function Footer() {
                 <span className="text-[0.5rem] uppercase tracking-[0.32em] text-zinc-600">{s.label}</span>
               </div>
               {i < stats.length - 1 && (
-                <div className="w-px h-8 self-center" style={{ background: 'rgba(249,115,22,0.2)' }} />
+                <div className="w-px h-8 self-center" style={{ background: 'rgba(255,59,48,0.2)' }} />
               )}
             </div>
           ))}
         </motion.div>
 
         {/* ── Divider ── */}
-        <div className="h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.2), transparent)' }} />
+        <div className="h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,59,48,0.2), transparent)' }} />
 
         {/* ── Nav + Social ── */}
         <motion.div
@@ -413,8 +406,8 @@ export function Footer() {
           className="relative rounded-2xl px-6 py-5 overflow-hidden"
           style={{
             background: 'linear-gradient(145deg, #1a1a1a 0%, #111 60%, #0e0e0e 100%)',
-            border: '1px solid rgba(249,115,22,0.25)',
-            boxShadow: '0 0 40px rgba(249,115,22,0.08), inset 0 1px 0 rgba(255,255,255,0.05)',
+            border: '1px solid rgba(255,59,48,0.25)',
+            boxShadow: '0 0 40px rgba(255,59,48,0.08), inset 0 1px 0 rgba(255,255,255,0.05)',
           }}
         >
           {/* Inner top sheen */}
@@ -432,13 +425,7 @@ export function Footer() {
             <span key={i} className={`absolute w-5 h-5 ${cls} border-accent/50 pointer-events-none`} />
           ))}
 
-          {/* Scanlines */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.025]"
-            style={{
-              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,1) 2px, rgba(0,0,0,1) 4px)',
-            }}
-          />
+          {/* Scanlines removed to avoid visible lines */}
 
           {/* Animated left bar */}
           <motion.div
@@ -480,8 +467,8 @@ export function Footer() {
                   transition={{ duration: 0.2 }}
                   className="flex items-center gap-2 rounded-xl px-3 py-1.5"
                   style={{
-                    background: 'rgba(249,115,22,0.07)',
-                    border: '1px solid rgba(249,115,22,0.18)',
+                    background: 'rgba(255,59,48,0.07)',
+                    border: '1px solid rgba(255,59,48,0.18)',
                   }}
                 >
                   <span className="text-sm leading-none">{badge.icon}</span>
@@ -506,7 +493,7 @@ export function Footer() {
           </p>
           <p
             className="text-[0.52rem] uppercase tracking-[0.3em]"
-            style={{ color: 'rgba(249,115,22,0.35)' }}
+            style={{ color: 'rgba(255,59,48,0.35)' }}
           >
             Always Wear Your Drip ✦
           </p>

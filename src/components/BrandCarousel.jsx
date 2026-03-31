@@ -21,7 +21,7 @@ function BrandCard({ brand }) {
       {/* Glow behind card on hover */}
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl"
-        style={{ background: 'radial-gradient(ellipse, rgba(249,115,22,0.3) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(255,59,48,0.3) 0%, transparent 70%)' }}
       />
 
       <div
@@ -32,8 +32,8 @@ function BrandCard({ brand }) {
           boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
         }}
         onMouseEnter={e => {
-          e.currentTarget.style.border = '1px solid rgba(249,115,22,0.45)';
-          e.currentTarget.style.boxShadow = '0 8px 32px rgba(249,115,22,0.18), 0 2px 8px rgba(0,0,0,0.8)';
+          e.currentTarget.style.border = '1px solid rgba(255,59,48,0.45)';
+          e.currentTarget.style.boxShadow = '0 8px 32px rgba(255,59,48,0.18), 0 2px 8px rgba(0,0,0,0.8)';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.border = '1px solid rgba(255,255,255,0.06)';
@@ -84,12 +84,12 @@ export function BrandCarousel() {
     <section
       className="relative py-8 sm:py-10 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, transparent 0%, rgba(249,115,22,0.03) 50%, transparent 100%)',
+        background: 'linear-gradient(180deg, transparent 0%, rgba(255,59,48,0.03) 50%, transparent 100%)',
       }}
     >
       {/* Top divider line */}
       <div className="relative flex items-center gap-4 px-6 sm:px-10 mb-6 sm:mb-8">
-        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.3))' }} />
+        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,59,48,0.3))' }} />
         <div className="flex flex-col items-center gap-1">
           <p className="text-[0.55rem] uppercase tracking-[0.42em] text-zinc-600">Est. 2024</p>
           <h2
@@ -106,7 +106,7 @@ export function BrandCarousel() {
           {/* Underline accent */}
           <div className="h-px w-12 rounded-full mt-0.5" style={{ background: 'linear-gradient(90deg, #ff3b30, #ff3b30)' }} />
         </div>
-        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.3), transparent)' }} />
+        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(255,59,48,0.3), transparent)' }} />
       </div>
 
       {/* Left + Right edge fade masks */}
@@ -145,7 +145,7 @@ export function BrandCarousel() {
 
       {/* Bottom divider */}
       <div className="mt-8 mx-6 sm:mx-10 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.2), transparent)' }} />
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,59,48,0.2), transparent)' }} />
 
       <style>{`
         @keyframes brand-scroll {

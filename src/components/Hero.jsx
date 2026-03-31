@@ -117,17 +117,7 @@ export function Hero({ selectedSneaker, onShopNow, onExplore }) {
         style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(255,59,48,0.06) 50%, transparent 100%)' }}
       />
 
-      {/* ── Grid background ── */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,59,48,0.8) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,59,48,0.8) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {/* ── Grid background removed to avoid visible lines ── */}
 
       {/* ── Red radial glow top-left ── */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,59,48,0.18),_transparent_60%)]" />

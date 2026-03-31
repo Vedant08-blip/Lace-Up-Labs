@@ -34,7 +34,7 @@ function RankBadge({ rank }) {
           : 'rgba(0,0,0,0.7)',
         border: isTop ? 'none' : '1px solid rgba(255,255,255,0.1)',
         backdropFilter: 'blur(8px)',
-        boxShadow: isTop ? '0 0 14px rgba(249,115,22,0.5)' : 'none',
+        boxShadow: isTop ? '0 0 14px rgba(255,59,48,0.5)' : 'none',
       }}
     >
       <span
@@ -117,7 +117,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
         className="absolute -inset-3 rounded-3xl pointer-events-none blur-2xl"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        style={{ background: 'radial-gradient(ellipse, rgba(249,115,22,0.22) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(255,59,48,0.22) 0%, transparent 70%)' }}
       />
 
       <motion.button
@@ -129,9 +129,9 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           rotateY: tilt.rotateY,
           transformStyle: 'preserve-3d',
           background: 'linear-gradient(160deg, #1c1c1c 0%, #111 60%, #0d0d0d 100%)',
-          border: hovered ? '1px solid rgba(249,115,22,0.45)' : '1px solid rgba(255,255,255,0.06)',
+          border: hovered ? '1px solid rgba(255,59,48,0.45)' : '1px solid rgba(255,255,255,0.06)',
           boxShadow: hovered
-            ? '0 20px 50px rgba(249,115,22,0.18), 0 6px 20px rgba(0,0,0,0.9)'
+            ? '0 20px 50px rgba(255,59,48,0.18), 0 6px 20px rgba(0,0,0,0.9)'
             : '0 4px 20px rgba(0,0,0,0.7)',
           transition: 'border 0.3s, box-shadow 0.3s',
         }}
@@ -156,13 +156,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           />
         ))}
 
-        {/* Scanlines */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.022] z-10"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,1) 2px, rgba(0,0,0,1) 4px)',
-          }}
-        />
+        {/* Scanlines removed to avoid visible lines */}
 
         {/* ── Image ── */}
         <div className="relative overflow-hidden h-36 sm:h-[175px]">
@@ -180,7 +174,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
             className="absolute inset-0 pointer-events-none"
             animate={{ opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
-            style={{ background: 'radial-gradient(ellipse at 50% 110%, rgba(249,115,22,0.2) 0%, transparent 65%)' }}
+            style={{ background: 'radial-gradient(ellipse at 50% 110%, rgba(255,59,48,0.2) 0%, transparent 65%)' }}
           />
 
           {/* Rank badge */}
@@ -209,7 +203,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
               className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full px-2 py-0.5"
               style={{
                 background: 'rgba(0,0,0,0.7)',
-                border: '1px solid rgba(249,115,22,0.35)',
+                border: '1px solid rgba(255,59,48,0.35)',
                 backdropFilter: 'blur(8px)',
               }}
               animate={{ scale: hovered ? [1, 1.06, 1] : 1 }}
@@ -228,7 +222,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           {/* Ghost index number */}
           <span
             className="absolute right-3 top-[10.5rem] text-[3.5rem] font-black leading-none select-none pointer-events-none"
-            style={{ color: 'transparent', WebkitTextStroke: '1px rgba(249,115,22,0.1)' }}
+            style={{ color: 'transparent', WebkitTextStroke: '1px rgba(255,59,48,0.1)' }}
           >
             {String(index + 1).padStart(2, '0')}
           </span>
@@ -250,7 +244,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
             {sneaker.rating && (
               <div
                 className="flex items-center gap-1 rounded-lg px-1.5 py-0.5"
-                style={{ background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.2)' }}
+                style={{ background: 'rgba(255,59,48,0.1)', border: '1px solid rgba(255,59,48,0.2)' }}
               >
                 <svg className="w-2.5 h-2.5" viewBox="0 0 20 20" fill="#ff3b30">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -268,7 +262,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           )}
 
           {/* Divider */}
-          <div className="h-px" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.3), transparent)' }} />
+          <div className="h-px" style={{ background: 'linear-gradient(90deg, rgba(255,59,48,0.3), transparent)' }} />
 
           {/* CTA */}
           <motion.button
@@ -283,10 +277,10 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
               background: 'linear-gradient(135deg, #ff3b30, #ff3b30)',
               border: '1px solid transparent',
               color: '#000',
-              boxShadow: '0 0 20px rgba(249,115,22,0.4)',
+              boxShadow: '0 0 20px rgba(255,59,48,0.4)',
             } : {
               background: 'transparent',
-              border: '1px solid rgba(249,115,22,0.2)',
+              border: '1px solid rgba(255,59,48,0.2)',
               color: '#52525b',
             }}
           >
@@ -294,7 +288,7 @@ function TrendingCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
               <motion.span
                 key={r.id}
                 className="absolute rounded-full pointer-events-none"
-                style={{ left: r.x - 40, top: r.y - 40, width: 80, height: 80, background: 'rgba(249,115,22,0.3)' }}
+                style={{ left: r.x - 40, top: r.y - 40, width: 80, height: 80, background: 'rgba(255,59,48,0.3)' }}
                 initial={{ scale: 0, opacity: 1 }}
                 animate={{ scale: 3, opacity: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -316,23 +310,16 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
       className="relative rounded-3xl p-5 sm:p-6 space-y-6 overflow-hidden"
       style={{
         background: 'linear-gradient(160deg, #111111 0%, #0a0a0a 100%)',
-        border: '1px solid rgba(249,115,22,0.1)',
-        boxShadow: '0 0 60px rgba(249,115,22,0.04), inset 0 1px 0 rgba(255,255,255,0.04)',
+        border: '1px solid rgba(255,59,48,0.1)',
+        boxShadow: '0 0 60px rgba(255,59,48,0.04), inset 0 1px 0 rgba(255,255,255,0.04)',
       }}
     >
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(249,115,22,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.6) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {/* Background grid removed to avoid visible lines */}
 
       {/* Top-right corner glow */}
       <div
         className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.07) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(255,59,48,0.07) 0%, transparent 70%)' }}
       />
 
       {/* ── Header ── */}
@@ -360,7 +347,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
             className="text-[1.8rem] sm:text-[2.2rem] font-black uppercase leading-none tracking-tight"
             style={{
               color: 'transparent',
-              WebkitTextStroke: '1.5px rgba(249,115,22,0.38)',
+              WebkitTextStroke: '1.5px rgba(255,59,48,0.38)',
             }}
           >
             Now
@@ -371,9 +358,9 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
         <div
           className="flex items-center gap-2 rounded-full px-4 py-2 self-start mt-1"
           style={{
-            background: 'rgba(249,115,22,0.08)',
-            border: '1px solid rgba(249,115,22,0.3)',
-            boxShadow: '0 0 20px rgba(249,115,22,0.1)',
+            background: 'rgba(255,59,48,0.08)',
+            border: '1px solid rgba(255,59,48,0.3)',
+            boxShadow: '0 0 20px rgba(255,59,48,0.1)',
           }}
         >
           <motion.span
@@ -389,7 +376,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
       </div>
 
       {/* ── Cards track ── */}
-      <div className="flex gap-4 overflow-x-auto pb-3 pt-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-orange-900/50 scrollbar-track-transparent -mx-1 px-1">
+      <div className="flex gap-4 overflow-x-auto pb-3 pt-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-accent/50 scrollbar-track-transparent -mx-1 px-1">
         {sneakers.map((sneaker, index) => (
           <TrendingCard
             key={sneaker.id}
@@ -404,7 +391,7 @@ export function Trending({ sneakers, onSelectSneaker, onAddToCart }) {
       {/* Bottom glow bar */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-2/3 pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.4), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,59,48,0.4), transparent)' }}
       />
     </section>
   );

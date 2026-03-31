@@ -94,9 +94,9 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           rotateY: tilt.rotateY,
           transformStyle: 'preserve-3d',
           background: 'linear-gradient(145deg, #1a1a1a 0%, #111111 60%, #0d0d0d 100%)',
-          border: hovered ? '1px solid rgba(249,115,22,0.5)' : '1px solid rgba(255,255,255,0.06)',
+          border: hovered ? '1px solid rgba(255,59,48,0.5)' : '1px solid rgba(255,255,255,0.06)',
           boxShadow: hovered
-            ? '0 0 0 1px rgba(249,115,22,0.2), 0 20px 60px rgba(249,115,22,0.15), 0 8px 24px rgba(0,0,0,0.8)'
+            ? '0 0 0 1px rgba(255,59,48,0.2), 0 20px 60px rgba(255,59,48,0.15), 0 8px 24px rgba(0,0,0,0.8)'
             : '0 4px 24px rgba(0,0,0,0.6)',
           transition: 'border 0.3s, box-shadow 0.3s',
         }}
@@ -117,18 +117,10 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           {/* Dark gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-          {/* Scanline overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)',
-            }}
-          />
-
           {/* Orange glow on hover */}
           <motion.div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at 50% 120%, rgba(249,115,22,0.18) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(ellipse at 50% 120%, rgba(255,59,48,0.18) 0%, transparent 70%)' }}
             animate={{ opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
           />
@@ -175,7 +167,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
             className="absolute top-[9.5rem] sm:top-[11.5rem] left-4 text-[4rem] font-black leading-none select-none pointer-events-none"
             style={{
               color: 'transparent',
-              WebkitTextStroke: '1px rgba(249,115,22,0.12)',
+              WebkitTextStroke: '1px rgba(255,59,48,0.12)',
               fontVariantNumeric: 'tabular-nums',
             }}
           >
@@ -200,7 +192,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
           </div>
 
           {/* Divider */}
-          <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.4), transparent)' }} />
+          <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, rgba(255,59,48,0.4), transparent)' }} />
 
           {/* Rating + CTA */}
           <div className="flex items-center gap-2">
@@ -224,7 +216,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
                 background: 'linear-gradient(135deg, #ff3b30, #ff3b30)',
                 border: '1px solid transparent',
                 color: '#000',
-                boxShadow: '0 0 20px rgba(249,115,22,0.4)',
+                boxShadow: '0 0 20px rgba(255,59,48,0.4)',
               } : {
                 background: 'transparent',
                 border: '1px solid rgba(255,255,255,0.1)',
@@ -235,7 +227,7 @@ function SneakerCard({ sneaker, index, onSelectSneaker, onAddToCart }) {
                 <motion.span
                   key={r.id}
                   className="absolute rounded-full pointer-events-none"
-                  style={{ left: r.x - 40, top: r.y - 40, width: 80, height: 80, background: 'rgba(249,115,22,0.35)' }}
+                  style={{ left: r.x - 40, top: r.y - 40, width: 80, height: 80, background: 'rgba(255,59,48,0.35)' }}
                   initial={{ scale: 0, opacity: 1 }}
                   animate={{ scale: 3, opacity: 0 }}
                   transition={{ duration: 0.65, ease: 'easeOut' }}
@@ -258,23 +250,16 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
       className="relative rounded-3xl p-5 sm:p-8 space-y-6 overflow-hidden"
       style={{
         background: 'linear-gradient(160deg, #111111 0%, #0a0a0a 100%)',
-        border: '1px solid rgba(249,115,22,0.12)',
-        boxShadow: '0 0 60px rgba(249,115,22,0.05), inset 0 1px 0 rgba(255,255,255,0.04)',
+        border: '1px solid rgba(255,59,48,0.12)',
+        boxShadow: '0 0 60px rgba(255,59,48,0.05), inset 0 1px 0 rgba(255,255,255,0.04)',
       }}
     >
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(249,115,22,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.6) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {/* Background grid removed to avoid visible lines */}
 
       {/* Top-right corner glow */}
       <div
         className="absolute -top-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(255,59,48,0.08) 0%, transparent 70%)' }}
       />
 
       {/* ── Header ── */}
@@ -304,7 +289,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
             className="font-black text-[2rem] sm:text-[2.6rem] leading-none tracking-tight uppercase"
             style={{
               color: 'transparent',
-              WebkitTextStroke: '1.5px rgba(249,115,22,0.45)',
+              WebkitTextStroke: '1.5px rgba(255,59,48,0.45)',
             }}
           >
             Sneakers
@@ -325,7 +310,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
       </div>
 
       {/* ── Cards track ── */}
-      <div className="relative flex gap-5 overflow-x-auto pb-3 pt-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-orange-900/60 scrollbar-track-transparent -mx-1 px-1">
+      <div className="relative flex gap-5 overflow-x-auto pb-3 pt-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-accent/60 scrollbar-track-transparent -mx-1 px-1">
         {sneakers.map((sneaker, index) => (
           <SneakerCard
             key={sneaker.id}
@@ -340,7 +325,7 @@ export function FeaturedSneakers({ sneakers, onSelectSneaker, onViewAll, onAddTo
       {/* Bottom orange glow bar */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-2/3 pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,59,48,0.5), transparent)' }}
       />
     </section>
   );
