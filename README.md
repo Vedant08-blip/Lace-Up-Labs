@@ -98,7 +98,10 @@ The site uses a clean vertical section-based structure:
 
 MIT
 
-## 👨‍💻 Author
+ ## 👨‍💻 Author
 
-Vedant Trivedi - [GitHub](https://github.com/Vedant08-blip)
+Vedant Trivedi  
+💻 Full-Stack Developer | MCA Student  
+
+🔗 GitHub: [Vedant08-blip](https://github.com/Vedant08-blip
 
