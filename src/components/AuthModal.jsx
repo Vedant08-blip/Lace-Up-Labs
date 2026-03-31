@@ -137,26 +137,24 @@ export function AuthModal() {
           position: absolute;
           top: 14px;
           left: 14px;
+          width: 34px;
+          height: 34px;
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 6px 10px;
+          justify-content: center;
           border-radius: 999px;
-          background: rgba(255,255,255,0.04);
+          background: rgba(0,0,0,0.35);
           border: 1px solid rgba(255,255,255,0.08);
-          color: #e5e7eb;
-          font-family: 'Poppins', system-ui, sans-serif;
-          font-size: 0.72rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
+          color: rgba(255,255,255,0.8);
           cursor: pointer;
           transition: all 0.2s ease;
         }
         .back-btn:hover {
           border-color: rgba(255,59,48,0.6);
           color: #ffb3ae;
-          box-shadow: 0 0 20px rgba(255,59,48,0.25);
+          box-shadow: 0 0 18px rgba(255,59,48,0.25);
         }
+        .back-btn span { display: none; }
 
         .accent-grid {
           position: absolute;
@@ -400,10 +398,10 @@ export function AuthModal() {
           onClick={(e) => e.stopPropagation()}
         >
           <button className="back-btn" type="button" onClick={handleClose} aria-label="Go back">
-            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back
+            <span>Back</span>
           </button>
           <div className="corner-dec corner-tl" />
           <div className="corner-dec corner-tr" />
