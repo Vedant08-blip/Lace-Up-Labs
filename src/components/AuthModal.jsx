@@ -392,17 +392,18 @@ export function AuthModal() {
       <div className="auth-backdrop" onClick={handleClose}>
         <AccentGrid />
 
+        <button className="back-btn" type="button" onClick={handleClose} aria-label="Go back">
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Back</span>
+        </button>
+
         <div
           className="auth-card"
           style={{ '--visible': visible ? 1 : 0, '--ty': visible ? '0px' : '20px' }}
           onClick={(e) => e.stopPropagation()}
         >
-          <button className="back-btn" type="button" onClick={handleClose} aria-label="Go back">
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span>Back</span>
-          </button>
           <div className="corner-dec corner-tl" />
           <div className="corner-dec corner-tr" />
           <div className="corner-dec corner-bl" />
