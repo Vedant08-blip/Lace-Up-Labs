@@ -16,19 +16,47 @@ const fadeInUp = {
 
 export function Reviews({ reviews }) {
   return (
-    <section id="reviews" className="space-y-6">
+    <section
+      id="reviews"
+      className="relative rounded-3xl p-5 sm:p-6 space-y-6 overflow-hidden border border-zinc-800/80"
+      style={{ background: "linear-gradient(160deg, #111111 0%, #0a0a0a 100%)" }}
+    >
+      {/* Ambient glow */}
+      <div
+        className="absolute -top-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(255,59,48,0.08) 0%, transparent 70%)" }}
+      />
+
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
-          <p className="text-[0.65rem] uppercase tracking-[0.32em] text-zinc-500">
-            Community Talk
-          </p>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: "#ff3b30" }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "#ff3b30" }} />
+            </span>
+            <p className="text-[0.58rem] uppercase tracking-[0.36em] text-zinc-600">Community Talk</p>
+          </div>
 
-          <h2 className="font-heading text-2xl sm:text-3xl tracking-[0.16em] uppercase">
-            Customer Reviews
+          <h2
+            className="text-[1.8rem] sm:text-[2.2rem] font-black uppercase leading-none tracking-tight"
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #ff3b30 55%, #ff3b30 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            Customer
+          </h2>
+          <h2
+            className="text-[1.8rem] sm:text-[2.2rem] font-black uppercase leading-none tracking-tight"
+            style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(255,59,48,0.35)" }}
+          >
+            Reviews
           </h2>
 
-          <p className="text-sm text-zinc-400 mt-1 max-w-xl">
+          <p className="text-sm text-zinc-400 mt-2 max-w-xl">
             Hear what sneaker lovers are saying about their LaceUp Labs picks.
           </p>
         </div>
@@ -39,7 +67,7 @@ export function Reviews({ reviews }) {
         {reviews.map((review, i) => (
           <motion.article
             key={review.name}
-            className="rounded-2xl bg-card/70 border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[15rem] sm:min-w-[18rem]"
+            className="rounded-2xl bg-[#141414] border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(255,59,48,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[15rem] sm:min-w-[18rem]"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
@@ -61,14 +89,14 @@ export function Reviews({ reviews }) {
                     {review.role}
                   </p>
 
-                  <span className="text-[8px] text-emerald-400 uppercase tracking-wider">
+                  <span className="text-[8px] text-accent uppercase tracking-wider">
                     Verified Buyer
                   </span>
                 </div>
               </div>
 
               {/* Star Rating */}
-              <div className="text-emerald-400 text-[9px]">
+              <div className="text-accent text-[9px]">
                 {"★★★★★".slice(0, Math.round(review.rating))}
               </div>
             </div>
