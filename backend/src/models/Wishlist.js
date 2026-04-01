@@ -7,6 +7,16 @@ const wishlistItemSchema = new mongoose.Schema(
       ref: 'Sneaker',
       required: true,
     },
+    size: {
+      type: Number,
+      min: 1,
+    },
+    notes: {
+      type: String,
+      trim: true,
+      maxlength: 500,
+      default: '',
+    },
     addedAt: {
       type: Date,
       default: Date.now,
@@ -32,6 +42,24 @@ const wishlistSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+wishlistSchema.methods.addItem = function addItem({ sneakerId, size, notes }) {
+  const alreadyExists = this.items.some(
+    (item) => item.sneaker.toString() === sneakerId.toString() && item.size === size
+  );
+
+  if (alreadyExists) {
+    return false;
+  }
+
+  this.items.push({
+    sneaker: sneakerId,
+    size,
+    notes: notes || '',
+  });
+
+  return true;
+};
 
 const Wishlist = mongoose.model('Wishlist', wishlistSchema);
 
