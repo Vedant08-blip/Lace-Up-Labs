@@ -40,6 +40,11 @@ export const addToCart = async (req, res) => {
       return;
     }
 
+    if (!Number.isInteger(quantity) || quantity < 1) {
+      res.status(400).json({ message: 'Quantity must be an integer >= 1.' });
+      return;
+    }
+
     const cart = await getOrCreateCart(userId);
     cart.addItem({ sneakerId, size, quantity, notes });
     await cart.save();
