@@ -10,102 +10,141 @@ export function Header({ onSelectSneaker }) {
   const { user, openAuthModal, logout } = useAuth();
 
   return (
-    <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4 sm:py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur">
-      <div className="flex items-center justify-center md:justify-start gap-3 w-full md:w-auto">
-        <div className="h-10 w-10 flex items-center justify-center">
+    <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4 sm:py-6 sticky top-0 z-20 bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur-md border-b border-white/5 transition-all duration-300">
+      <div className="flex items-center justify-center md:justify-start gap-3 w-full md:w-auto group">
+        <motion.div 
+          className="h-10 w-10 flex items-center justify-center"
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          transition={{ duration: 0.3 }}
+        >
           <img
             src="/Logo.svg"
             alt="Lace Up Labs Skull Logo"
             className="w-full h-full object-contain"
           />
-        </div>
-        <div className="text-center md:text-left">
-          <div className="font-heading text-lg sm:text-2xl tracking-[0.2em] uppercase">
+        </motion.div>
+        <motion.div 
+          className="text-center md:text-left"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="font-heading text-lg sm:text-2xl tracking-[0.2em] uppercase bg-linear-to-r from-white via-white to-red-400 bg-clip-text text-transparent">
             Lace Up Labs
           </div>
-          <p className="text-[0.6rem] sm:text-xs text-zinc-400">
+          <p className="text-[0.6rem] sm:text-xs text-zinc-400 group-hover:text-zinc-300 transition-colors">
             Sneaker that fits your soul, not just your feet
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Search Bar - Desktop */}
-      <div className="hidden md:block">
+      <motion.div 
+        className="hidden md:block"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <SearchBar onSelectSneaker={onSelectSneaker} />
-      </div>
+      </motion.div>
 
       {/* Search Bar - Mobile */}
-      <div className="block md:hidden w-full">
+      <motion.div 
+        className="block md:hidden w-full"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <SearchBar onSelectSneaker={onSelectSneaker} />
-      </div>
+      </motion.div>
 
       <div className="flex items-center justify-center md:justify-end w-full md:w-auto gap-2 sm:gap-3 md:gap-4">
         {/* Wishlist Button */}
-        <button
+        <motion.button
           onClick={() => setIsWishlistOpen(true)}
-          className="relative p-2 hover:bg-white/10 rounded-lg transition-colors"
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative p-2.5 hover:bg-red-500/10 rounded-lg transition-all duration-300 group"
         >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 group-hover:text-red-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
           {wishlistCount > 0 && (
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center"
+              className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg shadow-red-500/50"
             >
               {wishlistCount}
             </motion.span>
           )}
-        </button>
+        </motion.button>
 
         {/* Cart Button */}
-        <button
+        <motion.button
           onClick={() => setIsCartOpen(true)}
-          className="relative p-2 hover:bg-white/10 rounded-lg transition-colors"
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative p-2.5 hover:bg-accent/10 rounded-lg transition-all duration-300 group"
         >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
           {cartCount > 0 && (
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-black text-xs font-bold rounded-full flex items-center justify-center"
+              className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-accent to-orange-600 text-black text-xs font-bold rounded-full flex items-center justify-center shadow-lg shadow-accent/50"
             >
               {cartCount}
             </motion.span>
           )}
-        </button>
+        </motion.button>
 
         {/* User Button */}
         {user ? (
-          <div className="relative group">
-            <button className="flex items-center gap-2 p-1 hover:bg-white/10 rounded-lg transition-colors">
+          <motion.div 
+            className="relative group"
+            whileHover={{ scale: 1.05 }}
+          >
+            <motion.button 
+              className="flex items-center gap-2 p-1 hover:bg-white/10 rounded-lg transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <img
                 src={user.avatar}
                 alt={user.name}
-                className="w-8 h-8 rounded-full object-cover border border-zinc-700"
+                className="w-8 h-8 rounded-full object-cover border border-zinc-700 group-hover:border-accent transition-colors"
               />
-            </button>
+            </motion.button>
             {/* Dropdown */}
-            <div className="absolute right-0 top-full mt-2 w-48 bg-card border border-zinc-800 rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-              <div className="p-3 border-b border-zinc-800">
+            <motion.div 
+              initial={{ opacity: 0, y: -5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="absolute right-0 top-full mt-2 w-48 bg-card border border-zinc-800 rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+            >
+              <div className="p-3 border-b border-zinc-800 bg-card/80">
                 <p className="text-sm font-medium">{user.name}</p>
                 <p className="text-xs text-zinc-500">{user.email}</p>
               </div>
-              <button
+              <motion.button
                 onClick={logout}
+                whileHover={{ backgroundColor: 'rgba(244, 63, 94, 0.1)' }}
                 className="w-full p-3 text-left text-sm text-red-400 hover:bg-white/5 transition-colors"
               >
                 Sign Out
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
         ) : (
-          <button onClick={openAuthModal} className="btn-secondary">
+          <motion.button 
+            onClick={openAuthModal}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-primary"
+          >
             Sign In
-          </button>
+          </motion.button>
         )}
       </div>
     </header>

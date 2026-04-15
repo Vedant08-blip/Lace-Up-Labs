@@ -15,29 +15,28 @@ function BrandCard({ brand }) {
   return (
     <motion.div
       className="flex-shrink-0 group relative"
-      whileHover={{ scale: 1.06, y: -4 }}
+      whileHover={{ scale: 1.08, y: -6 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      {/* Glow behind card on hover */}
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl"
-        style={{ background: 'radial-gradient(ellipse, rgba(255,59,48,0.3) 0%, transparent 70%)' }}
+      {/* Dynamic glow behind card on hover */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-2xl"
+        animate={{ 
+          background: ['radial-gradient(ellipse, rgba(255,59,48,0.2) 0%, transparent 70%)', 'radial-gradient(ellipse, rgba(255,59,48,0.35) 0%, transparent 70%)']
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
       />
 
-      <div
-        className="relative w-24 h-16 sm:w-28 sm:h-20 rounded-2xl flex flex-col items-center justify-center px-4 gap-2 overflow-hidden cursor-pointer transition-all duration-300"
+      <motion.div
+        className="relative w-24 h-16 sm:w-28 sm:h-20 rounded-2xl flex flex-col items-center justify-center px-4 gap-2 overflow-hidden cursor-pointer transition-all duration-300 group-hover:shadow-glow-lg"
         style={{
           background: 'linear-gradient(145deg, #1c1c1c 0%, #111111 100%)',
           border: '1px solid rgba(255,255,255,0.06)',
           boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
         }}
-        onMouseEnter={e => {
-          e.currentTarget.style.border = '1px solid rgba(255,59,48,0.45)';
-          e.currentTarget.style.boxShadow = '0 8px 32px rgba(255,59,48,0.18), 0 2px 8px rgba(0,0,0,0.8)';
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.border = '1px solid rgba(255,255,255,0.06)';
-          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+        whileHover={{
+          borderColor: 'rgba(255,59,48,0.45)',
+          boxShadow: '0 8px 32px rgba(255,59,48,0.25), 0 2px 8px rgba(0,0,0,0.8)',
         }}
       >
         {/* Inner top sheen */}
@@ -47,16 +46,20 @@ function BrandCard({ brand }) {
         />
 
         {/* Orange bottom border on hover */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-3/4 transition-all duration-300 pointer-events-none rounded-full"
+        <motion.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px rounded-full pointer-events-none"
           style={{ background: 'linear-gradient(90deg, transparent, #ff3b30, transparent)' }}
+          initial={{ width: 0 }}
+          whileHover={{ width: '75%' }}
+          transition={{ duration: 0.3 }}
         />
 
-        <img
+        <motion.img
           src={brand.logo}
           alt={brand.name}
-          className="w-full h-8 sm:h-10 object-contain transition-all duration-300 group-hover:brightness-125"
+          className="w-full h-8 sm:h-10 object-contain transition-all duration-300"
           style={{ filter: 'brightness(0.85) grayscale(0.2)' }}
+          whileHover={{ filter: 'brightness(1.1) grayscale(0)', scale: 1.05 }}
           onError={(e) => {
             e.target.style.display = 'none';
             e.target.nextSibling.style.display = 'flex';
@@ -69,10 +72,13 @@ function BrandCard({ brand }) {
           {brand.name}
         </span>
 
-        <p className="text-[0.52rem] uppercase tracking-[0.3em] text-zinc-700 group-hover:text-accent/70 transition-colors duration-300 leading-none">
+        <motion.p 
+          className="text-[0.52rem] uppercase tracking-[0.3em] text-zinc-700 group-hover:text-accent/70 transition-colors duration-300 leading-none"
+          whileHover={{ color: '#ff3b30', textShadow: '0 0 10px rgba(255,59,48,0.5)' }}
+        >
           {brand.name}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </motion.div>
   );
 }

@@ -67,39 +67,50 @@ export function Reviews({ reviews }) {
         {reviews.map((review, i) => (
           <motion.article
             key={review.name}
-            className="rounded-2xl bg-[#141414] border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-[0_0_25px_rgba(255,59,48,0.25)] transition-all duration-300 snap-start flex-shrink-0 min-w-[15rem] sm:min-w-[18rem]"
+            className="rounded-2xl bg-[#141414] border border-zinc-800/80 p-3 flex flex-col justify-between cursor-pointer hover:border-accent/80 hover:shadow-glow-lg transition-all duration-300 snap-start flex-shrink-0 min-w-[15rem] sm:min-w-[18rem] group hover:bg-[#1a1a1a]"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
             custom={i + 1}
+            whileHover={{ y: -4, scale: 1.02 }}
           >
             {/* Top Section */}
-            <div className="flex items-center justify-between gap-2 mb-2">
+            <motion.div 
+              className="flex items-center justify-between gap-2 mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               <div className="flex items-center gap-2">
-                <img
+                <motion.img
                   src={review.avatar}
                   alt={review.name}
-                  className="w-8 h-8 rounded-full object-cover border border-zinc-700"
+                  className="w-8 h-8 rounded-full object-cover border border-zinc-700 group-hover:border-accent transition-colors"
+                  whileHover={{ scale: 1.1 }}
                 />
 
                 <div>
-                  <p className="text-xs font-medium">{review.name}</p>
+                  <p className="text-xs font-medium group-hover:text-accent transition-colors">{review.name}</p>
 
                   <p className="text-[0.5rem] text-zinc-500 uppercase tracking-widest">
                     {review.role}
                   </p>
 
-                  <span className="text-[8px] text-accent uppercase tracking-wider">
-                    Verified Buyer
-                  </span>
+                  <motion.span 
+                    className="text-[8px] text-accent uppercase tracking-wider font-semibold"
+                    animate={{ opacity: [0.6, 1, 0.6] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    ✓ Verified
+                  </motion.span>
                 </div>
               </div>
 
               {/* Star Rating */}
-              <div className="text-accent text-[9px]">
+              <div className="text-amber-400 text-[9px] font-bold">
                 {"★★★★★".slice(0, Math.round(review.rating))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Review Text */}
             <div className="space-y-1">
