@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useWishlist } from '../context/WishlistContext';
 
-export function Header({ onSelectSneaker }) {
+export function Header({ onSelectSneaker, onOpenForum, onOpenCheckout, onOpenOrderTracking }) {
   const { cartCount, setIsCartOpen } = useCart();
   const { wishlistCount, setIsWishlistOpen } = useWishlist();
   const { user, openAuthModal, logout } = useAuth();
@@ -58,6 +58,45 @@ export function Header({ onSelectSneaker }) {
       </motion.div>
 
       <div className="flex items-center justify-center md:justify-end w-full md:w-auto gap-2 sm:gap-3 md:gap-4">
+        {/* Community Forum Button */}
+        <motion.button
+          onClick={onOpenForum}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative p-2.5 hover:bg-blue-500/10 rounded-lg transition-all duration-300 group"
+          title="Community Forum"
+        >
+          <svg className="w-6 h-6 group-hover:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+          </svg>
+        </motion.button>
+
+        {/* Checkout Button */}
+        <motion.button
+          onClick={onOpenCheckout}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative p-2.5 hover:bg-purple-500/10 rounded-lg transition-all duration-300 group"
+          title="Checkout"
+        >
+          <svg className="w-6 h-6 group-hover:text-purple-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </motion.button>
+
+        {/* Order Tracking Button */}
+        <motion.button
+          onClick={onOpenOrderTracking}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative p-2.5 hover:bg-green-500/10 rounded-lg transition-all duration-300 group"
+          title="Order Tracking"
+        >
+          <svg className="w-6 h-6 group-hover:text-green-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+        </motion.button>
+
         {/* Wishlist Button */}
         <motion.button
           onClick={() => setIsWishlistOpen(true)}

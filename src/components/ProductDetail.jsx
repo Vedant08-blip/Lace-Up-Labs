@@ -557,6 +557,40 @@ export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSele
               {wishlisted ? "Wishlisted" : "Wishlist"}
             </button>
 
+            {/* Share */}
+            <button
+              onClick={onShare}
+              className="group flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300"
+              style={{
+                background: "rgba(34,197,94,0.08)",
+                border: "1px solid rgba(34,197,94,0.3)",
+                color: "#86efac",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "rgba(34,197,94,0.5)";
+                e.currentTarget.style.background = "rgba(34,197,94,0.12)";
+                e.currentTarget.style.boxShadow = "0 0 20px rgba(34,197,94,0.1)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "rgba(34,197,94,0.3)";
+                e.currentTarget.style.background = "rgba(34,197,94,0.08)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <svg
+                className="w-4 h-4 transition-transform duration-200 group-hover:scale-110"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round"
+                  d="M8.25 4.5L12 1m0 0l3.75 3.5M12 1v13.5m6.75-3.75c0 1.657-.896 3.097-2.225 3.867m0-6.867c1.329.77 2.225 2.21 2.225 3.867m0 0c-3.134 2.667-7.9 2.667-11.133 0m0 0c-1.329-.77-2.225-2.21-2.225-3.867m0 6.867c-1.329-.77-2.225-2.21-2.225-3.867"
+                />
+              </svg>
+              Share
+            </button>
+
             {/* Add to Cart */}
             <button
               onClick={handleAddToCart}

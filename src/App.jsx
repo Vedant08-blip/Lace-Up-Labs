@@ -121,7 +121,12 @@ function AppContent() {
     <div ref={appRef} className="bg-background text-white min-h-screen">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 lg:pb-32">
         {/* Header / Navbar */}
-        <Header onSelectSneaker={handleSelectSneaker} />
+        <Header 
+          onSelectSneaker={handleSelectSneaker}
+          onOpenForum={() => setIsForumOpen(true)}
+          onOpenCheckout={() => setIsCheckoutOpen(true)}
+          onOpenOrderTracking={() => setIsOrderTrackingOpen(true)}
+        />
 
         {/* Vertical Section-Based Layout */}
         <main className="flex flex-col gap-6 sm:gap-8 pt-4">
@@ -156,6 +161,7 @@ function AppContent() {
               sneaker={selectedSneaker}
               requireSizeSelection={requireSizeSelection}
               onRequireSizeSelectionChange={setRequireSizeSelection}
+              onShare={() => setIsShareOpen(true)}
             />
           </div>
 
