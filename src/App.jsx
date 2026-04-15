@@ -25,6 +25,7 @@ import { useAIRecommendation } from './hooks/useAIRecommendation';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { WishlistProvider } from './context/WishlistContext';
+import { CheckoutProvider } from './context/CheckoutContext';
 import { SNEAKERS, REVIEWS } from './data/sneakers';
 
 function AppContent() {
@@ -206,7 +207,7 @@ function AppContent() {
       </div>
 
       {/* Global Modals & Sidebars */}
-      <CartSidebar />
+      <CartSidebar onCheckout={() => setIsCheckoutOpen(true)} />
       <WishlistSidebar />
       <AuthModal />
       <ToastContainer />
@@ -223,7 +224,9 @@ function App() {
     <WishlistProvider>
       <AuthProvider>
         <CartProvider>
-          <AppContent />
+          <CheckoutProvider>
+            <AppContent />
+          </CheckoutProvider>
         </CartProvider>
       </AuthProvider>
     </WishlistProvider>

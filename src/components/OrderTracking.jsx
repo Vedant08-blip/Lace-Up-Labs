@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useCheckout } from '../context/CheckoutContext';
 
 const ORDER_STATUSES = {
   placed: { label: 'Order Placed', icon: '✓', color: 'text-green-400', bgColor: 'bg-green-500/20' },
@@ -69,7 +70,7 @@ function OrderCard({ order, onClick }) {
           </p>
           <p className="text-xs text-zinc-500">{order.date}</p>
         </div>
-        <div className="text-right flex-shrink-0">
+        <div className="text-right shrink-0">
           <p className="text-lg font-bold text-accent">₹{order.total.toLocaleString()}</p>
           <p className="text-xs text-zinc-500">1 item</p>
         </div>
@@ -83,7 +84,7 @@ function OrderCard({ order, onClick }) {
               width: order.status === 'placed' ? '20%' : order.status === 'processing' ? '40%' : order.status === 'shipped' ? '60%' : order.status === 'intransit' ? '80%' : '100%',
             }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="h-full bg-gradient-to-r from-accent to-orange-600"
+            className="h-full bg-linear-to-r from-accent to-orange-600"
           />
         </div>
       </div>
@@ -92,6 +93,7 @@ function OrderCard({ order, onClick }) {
 }
 
 export function OrderTracking({ isOpen, onClose }) {
+  const { orders } = useCheckout();
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [expandedTimeline, setExpandedTimeline] = useState(null);
 
@@ -229,7 +231,7 @@ export function OrderTracking({ isOpen, onClose }) {
                           <p className="text-sm font-semibold text-white line-clamp-2">{item.name}</p>
                           <p className="text-xs text-zinc-500 mt-1">Size: {item.size}</p>
                         </div>
-                        <div className="text-right flex-shrink-0">
+                        <div className="text-right shrink-0">
                           <p className="text-accent font-semibold">₹{item.price.toLocaleString()}</p>
                         </div>
                       </div>
@@ -260,7 +262,7 @@ export function OrderTracking({ isOpen, onClose }) {
 
                           {/* Timeline line */}
                           {idx < selectedOrder.timeline.length - 1 && (
-                            <div className="absolute -left-3 top-6 w-0.5 h-12 bg-gradient-to-b from-zinc-700 to-zinc-900" />
+                            <div className="absolute -left-3 top-6 w-0.5 h-12 bg-linear-to-b from-zinc-700 to-zinc-900" />
                           )}
 
                           {/* Content */}
@@ -323,8 +325,8 @@ export function OrderTracking({ isOpen, onClose }) {
               ) : (
                 // Orders List
                 <div className="p-6 space-y-4">
-                  {mockOrders.length > 0 ? (
-                    mockOrders.map((order) => (
+                  {orders.length > 0 ? (
+                    orders.map((order) => (
                       <OrderCard
                         key={order.id}
                         order={order}

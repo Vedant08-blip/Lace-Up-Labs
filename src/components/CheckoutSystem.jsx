@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { useCheckout } from '../context/CheckoutContext';
 
 const SHIPPING_OPTIONS = [
   { id: 'standard', name: 'Standard Delivery', price: 0, days: '5-7 days', icon: '📦' },
@@ -64,6 +65,7 @@ function CheckoutStep({ step, currentStep, title, number, children }) {
 export function CheckoutSystem({ isOpen, onClose }) {
   const { cart, cartTotal, clearCart } = useCart();
   const { user, openAuthModal } = useAuth();
+  const { addOrder } = useCheckout();
   const [currentStep, setCurrentStep] = useState(0);
   const [shippingOption, setShippingOption] = useState('standard');
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -129,8 +131,19 @@ export function CheckoutSystem({ isOpen, onClose }) {
 
     setIsProcessing(true);
     setTimeout(() => {
-      const newOrderId = `LU-${Date.now()}`;
-      setOrderId(newOrderId);
+      // Create order data
+      const orderData = {
+        items: cart,
+        total: finalTotal,
+        shippingAddress: formData,
+        shippingOption,
+        paymentMethod,
+        appliedCoupon,
+      };
+      
+      // Add order to checkout context
+      const newOrder = addOrder(orderData);
+      setOrderId(newOrder.id);
       setOrderPlaced(true);
       clearCart();
       setIsProcessing(false);

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
-export function CartSidebar() {
+export function CartSidebar({ onCheckout }) {
   const { cart, removeFromCart, clearCart, cartTotal, isCartOpen, setIsCartOpen } = useCart();
 
   return (
@@ -144,6 +144,10 @@ export function CartSidebar() {
                   </motion.span>
                 </div>
                 <motion.button 
+                  onClick={() => {
+                    setIsCartOpen(false);
+                    onCheckout?.();
+                  }}
                   className="w-full btn-primary py-3 font-semibold shadow-lg shadow-accent/30"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
