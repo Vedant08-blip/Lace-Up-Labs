@@ -171,7 +171,7 @@ function ImageViewer({ sneaker }) {
   );
 }
 
-export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSelectionChange }) {
+export function ProductDetail({ sneaker, requireSizeSelection, onRequireSizeSelectionChange, onShare }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);

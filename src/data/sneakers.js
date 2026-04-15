@@ -268,7 +268,7 @@ export const REVIEWS = [
     rating: 5,
   },
   {
-    name: 'Critiano Ronaldo.',
+    name: 'Cristiano Ronaldo.',
     role: 'Footballer · Portugal',
     avatar: 'https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'Fit is perfect and the vibe is elite☠️.',
@@ -276,7 +276,7 @@ export const REVIEWS = [
   },
   {
     name: 'Meet Joshi.',
-    role: 'Sneakerhead · Miami',
+    role: 'Sneakerhead · Ahemdabad.India',    
     avatar: 'https://plus.unsplash.com/premium_photo-1739178656495-8109a8bc4f53?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'These look insane with every outfit. Easy cop!❤️‍🔥',
     rating: 5,

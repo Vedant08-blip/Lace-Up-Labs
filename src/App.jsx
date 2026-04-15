@@ -15,7 +15,11 @@ import {
   CartSidebar,
   AuthModal,
   WishlistSidebar,
-  ToastContainer
+  ToastContainer,
+  ShareToSocial,
+  CommunityForum,
+  CheckoutSystem,
+  OrderTracking
 } from './components';
 import { useAIRecommendation } from './hooks/useAIRecommendation';
 import { CartProvider } from './context/CartContext';
@@ -26,6 +30,10 @@ import { SNEAKERS, REVIEWS } from './data/sneakers';
 function AppContent() {
   const [selectedSneaker, setSelectedSneaker] = useState(SNEAKERS[0]);
   const [requireSizeSelection, setRequireSizeSelection] = useState(false);
+  const [isShareOpen, setIsShareOpen] = useState(false);
+  const [isForumOpen, setIsForumOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isOrderTrackingOpen, setIsOrderTrackingOpen] = useState(false);
   const appRef = useRef(null);
   const sectionPerfStyle = { contentVisibility: 'auto', containIntrinsicSize: '800px' };
   
@@ -196,6 +204,10 @@ function AppContent() {
       <WishlistSidebar />
       <AuthModal />
       <ToastContainer />
+      <ShareToSocial sneaker={selectedSneaker} isOpen={isShareOpen} onClose={() => setIsShareOpen(false)} />
+      <CommunityForum isOpen={isForumOpen} onClose={() => setIsForumOpen(false)} />
+      <CheckoutSystem isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
+      <OrderTracking isOpen={isOrderTrackingOpen} onClose={() => setIsOrderTrackingOpen(false)} />
     </div>
   );
 }
